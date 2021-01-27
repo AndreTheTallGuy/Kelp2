@@ -23,11 +23,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="82334145-5445-4fbe-9360-f7a39c12be65" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/Kelp2/kelp/models/aquarium.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/Kelp2/kelp/models/comment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/Kelp2/kelp/models/review.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/Kelp2/kelp/models/user.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/Kelp2/kelp/DAO/AquariumRepo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/Kelp2/kelp/DAO/CommentRepo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/Kelp2/kelp/DAO/ReviewRepo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/Kelp2/kelp/DAO/UserRepo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/Kelp2/kelp/services/CommentService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/Kelp2/kelp/services/ReviewService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/Kelp2/kelp/services/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/Kelp2/kelp/models/aquarium.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Kelp2/kelp/models/Aquarium.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/Kelp2/kelp/models/comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Kelp2/kelp/models/Comment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/Kelp2/kelp/models/review.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Kelp2/kelp/models/Review.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/Kelp2/kelp/models/user.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Kelp2/kelp/models/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,11 +47,17 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="MavenImportPreferences">
@@ -119,28 +132,36 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="765" y="224" key="#com.intellij.ide.util.MemberChooser/1920.0.1920.1080/0.0.1920.1080/3840.0.1920.1080@0.0.1920.1080" timestamp="1611766626064" />
+    <state x="415" y="332" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1611783143070">
+      <screen x="0" y="0" width="1555" height="834" />
+    </state>
+    <state x="415" y="332" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1555.834/2560.0.1021.597@0.0.1555.834" timestamp="1611783143070" />
     <state x="559" y="173" key="FileChooserDialogImpl" timestamp="1611685865807">
       <screen x="0" y="0" width="1555" height="834" />
     </state>
     <state x="559" y="173" key="FileChooserDialogImpl/0.0.1555.834/2560.0.1021.597@0.0.1555.834" timestamp="1611685865807" />
-    <state width="1921" height="302" key="GridCell.Tab.0.bottom" timestamp="1611769060169">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1513" height="213" key="GridCell.Tab.0.bottom" timestamp="1611783754228">
+      <screen x="0" y="0" width="1555" height="834" />
     </state>
+    <state width="1513" height="213" key="GridCell.Tab.0.bottom/0.0.1555.834/2560.0.1021.597@0.0.1555.834" timestamp="1611783754228" />
     <state width="1921" height="302" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.0.1920.1080/3840.0.1920.1080@0.0.1920.1080" timestamp="1611769060169" />
     <state width="1921" height="302" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.0.1920.1080/3840.0.1920.1080@1920.0.1920.1080" timestamp="1611765590116" />
-    <state width="1921" height="302" key="GridCell.Tab.0.center" timestamp="1611769060169">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1513" height="213" key="GridCell.Tab.0.center" timestamp="1611783754228">
+      <screen x="0" y="0" width="1555" height="834" />
     </state>
+    <state width="1513" height="213" key="GridCell.Tab.0.center/0.0.1555.834/2560.0.1021.597@0.0.1555.834" timestamp="1611783754228" />
     <state width="1921" height="302" key="GridCell.Tab.0.center/1920.0.1920.1080/0.0.1920.1080/3840.0.1920.1080@0.0.1920.1080" timestamp="1611769060169" />
     <state width="1921" height="302" key="GridCell.Tab.0.center/1920.0.1920.1080/0.0.1920.1080/3840.0.1920.1080@1920.0.1920.1080" timestamp="1611765590116" />
-    <state width="1921" height="302" key="GridCell.Tab.0.left" timestamp="1611769060169">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1513" height="213" key="GridCell.Tab.0.left" timestamp="1611783754228">
+      <screen x="0" y="0" width="1555" height="834" />
     </state>
+    <state width="1513" height="213" key="GridCell.Tab.0.left/0.0.1555.834/2560.0.1021.597@0.0.1555.834" timestamp="1611783754228" />
     <state width="1921" height="302" key="GridCell.Tab.0.left/1920.0.1920.1080/0.0.1920.1080/3840.0.1920.1080@0.0.1920.1080" timestamp="1611769060169" />
     <state width="1921" height="302" key="GridCell.Tab.0.left/1920.0.1920.1080/0.0.1920.1080/3840.0.1920.1080@1920.0.1920.1080" timestamp="1611765590116" />
-    <state width="1921" height="302" key="GridCell.Tab.0.right" timestamp="1611769060169">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1513" height="213" key="GridCell.Tab.0.right" timestamp="1611783754228">
+      <screen x="0" y="0" width="1555" height="834" />
     </state>
+    <state width="1513" height="213" key="GridCell.Tab.0.right/0.0.1555.834/2560.0.1021.597@0.0.1555.834" timestamp="1611783754228" />
     <state width="1921" height="302" key="GridCell.Tab.0.right/1920.0.1920.1080/0.0.1920.1080/3840.0.1920.1080@0.0.1920.1080" timestamp="1611769060169" />
     <state width="1921" height="302" key="GridCell.Tab.0.right/1920.0.1920.1080/0.0.1920.1080/3840.0.1920.1080@1920.0.1920.1080" timestamp="1611765590116" />
     <state x="2381" y="165" key="SettingsEditor" timestamp="1611765581105">

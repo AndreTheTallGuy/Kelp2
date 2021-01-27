@@ -9,31 +9,36 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Table(name="comments")
+@Table(name="review")
 @Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class comment {
+public class Review {
 
     @Id
-    @Column(name="comment_id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int commentID;
-
     @Column(name="review_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int reviewID;
+
+    @Column(name="aquarium_id")
+    private int aquariumID;
 
     @Column(name="user_id")
     private int userID;
 
-    @Column(name="comment")
-    private String comment;
+    @Column(name="rating")
+    private float rating;
+
+    @Column(name="review_text")
+    private String reviewText;
+
+    @Column(name="visited_date")
+    private java.sql.Date visitedDate;
 
     @Column(name="posted_date")
     private java.sql.Date postedDate;
 
     @Column(name="votes")
     private int votes;
-
 }
