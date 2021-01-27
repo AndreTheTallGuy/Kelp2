@@ -14,7 +14,7 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class aquarium {
+public class Aquarium {
 
     @Id
     @Column(name="aquarium_id")
