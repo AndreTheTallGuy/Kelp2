@@ -1,0 +1,28 @@
+Kelp Description:
+
+Kelp is an application to review Aquariums, where individuals can see reviews of aquariums in a selected area. They can then log in to the site and have access to additional functions such as Writing a Review, Giving a Rating, and Commenting on Previous Reviews.
+
+Kelp is a community for Aquarium Enthusiasts where users can share experiences and facilitate discussions in relation to the facilities.
+
+As a User, not logged in, I can see reviewed Aquariums and comments on the reviews.
+As a User, not logged in, I can sign up and create a profile.
+
+As a User I can login.
+
+As a Logged In User I can review Aquariums that have already been added to the site.
+As a Logged In User I can add an Aquarium to the site.
+As a Logged In User I can comment on the reviews for an Aquarium.
+As a Logged In User I can message other Users directly. (Stretch Goal)
+
+Technologies:
+Spring Boot
+Lombok
+Spring Security
+Spring DataJPA
+H2
+Angular
+Angular Materials
+Mockito
+MockMVC
+JUnit
+JavaDocs
