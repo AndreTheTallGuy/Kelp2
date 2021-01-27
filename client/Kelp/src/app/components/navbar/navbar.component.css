@@ -1,0 +1,15 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.fas {
+  margin-right: 10%;
+}
+
+.far {
+  margin-right: 10%;
+}
+
+.nav-button {
+  font-size: large;
+}
