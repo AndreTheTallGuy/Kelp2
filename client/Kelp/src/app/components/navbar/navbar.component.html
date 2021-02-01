@@ -1,7 +1,7 @@
 <mat-toolbar color="primary">
   <button class="nav-button" mat-flat-button color="primary">
     <i class="fas fa-leaf"></i>
-    <span>Kelp2</span>
+    <span class="redirect" routerLink="">Kelp2</span>
   </button>
 
   <span class="example-spacer"></span>
@@ -10,13 +10,29 @@
     <span>Aquariums</span>
   </button>
 
-  <button class="nav-button" mat-flat-button color="primary">
+  <button
+    *ngIf="!(authService.user | async)"
+    class="nav-button"
+    mat-flat-button
+    color="primary"
+  >
     <i class="far fa-user-circle"></i>
-    <span>Register</span>
+    <span class="redirect" routerLink="/sign-up">Register</span>
   </button>
 
-  <button class="nav-button" mat-flat-button color="primary">
+  <button
+    *ngIf="!(authService.user | async)"
+    class="nav-button"
+    mat-flat-button
+    color="primary"
+  >
     <i class="fas fa-sign-in-alt"></i>
-    <span>Login</span>
+    <span class="redirect" routerLink="/sign-in">Login</span>
+  </button>
+
+  <button (click)="logout()" *ngIf="authService.user | async"  class="nav-button"
+  mat-flat-button
+  color="primary">
+    Logout
   </button>
 </mat-toolbar>

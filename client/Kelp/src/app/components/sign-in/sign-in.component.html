@@ -1,0 +1,43 @@
+<div class="displayTable">
+  <div class="displayTableCell">
+    <div class="authBlock">
+      <h3>Sign In</h3>
+      <div class="formGroup">
+        <!-- these input fields takes email and password from user -->
+        <input type="text" [(ngModel)]="email" placeholder="Enter email" />
+        <input
+          type="password"
+          [(ngModel)]="password"
+          placeholder="Enter password"
+        />
+      </div>
+
+      <div class="formGroup">
+        <!-- user click this button to login -->
+        <button
+          class="nav-button"
+          mat-flat-button
+          color="primary"
+          (click)="login()"
+          [disabled]="!email || !password"
+          class="redirect"
+          routerLink=""
+        >
+          <span>Login</span>
+        </button>
+      </div>
+
+      <div class="redirectToLogin">
+        <span
+          >Don't have an account?<button
+            class="nav-button"
+            mat-flat-button
+            color="primary"
+          >
+            <span class="redirect" routerLink="/sign-up">Sign-up</span>
+          </button></span
+        >
+      </div>
+    </div>
+  </div>
+</div>

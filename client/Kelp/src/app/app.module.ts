@@ -11,11 +11,32 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+// Firebase services + enviorment module
+import { AngularFireModule } from "@angular/fire";
+import { AngularFireAuthModule } from "@angular/fire/auth";
+import { environment } from '../environments/environment';
+
+// tutorial components
+import { SignInComponent } from './components/sign-in/sign-in.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
+
+
+
+//auth service
+import { AuthService } from "./services/auth.service";
+import { FormsModule } from '@angular/forms';
+import { HomeComponent } from './components/home/home.component';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    NavbarComponent,
+    SignInComponent,
+    SignUpComponent,
+    HomeComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -23,9 +44,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatButtonModule,
     MatToolbarModule,
     MatIconModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig, 'Kelp2'),
+    AngularFireAuthModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
