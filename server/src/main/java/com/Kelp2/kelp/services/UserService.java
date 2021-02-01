@@ -7,19 +7,19 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
     private static final Logger logger = LoggerFactory.getLogger(UserService.class);
 
-    @Autowired
     private UserRepo userRepo;
 
+    @Autowired
     public UserService(UserRepo userRepo){this.userRepo = userRepo;}
 
-    public User findUserByID(int id){
-        return userRepo.findUserByID(id);
+    public Optional<User> findUserByID(int id){
+        return userRepo.findById(id);
     }
 
     public User findByDisplayName(String user){
@@ -28,7 +28,7 @@ public class UserService {
 
     public boolean updateUserInfoByID(User user){
         try{
-            User oldInfo = userRepo.findUserByID(user.getUserID());
+            User oldInfo = userRepo.findUserByID(user.getID());
             oldInfo.setDisplayName(user.getDisplayName());
             oldInfo.setProfilePic(user.getProfilePic());
             oldInfo.setFishPersonality(user.getFishPersonality());
