@@ -1,0 +1,38 @@
+<mat-toolbar color="primary">
+  <button class="nav-button" mat-flat-button color="primary">
+    <i class="fas fa-leaf"></i>
+    <span class="redirect" routerLink="">Kelp2</span>
+  </button>
+
+  <span class="example-spacer"></span>
+  <button class="nav-button" mat-flat-button color="primary">
+    <i class="fas fa-fish"></i>
+    <span class="redirect" routerLink="/aquariums">Aquariums</span>
+  </button>
+
+  <button
+    *ngIf="!(authService.user | async)"
+    class="nav-button"
+    mat-flat-button
+    color="primary"
+  >
+    <i class="far fa-user-circle"></i>
+    <span class="redirect" routerLink="/sign-up">Register</span>
+  </button>
+
+  <button
+    *ngIf="!(authService.user | async)"
+    class="nav-button"
+    mat-flat-button
+    color="primary"
+  >
+    <i class="fas fa-sign-in-alt"></i>
+    <span class="redirect" routerLink="/sign-in">Login</span>
+  </button>
+
+  <button (click)="logout()" *ngIf="authService.user | async"  class="nav-button"
+  mat-flat-button
+  color="primary">
+    Logout
+  </button>
+</mat-toolbar>
