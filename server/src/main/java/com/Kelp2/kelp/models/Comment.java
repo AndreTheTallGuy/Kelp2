@@ -27,6 +27,9 @@ public class Comment {
     @Column(name="user_id")
     private int userID;
 
+    @Column(name="reply_id")
+    private int replyID;
+
     @Column(name="comment")
     private String comment;
 
