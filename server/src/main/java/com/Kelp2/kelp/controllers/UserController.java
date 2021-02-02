@@ -30,7 +30,7 @@ public class UserController {
         return new ResponseEntity<>(calledUser, HttpStatus.OK);
     }
 
-    @GetMapping(path="/{displayName}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path="/name/{displayName}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<User> getUserByDisplayName(@PathVariable(name="displayName") String name){
         logger.info("Received request for User by Display Name");
         User calledUser = userService.findByDisplayName(name);
@@ -45,9 +45,10 @@ public class UserController {
     }
 
     @PostMapping(path="/create", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Boolean> createUser(@RequestBody User user){
+    public ResponseEntity<Boolean> createUser(@RequestBody String json){
         logger.info("Creating User");
-        boolean createdUser = userService.saveUser(user);
+        System.out.println("In the controller!!");
+        boolean createdUser = userService.saveUser(json);
         return new ResponseEntity<>(createdUser, HttpStatus.OK);
     }
 
