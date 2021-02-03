@@ -1,4 +1,5 @@
 application.properties
+*/.idea/workspace.xml
 
 HELP.md
 target/

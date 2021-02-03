@@ -23,7 +23,7 @@ public class ReviewService {
     public ReviewService(ReviewRepo reviewRepo){this.reviewRepo = reviewRepo;}
 
     public Review findReviewByAquaID(int aquaID){
-        return reviewRepo.FindByAquaID(aquaID);
+        return reviewRepo.findByAquariumID(aquaID);
     }
 
     public Review saveReview(String json){

@@ -10,8 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping(path="/aqua")
 public class AquariumController {
@@ -22,7 +20,7 @@ public class AquariumController {
     @Autowired
     public AquariumController (AquariumService aquariumService){this.aquariumService = aquariumService;}
 
-    @GetMapping(path="/{page}")
+    @GetMapping(path="/{page}")//research pagination further.
     public ResponseEntity<Page<Aquarium>> getAllAquariums(@PathVariable(name="page") int page){
         logger.info("Received request for all Aquariums");
         Page<Aquarium> aquaList = aquariumService.findAll(page,2);
