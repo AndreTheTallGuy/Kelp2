@@ -7,6 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ReviewRepo extends JpaRepository<Review, Integer> {
-    @Query(value = "SELECT * FROM review WHERE aquarium_id = ?1", nativeQuery = true)
-    Review FindByAquaID(int aquaID);
+    Review findByAquariumID(int aquaID);
 }
