@@ -15,13 +15,7 @@ export const environment = {
     measurementId: "G-1JM8L4XML4"
   },
   serverApiUrls: {
-    getTags: 'http://localhost:8080/myapp/videos/available-tags',
-    getAllVideos: 'http://localhost:8080/myapp/videos/all',
-    getVideosByTag: 'http://localhost:8080/myapp/videos/tags/',
-    getVideoById: 'http://localhost:8080/myapp/videos/id/',
-    getAllNotes: 'http://localhost:8080/myapp/notes/all',
-    getNotesByTag: 'http://localhost:8080/myapp/notes/tags/',
-    getNoteById: 'http://localhost:8080/myapp/notes/id/'
+    createProfile: 'http://localhost:8080/user/create'
   }
 };
 

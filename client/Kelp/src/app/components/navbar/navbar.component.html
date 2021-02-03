@@ -1,11 +1,11 @@
-<mat-toolbar color="primary">
-  <button class="nav-button" mat-flat-button color="primary">
+<mat-toolbar style="background-color: #0673ef;">
+  <button class="nav-button" mat-flat-button style="background-color: #0673ef;" color="primary">
     <i class="fas fa-leaf"></i>
     <span class="redirect" routerLink="">Kelp2</span>
   </button>
 
   <span class="example-spacer"></span>
-  <button class="nav-button" mat-flat-button color="primary">
+  <button class="nav-button" mat-flat-button  style="background-color: #0673ef;" color="primary">
     <i class="fas fa-fish"></i>
     <span class="redirect" routerLink="/aquariums">Aquariums</span>
   </button>
@@ -14,6 +14,7 @@
     *ngIf="!(authService.user | async)"
     class="nav-button"
     mat-flat-button
+    style="background-color: #0673ef;"
     color="primary"
   >
     <i class="far fa-user-circle"></i>
@@ -24,6 +25,7 @@
     *ngIf="!(authService.user | async)"
     class="nav-button"
     mat-flat-button
+    style="background-color: #0673ef;"
     color="primary"
   >
     <i class="fas fa-sign-in-alt"></i>
@@ -32,7 +34,7 @@
 
   <button (click)="logout()" *ngIf="authService.user | async"  class="nav-button"
   mat-flat-button
-  color="primary">
+  style="background-color: #0673ef;" color="primary">
     Logout
   </button>
 </mat-toolbar>
