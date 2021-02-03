@@ -6,5 +6,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AquariumRepo extends JpaRepository<Aquarium, Integer> {
-//    public Aquarium FindByAquaID(int aquaID);
 }
