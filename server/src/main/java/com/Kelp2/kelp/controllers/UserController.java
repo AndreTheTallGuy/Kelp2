@@ -11,6 +11,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+
 import java.util.Optional;
 
 @RestController
@@ -26,6 +27,7 @@ public class UserController {
     @GetMapping(path="/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Optional<User>> getUserByID(@PathVariable(name="id") int id){
         logger.info("Received request for User by ID");
+        System.out.println("Received Request for User by ID");
         Optional<User> calledUser = userService.findUserByID(id);
         return new ResponseEntity<>(calledUser, HttpStatus.OK);
     }
@@ -38,17 +40,16 @@ public class UserController {
     }
 
     @PutMapping(path="/update", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Boolean> updateUserInfo(@RequestBody User user){
+    public ResponseEntity<User> updateUserInfo(@RequestBody String json){
         logger.info("Updating info for requested User");
-        boolean updatedUser = userService.updateUserInfoByID(user);
+        User updatedUser = userService.updateUserInfoByID(json);
         return new ResponseEntity<>(updatedUser, HttpStatus.OK);
     }
 
     @PostMapping(path="/create", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Boolean> createUser(@RequestBody String json){
+    public ResponseEntity<User> createUser(@RequestBody String json){
         logger.info("Creating User");
-        System.out.println("In the controller!!");
-        boolean createdUser = userService.saveUser(json);
+        User createdUser = userService.saveUser(json);
         return new ResponseEntity<>(createdUser, HttpStatus.OK);
     }
 

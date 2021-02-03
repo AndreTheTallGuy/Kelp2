@@ -2,6 +2,8 @@ package com.Kelp2.kelp.services;
 
 import com.Kelp2.kelp.DAO.UserRepo;
 import com.Kelp2.kelp.models.User;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
@@ -28,8 +30,12 @@ public class UserService {
         return userRepo.findUserByDisplayName(user);
     }
 
-    public boolean updateUserInfoByID(User user){
+    public User updateUserInfoByID(String json){
         try{
+            ObjectMapper om = new ObjectMapper();
+            User user = null;
+            user=om.readValue(json,User.class);
+
             User oldInfo = userRepo.getOne(user.getID());
             oldInfo.setDisplayName(user.getDisplayName());
             oldInfo.setProfilePic(user.getProfilePic());
@@ -39,30 +45,32 @@ public class UserService {
             oldInfo.setFacebook(user.getFacebook());
             oldInfo.setInstagram(user.getInstagram());
             oldInfo.setBio(user.getBio());
-            return true;
+            oldInfo.setEmail(user.getEmail());
+
+            userRepo.save(oldInfo);
+
+            return oldInfo;
         }catch (Exception e){
             logger.warn(e.getMessage());
-            return false;
+            e.printStackTrace();
+            return null;
         }
     }
 
-    public boolean saveUser(String json)  {
+    public User saveUser(String json)  {
         ObjectMapper om = new ObjectMapper();
         System.out.println("in the service!!");
         User user = null;
         try {
             user = om.readValue(json, User.class);
+            if(user !=null) userRepo.save(user);
+            return user;
         } catch (JsonProcessingException e) {
             logger.warn(e.getMessage());
-        }
-
-        try{
-            if(user !=null) userRepo.save(user);
-            return true;
-        }
-        catch (Exception e){
+            return null;
+        } catch (Exception e){
             logger.warn(e.getMessage());
-            return false;
+            return null;
         }
 
     }
