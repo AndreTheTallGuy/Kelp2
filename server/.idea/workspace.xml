@@ -23,14 +23,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="82334145-5445-4fbe-9360-f7a39c12be65" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/Kelp2/kelp/controllers/CommentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/Kelp2/kelp/AquariumControllerTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_core_3_6_28.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_junit_jupiter_3_6_28.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Kelp2/kelp/DAO/CommentRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Kelp2/kelp/DAO/CommentRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Kelp2/kelp/DAO/ReviewRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Kelp2/kelp/DAO/ReviewRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Kelp2/kelp/controllers/AquariumController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Kelp2/kelp/controllers/AquariumController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Kelp2/kelp/services/CommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Kelp2/kelp/services/CommentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Kelp2/kelp/services/ReviewService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Kelp2/kelp/services/ReviewService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kelp.iml" beforeDir="false" afterPath="$PROJECT_DIR$/kelp.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +79,7 @@
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.AquariumControllerTests">
     <configuration name="KelpApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.Kelp2.kelp.KelpApplication" />
       <module name="kelp" />
@@ -95,9 +93,76 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="AquariumControllerTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="kelp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.Kelp2.kelp.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.Kelp2.kelp" />
+      <option name="MAIN_CLASS_NAME" value="com.Kelp2.kelp.AquariumControllerTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AquariumControllerTests.createAquaReturnInfo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="kelp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.Kelp2.kelp.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.Kelp2.kelp" />
+      <option name="MAIN_CLASS_NAME" value="com.Kelp2.kelp.AquariumControllerTests" />
+      <option name="METHOD_NAME" value="createAquaReturnInfo" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AquariumControllerTests.givenAquaIDReturnResults" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="kelp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.Kelp2.kelp.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.Kelp2.kelp" />
+      <option name="MAIN_CLASS_NAME" value="com.Kelp2.kelp.AquariumControllerTests" />
+      <option name="METHOD_NAME" value="givenAquaIDReturnResults" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AquariumControllerTests.givenPageReturnResults" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="kelp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.Kelp2.kelp.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.Kelp2.kelp" />
+      <option name="MAIN_CLASS_NAME" value="com.Kelp2.kelp.AquariumControllerTests" />
+      <option name="METHOD_NAME" value="givenPageReturnResults" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.AquariumControllerTests" />
         <item itemvalue="Application.KelpApplication" />
+        <item itemvalue="JUnit.AquariumControllerTests.createAquaReturnInfo" />
+        <item itemvalue="JUnit.AquariumControllerTests.givenPageReturnResults" />
+        <item itemvalue="JUnit.AquariumControllerTests.givenAquaIDReturnResults" />
       </list>
     </recent_temporary>
   </component>
@@ -129,6 +194,10 @@
       <screen x="0" y="0" width="1555" height="834" />
     </state>
     <state x="233" y="73" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1555.834/2560.0.1021.597@0.0.1555.834" timestamp="1612203164914" />
+    <state x="92" y="92" width="1736" height="896" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1612480957446">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="92" y="92" width="1736" height="896" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/1920.0.1920.1080/0.0.1920.1080/3840.0.1920.1080@0.0.1920.1080" timestamp="1612480957446" />
     <state x="765" y="224" key="#com.intellij.ide.util.MemberChooser" timestamp="1611766626064">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -137,51 +206,59 @@
       <screen x="0" y="0" width="1555" height="834" />
     </state>
     <state x="415" y="332" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1555.834/2560.0.1021.597@0.0.1555.834" timestamp="1611783143070" />
-    <state x="690" y="224" key="FileChooserDialogImpl" timestamp="1612313447635">
+    <state x="690" y="224" key="FileChooserDialogImpl" timestamp="1612462998689">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="559" y="173" key="FileChooserDialogImpl/0.0.1555.834/2560.0.1021.597@0.0.1555.834" timestamp="1611685865807" />
-    <state x="690" y="224" key="FileChooserDialogImpl/1920.0.1920.1080/0.0.1920.1080/3840.0.1920.1080@0.0.1920.1080" timestamp="1612313447635" />
-    <state width="1877" height="295" key="GridCell.Tab.0.bottom" timestamp="1612379156102">
+    <state x="690" y="224" key="FileChooserDialogImpl/1920.0.1920.1080/0.0.1920.1080/3840.0.1920.1080@0.0.1920.1080" timestamp="1612462998689" />
+    <state width="1877" height="364" key="GridCell.Tab.0.bottom" timestamp="1612481267298">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1513" height="232" key="GridCell.Tab.0.bottom/0.0.1555.834/2560.0.1021.597@0.0.1555.834" timestamp="1612281843221" />
-    <state width="1877" height="295" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.0.1920.1080/3840.0.1920.1080@0.0.1920.1080" timestamp="1612379156102" />
+    <state width="1877" height="364" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.0.1920.1080/3840.0.1920.1080@0.0.1920.1080" timestamp="1612481267298" />
     <state width="1921" height="302" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.0.1920.1080/3840.0.1920.1080@1920.0.1920.1080" timestamp="1611765590116" />
-    <state width="1877" height="295" key="GridCell.Tab.0.center" timestamp="1612379156101">
+    <state width="1877" height="364" key="GridCell.Tab.0.center" timestamp="1612481267298">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1513" height="232" key="GridCell.Tab.0.center/0.0.1555.834/2560.0.1021.597@0.0.1555.834" timestamp="1612281843221" />
-    <state width="1877" height="295" key="GridCell.Tab.0.center/1920.0.1920.1080/0.0.1920.1080/3840.0.1920.1080@0.0.1920.1080" timestamp="1612379156101" />
+    <state width="1877" height="364" key="GridCell.Tab.0.center/1920.0.1920.1080/0.0.1920.1080/3840.0.1920.1080@0.0.1920.1080" timestamp="1612481267298" />
     <state width="1921" height="302" key="GridCell.Tab.0.center/1920.0.1920.1080/0.0.1920.1080/3840.0.1920.1080@1920.0.1920.1080" timestamp="1611765590116" />
-    <state width="1877" height="295" key="GridCell.Tab.0.left" timestamp="1612379156101">
+    <state width="1877" height="364" key="GridCell.Tab.0.left" timestamp="1612481267297">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1513" height="232" key="GridCell.Tab.0.left/0.0.1555.834/2560.0.1021.597@0.0.1555.834" timestamp="1612281843221" />
-    <state width="1877" height="295" key="GridCell.Tab.0.left/1920.0.1920.1080/0.0.1920.1080/3840.0.1920.1080@0.0.1920.1080" timestamp="1612379156101" />
+    <state width="1877" height="364" key="GridCell.Tab.0.left/1920.0.1920.1080/0.0.1920.1080/3840.0.1920.1080@0.0.1920.1080" timestamp="1612481267297" />
     <state width="1921" height="302" key="GridCell.Tab.0.left/1920.0.1920.1080/0.0.1920.1080/3840.0.1920.1080@1920.0.1920.1080" timestamp="1611765590116" />
-    <state width="1877" height="295" key="GridCell.Tab.0.right" timestamp="1612379156102">
+    <state width="1877" height="364" key="GridCell.Tab.0.right" timestamp="1612481267298">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1513" height="232" key="GridCell.Tab.0.right/0.0.1555.834/2560.0.1021.597@0.0.1555.834" timestamp="1612281843221" />
-    <state width="1877" height="295" key="GridCell.Tab.0.right/1920.0.1920.1080/0.0.1920.1080/3840.0.1920.1080@0.0.1920.1080" timestamp="1612379156102" />
+    <state width="1877" height="364" key="GridCell.Tab.0.right/1920.0.1920.1080/0.0.1920.1080/3840.0.1920.1080@0.0.1920.1080" timestamp="1612481267298" />
     <state width="1921" height="302" key="GridCell.Tab.0.right/1920.0.1920.1080/0.0.1920.1080/3840.0.1920.1080@1920.0.1920.1080" timestamp="1611765590116" />
-    <state width="1513" height="266" key="GridCell.Tab.1.bottom" timestamp="1612201312478">
-      <screen x="0" y="0" width="1555" height="834" />
+    <state width="1877" height="364" key="GridCell.Tab.1.bottom" timestamp="1612481267298">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1513" height="266" key="GridCell.Tab.1.bottom/0.0.1555.834/2560.0.1021.597@0.0.1555.834" timestamp="1612201312478" />
-    <state width="1513" height="266" key="GridCell.Tab.1.center" timestamp="1612201312478">
-      <screen x="0" y="0" width="1555" height="834" />
+    <state width="1877" height="364" key="GridCell.Tab.1.bottom/1920.0.1920.1080/0.0.1920.1080/3840.0.1920.1080@0.0.1920.1080" timestamp="1612481267298" />
+    <state width="1877" height="364" key="GridCell.Tab.1.center" timestamp="1612481267298">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1513" height="266" key="GridCell.Tab.1.center/0.0.1555.834/2560.0.1021.597@0.0.1555.834" timestamp="1612201312478" />
-    <state width="1513" height="266" key="GridCell.Tab.1.left" timestamp="1612201312477">
-      <screen x="0" y="0" width="1555" height="834" />
+    <state width="1877" height="364" key="GridCell.Tab.1.center/1920.0.1920.1080/0.0.1920.1080/3840.0.1920.1080@0.0.1920.1080" timestamp="1612481267298" />
+    <state width="1877" height="364" key="GridCell.Tab.1.left" timestamp="1612481267298">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1513" height="266" key="GridCell.Tab.1.left/0.0.1555.834/2560.0.1021.597@0.0.1555.834" timestamp="1612201312477" />
-    <state width="1513" height="266" key="GridCell.Tab.1.right" timestamp="1612201312478">
-      <screen x="0" y="0" width="1555" height="834" />
+    <state width="1877" height="364" key="GridCell.Tab.1.left/1920.0.1920.1080/0.0.1920.1080/3840.0.1920.1080@0.0.1920.1080" timestamp="1612481267298" />
+    <state width="1877" height="364" key="GridCell.Tab.1.right" timestamp="1612481267298">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1513" height="266" key="GridCell.Tab.1.right/0.0.1555.834/2560.0.1021.597@0.0.1555.834" timestamp="1612201312478" />
+    <state width="1877" height="364" key="GridCell.Tab.1.right/1920.0.1920.1080/0.0.1920.1080/3840.0.1920.1080@0.0.1920.1080" timestamp="1612481267298" />
+    <state x="490" y="195" key="Maven.ArtifactSearchDialog" timestamp="1612473235333">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="490" y="195" key="Maven.ArtifactSearchDialog/1920.0.1920.1080/0.0.1920.1080/3840.0.1920.1080@0.0.1920.1080" timestamp="1612473235333" />
     <state x="2381" y="165" key="SettingsEditor" timestamp="1611765581105">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
@@ -190,9 +267,23 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="751" y="398" key="scopes/1920.0.1920.1080/0.0.1920.1080/3840.0.1920.1080@0.0.1920.1080" timestamp="1612370684812" />
-    <state x="623" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1612291923714">
+    <state x="623" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1612478821811">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="623" y="235" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1080/0.0.1920.1080/3840.0.1920.1080@0.0.1920.1080" timestamp="1612291923714" />
+    <state x="623" y="235" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1080/0.0.1920.1080/3840.0.1920.1080@0.0.1920.1080" timestamp="1612478821811" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/kelp$AquariumControllerTests_createAquaReturnInfo.ic" NAME="AquariumControllerTests.createAquaReturnInfo Coverage Results" MODIFIED="1612481009402" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.Kelp2.kelp.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/kelp$KelpApplication.ic" NAME="KelpApplication Coverage Results" MODIFIED="1612481030431" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.Kelp2.kelp.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/kelp$AquariumControllerTests.ic" NAME="AquariumControllerTests Coverage Results" MODIFIED="1612481068937" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.Kelp2.kelp.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/kelp$AquariumControllerTests_givenAquaIDReturnResults.ic" NAME="AquariumControllerTests.givenAquaIDReturnResults Coverage Results" MODIFIED="1612472466413" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.Kelp2.kelp.*</FILTER>
+    </SUITE>
   </component>
 </project>
