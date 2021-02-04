@@ -27,6 +27,7 @@ import { AuthService } from "./services/auth.service";
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
 import { AquariumsComponent } from './components/aquariums/aquariums.component';
+import { AddAquariumComponent } from './compnents/add-aquarium/add-aquarium.component';
 
 
 
@@ -38,6 +39,7 @@ import { AquariumsComponent } from './components/aquariums/aquariums.component';
     SignUpComponent,
     HomeComponent,
     AquariumsComponent,
+    AddAquariumComponent,
     
   ],
   imports: [
