@@ -1,42 +1,63 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable} from '@angular/core';
-import { AngularFireAuth } from "@angular/fire/auth";
 import { Observable } from 'rxjs';
+import { Aquarium } from '../models/Aquarium';
+import { Review } from '../models/Review';
+import { User } from '../models/User';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  user: Observable<any>
 
-  constructor(private firebaseAuth: AngularFireAuth) {
-    this.user = firebaseAuth.authState
+  constructor(private http: HttpClient) {
+    
   }
 
-  signup(email: string, password: string) {
-    this.firebaseAuth
-      .createUserWithEmailAndPassword(email, password)
-      .then(value => {
-        console.log('Success!', value);
-      })
-      .catch(err => {
-        console.log('Something went wrong:',err.message);
-      });
+  // User Api routes
+  public getUserbyEmail(email: string):Observable<any>{
+    return this.http.get(`https://localhost:8080/user?email=${email}`);
   }
 
-  login(email: string, password: string) {
-    this.firebaseAuth
-      .signInWithEmailAndPassword(email, password)
-      .then(value => {
-        console.log('Nice, it worked!');
-      })
-      .catch(err => {
-        console.log('Something went wrong:',err.message);
-      });
+  public createUser(form: User):Observable<any>{
+    return this.http.post(`https://localhost:8080/user/create`, form);
   }
 
-  logout() {
-    this.firebaseAuth.signOut();
+  public updateProfile(form: User): Observable<any>{
+    return this.http.put(`https://localhost:8080/user/update`, form);
+  }
+  
+  // Aquarium API routes
+  public getAllAquariumsByPage(pageNumber: number):Observable<any>{
+    return this.http.get(`https://localhost:8080/aqua?page=${pageNumber}`);
+  }
+ 
+  public getAquariumById(id:number):Observable<any>{
+    return this.http.get(`https://localhost:8080/aqua/id?aquaId${id}`);
+  }
+
+  public addAquarium(form: any):Observable<any>{
+    return this.http.post(`https://localhost:8080/aqua/create`, form);
+  }
+
+  //Review API Routes
+  public getReviewByAquaId(aquaId:number):Observable<any>{
+    return this.http.get(`https://localhost:8080/review?aquaId=${aquaId}`);
+  }
+
+  public postReview(form:Review):Observable<any>{
+    return this.http.post(`https://localhost:8080/review/create`, form);
+  }
+
+  //Comment API Routs
+  public getCommentsByReviewId(reviewId:number):Observable<any>{
+    return this.http.get(`https://localhost:8080/comment?reviewId=${reviewId}`);
+  }
+
+  public postComment(form:Comment):Observable<any>{
+    return this.http.post(`https://localhost:8080/comment/create`, form);
   }
 
 }
+

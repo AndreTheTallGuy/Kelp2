@@ -1,0 +1,53 @@
+<h3>Add a New Aquarium</h3>
+
+<div class="container center" *ngIf="isLoading; else elseTemplate">
+    <div class="col-12 text-center">
+
+      <img src="../../../assets/Images/fishSpinner .gif" alt="Loading..." class="">
+
+    </div>
+  </div>
+
+<ng-template #elseTemplate >
+    <form [formGroup]="addAquarium" (ngSubmit)="addAquaForm(addAquarium)" ngNativeValidate>
+
+        <div class="form-group">
+            <label for="photo"></label>
+            <input type="text" formControlName="photo" name="photo" placeholder="Url of a photo" required minlength="10">
+        </div>
+        <div class="form-group">
+            <label for="name"></label>
+            <input type="text" formControlName="name" name="name" placeholder="Name of Aquarium" required>
+        </div>
+        <div class="phone">
+            <label for="phone"></label>
+            <input type="text" formControlName="phone" name="phone" placeholder="(123)456-7890" required >
+        </div>
+        <div class="url">
+            <label for="url"></label>
+            <input type="url" formControlName="url" name="url" placeholder="Website" required>
+        </div>
+        <div class="street">
+            <label for="street"></label>
+            <input type="text" formControlName="street" name="street" placeholder="Street Address" required>
+        </div>
+        <div class="city">
+            <label for="city"></label>
+            <input type="text" formControlName="city" name="city" placeholder="City" required>
+        </div>
+        <div class="postalCode">
+            <label for="postalCode"></label>
+            <input type="text" formControlName="postalCode" name="postalCode" placeholder="Postal Code" required>
+        </div>
+        <div class="description">
+            <label for="description"></label>
+            <input type="text" formControlName="description" name="description" placeholder="Description of Aquarium" required>
+        </div>
+        <div class="rating">
+            <label for="rating"></label>
+            <input type="number" formControlName="rating" name="rating" placeholder="Rating" required min="1" max="5">
+        </div>
+        <button type="submit" id="submit">Submit</button>
+
+    </form>
+</ng-template>

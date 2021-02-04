@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService} from '../../services/auth.service';
+import { FirebaseService} from '../../services/firebase.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -11,12 +11,12 @@ export class SignUpComponent implements OnInit {
   email!: string;
   password!: string;
 
-  constructor(public authService: AuthService) {
+  constructor(public firebaseService: FirebaseService) {
   
   }
 
   signup() {
-    this.authService.signup(this.email, this.password);
+    this.firebaseService.signup(this.email, this.password);
     this.email = this.password = '';
   }
 
