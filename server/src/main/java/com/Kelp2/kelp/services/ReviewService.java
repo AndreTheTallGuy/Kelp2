@@ -3,6 +3,9 @@ package com.Kelp2.kelp.services;
 import com.Kelp2.kelp.DAO.ReviewRepo;
 import com.Kelp2.kelp.models.Comment;
 import com.Kelp2.kelp.models.Review;
+import com.Kelp2.kelp.models.User;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,21 +22,23 @@ public class ReviewService {
     @Autowired
     public ReviewService(ReviewRepo reviewRepo){this.reviewRepo = reviewRepo;}
 
-    public List<Review> findAllReviews(){
-        return reviewRepo.findAll();
-    }
-
     public Review findReviewByAquaID(int aquaID){
-        return reviewRepo.FindByAquaID(aquaID);
+        return reviewRepo.findByAquariumID(aquaID);
     }
 
-    public boolean saveReview(Review review){
+    public Review saveReview(String json){
+        ObjectMapper om = new ObjectMapper();
+        Review review = null;
         try{
+            review = om.readValue(json, Review.class);
             reviewRepo.save(review);
-            return true;
+            return review;
+        } catch (JsonProcessingException e) {
+            logger.warn(e.getMessage());
+            return null;
         } catch (Exception e){
             logger.warn(e.getMessage());
-            return false;
+            return null;
         }
     }
 
