@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
+import { FirebaseService } from '../../services/firebase.service';
 
 @Component({
   selector: 'app-navbar',
@@ -11,12 +11,12 @@ export class NavbarComponent implements OnInit {
   email!: string;
   password!: string;
 
-  constructor(public authService: AuthService) {
+  constructor(public firebaseService: FirebaseService) {
   
   }
   
   logout() {
-    this.authService.logout();
+    this.firebaseService.logout();
   }
 
   ngOnInit(): void {

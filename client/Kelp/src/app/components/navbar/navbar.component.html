@@ -11,7 +11,7 @@
   </button>
 
   <button
-    *ngIf="!(authService.user | async)"
+    *ngIf="!(firebaseService.user | async)"
     class="nav-button"
     mat-flat-button
     style="background-color: #0673ef;"
@@ -22,7 +22,7 @@
   </button>
 
   <button
-    *ngIf="!(authService.user | async)"
+    *ngIf="!(firebaseService.user | async)"
     class="nav-button"
     mat-flat-button
     style="background-color: #0673ef;"
@@ -32,7 +32,7 @@
     <span class="redirect" routerLink="/sign-in">Login</span>
   </button>
 
-  <button (click)="logout()" *ngIf="authService.user | async"  class="nav-button"
+  <button (click)="logout()" *ngIf="firebaseService.user | async"  class="nav-button"
   mat-flat-button
   style="background-color: #0673ef;" color="primary">
     Logout
