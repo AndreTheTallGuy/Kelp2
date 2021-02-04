@@ -37,7 +37,7 @@ export class AuthService {
     return this.http.get(`https://localhost:8080/aqua/id?aquaId${id}`);
   }
 
-  public addAquarium(form: Aquarium):Observable<any>{
+  public addAquarium(form: any):Observable<any>{
     return this.http.post(`https://localhost:8080/aqua/create`, form);
   }
 

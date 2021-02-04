@@ -1,5 +1,5 @@
 export interface Aquarium{
-    aquariumID: number;
+    aquariumID?: number;
     photo: string;
     name: string;
     phone: string;

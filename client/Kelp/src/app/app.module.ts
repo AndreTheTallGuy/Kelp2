@@ -20,14 +20,13 @@ import { environment } from '../environments/environment';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 
-
-
 //auth service
 import { AuthService } from "./services/auth.service";
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
 import { AquariumsComponent } from './components/aquariums/aquariums.component';
-import { AddAquariumComponent } from './compnents/add-aquarium/add-aquarium.component';
+import { AddAquariumComponent } from './components/add-aquarium/add-aquarium.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -51,7 +50,9 @@ import { AddAquariumComponent } from './compnents/add-aquarium/add-aquarium.comp
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig, 'Kelp2'),
     AngularFireAuthModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
