@@ -39,6 +39,13 @@ public class UserController {
         return new ResponseEntity<>(calledUser, HttpStatus.OK);
     }
 
+    @GetMapping(path="/email/{email}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<User> getUserByEmail(@PathVariable(name="email") String email){
+        logger.info("Received request for User by Email");
+        User calledUser = userService.findByEmail(email);
+        return new ResponseEntity<>(calledUser, HttpStatus.OK);
+    }
+
     @PutMapping(path="/update", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<User> updateUserInfo(@RequestBody String json){
         logger.info("Updating info for requested User");

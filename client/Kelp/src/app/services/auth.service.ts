@@ -23,7 +23,7 @@ export class AuthService {
   }
   // User Api routes
   public getUserbyEmail(email: string):Observable<any>{
-    return this.http.get(`http://localhost:8080/user?email=${email}`);
+    return this.http.get(`http://localhost:8080/user/${email}`);
   }
 
   public createUser(form: User):Observable<any>{
@@ -37,11 +37,11 @@ export class AuthService {
   
   // Aquarium API routes
   public getAllAquariumsByPage(pageNumber: number):Observable<any>{
-    return this.http.get(`http://localhost:8080/aqua?page=${pageNumber}`);
+    return this.http.get(`http://localhost:8080/aqua/${pageNumber}`);
   }
  
   public getAquariumById(id:number):Observable<any>{
-    return this.http.get(`http://localhost:8080/aqua/id?aquaId${id}`);
+    return this.http.get(`http://localhost:8080/aqua/id/${id}`);
   }
 
   public addAquarium(form: any):Observable<any>{
@@ -50,7 +50,7 @@ export class AuthService {
 
   //Review API Routes
   public getReviewByAquaId(aquaId:number):Observable<any>{
-    return this.http.get(`http://localhost:8080/review?aquaId=${aquaId}`);
+    return this.http.get(`http://localhost:8080/review/${aquaId}`);
   }
 
   public postReview(form:Review):Observable<any>{
@@ -59,7 +59,7 @@ export class AuthService {
 
   //Comment API Routs
   public getCommentsByReviewId(reviewId:number):Observable<any>{
-    return this.http.get(`http://localhost:8080/comment?reviewId=${reviewId}`);
+    return this.http.get(`http://localhost:8080/comment/${reviewId}`);
   }
 
   public postComment(form:Comment):Observable<any>{
