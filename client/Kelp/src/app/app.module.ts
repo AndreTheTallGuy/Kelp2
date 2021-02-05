@@ -27,6 +27,7 @@ import { HomeComponent } from './components/home/home.component';
 import { AquariumsComponent } from './components/aquariums/aquariums.component';
 import { AddAquariumComponent } from './components/add-aquarium/add-aquarium.component';
 import { HttpClientModule } from '@angular/common/http';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 
 
@@ -39,6 +40,7 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     AquariumsComponent,
     AddAquariumComponent,
+    DashboardComponent,
     
   ],
   imports: [

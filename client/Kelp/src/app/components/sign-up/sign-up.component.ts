@@ -30,7 +30,7 @@ export class SignUpComponent implements OnInit {
 
   signup() {
     this.firebaseService.signup(this.email, this.password);
-    this.email = this.password = '';
+    // this.email = this.password = '';
 
     this.form = {
       email: this.email,
@@ -49,7 +49,7 @@ export class SignUpComponent implements OnInit {
     
     this.authservice.createUser(this.json).subscribe(res=>{
       console.log(res);
-      this.router.navigate(['aquariums']);
+      this.router.navigate(['dashboard']);
     }, error =>{
       console.log(error);      
     })
