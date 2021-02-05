@@ -30,6 +30,10 @@ public class UserService {
         return userRepo.findUserByDisplayName(user);
     }
 
+    public User findByEmail(String user){
+        return userRepo.findUserByEmail(user);
+    }
+
     public User updateUserInfoByID(String json){
         try{
             ObjectMapper om = new ObjectMapper();
