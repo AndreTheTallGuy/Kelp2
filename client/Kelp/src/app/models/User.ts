@@ -1,5 +1,5 @@
 export interface User{
-    id: number;
+    id?: number;
     displayName: string;
     profilePic: string;
     fishPersonality: string;

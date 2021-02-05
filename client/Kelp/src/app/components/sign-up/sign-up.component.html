@@ -1,27 +1,39 @@
 <div class="displayTable">
   <div class="displayTableCell">
-    <div class="authBlock">
+    <div class="authBlock container center ">
       <h3>Sign Up</h3>
 
-      <div class="formGroup">
+      <div class="formGroup ">
         <!-- these input fields takes email and password from user -->
-        <input type="text" [(ngModel)]="email" placeholder="Enter email" />
-        <input
-          type="password"
-          [(ngModel)]="password"
-          placeholder="Enter password"
+        <input type="email" [(ngModel)]="email" required  placeholder="Email" />
+        <br/>
+        <input type="password" [(ngModel)]="password" required minlength="6" placeholder="Password"
         />
+        <br/>
+        <input type="text" [(ngModel)]="displayName" required minlength="4" placeholder="Display Name">
+        <br/>
+        <input type="url" [(ngModel)]="photo" required minlength="8" placeholder="Photo URL">
+        <br/>
+        <input type="text" [(ngModel)]="fishPersonality" required placeholder="Fish Personality">
+        <br/>
+        <input type="text" [(ngModel)]="location" required placeholder="location">
+        <br/>
+        <input type="text" [(ngModel)]="twitter" placeholder="Twitter">
+        <br/>
+        <input type="text" [(ngModel)]="facebook" placeholder="Facebook">
+        <br/>
+        <input type="text" [(ngModel)]="instagram" placeholder="Instagram">
+        <br/>
+        <textarea type="text" [(ngModel)]="bio" placeholder="bio" ></textarea>
+
       </div>
-      <div class="formGroup"></div>
-      <!-- user click this button to signup -->
+      
       <button
         class="nav-button"
         mat-flat-button
         color="primary"
         (click)="signup()"
-        [disabled]="!email || !password"
-        class="redirect" routerLink="/sign-in"
-      >
+        [disabled]="!email || !password ">
         <span >Sign-up</span>
       </button>
 
@@ -30,10 +42,9 @@
       </div>
 
       <div class="redirectToLogin">
-        <span
-          >Already have an account?
-          <button class="redirect" routerLink="/sign-in">Login</button></span
-        >
+        <span>Already have an account?
+          <button class="redirect" routerLink="/sign-in">Login</button>
+        </span>     
       </div>
     </div>
   </div>
