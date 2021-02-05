@@ -38,7 +38,7 @@ export class AuthService {
   }
 
   public addAquarium(form: any):Observable<any>{
-    return this.http.post(`https://localhost:8080/aqua/create`, form);
+    return this.http.post(`http://localhost:8080/aqua/create`, form);
   }
 
   //Review API Routes

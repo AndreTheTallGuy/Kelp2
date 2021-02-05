@@ -36,6 +36,7 @@ public class AquariumController {
 
     @PostMapping(path="/create")
     public ResponseEntity<Aquarium> saveAquarium(@RequestBody String json){
+        System.out.println(json);
         logger.info("Adding an Aquarium to the Database");
         Aquarium addedAqua = aquariumService.saveAqua(json);
         return new ResponseEntity<>(addedAqua, HttpStatus.OK);
