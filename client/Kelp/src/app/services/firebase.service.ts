@@ -1,6 +1,7 @@
 import { Injectable} from '@angular/core';
 import { AngularFireAuth } from "@angular/fire/auth";
 import { Observable } from 'rxjs';
+import { first } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -38,5 +39,11 @@ export class FirebaseService {
   logout() {
     this.firebaseAuth.signOut();
   }
+
+
+//  async getSyncToken(): Promise<string | null | undefined> {
+
+//     return await this.firebaseAuth.idToken.pipe(first()).toPromise();;
+//   }
 
 }
