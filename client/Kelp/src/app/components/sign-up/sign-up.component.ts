@@ -2,15 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/User';
 import { AuthService } from 'src/app/services/auth.service';
-import { FirebaseService} from '../../services/firebase.service';
+import { FirebaseService } from '../../services/firebase.service';
+import { AngularFireAuth } from "@angular/fire/auth";
 
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.css']
+  styleUrls: ['./sign-up.component.css'],
 })
 export class SignUpComponent implements OnInit {
-
   email!: string;
   password!: string;
   displayName!: string;
@@ -24,9 +24,12 @@ export class SignUpComponent implements OnInit {
   form?: User;
   json: any;
 
-  constructor(public firebaseService: FirebaseService, private authservice: AuthService, private router: Router) {
-  
-  }
+  constructor(
+    public firebaseService: FirebaseService,
+    private authservice: AuthService,
+    private router: Router,
+    private angularFA: AngularFireAuth
+  ) {}
 
   signup() {
     this.firebaseService.signup(this.email, this.password);
@@ -41,24 +44,25 @@ export class SignUpComponent implements OnInit {
       twitter: this.twitter,
       facebook: this.facebook,
       instagram: this.instagram,
-      bio: this.bio
-    }
-    
+      bio: this.bio,
+    };
+
     this.json = JSON.stringify(this.form);
     console.log(this.json);
-    
-    this.authservice.createUser(this.json).subscribe(res=>{
-      console.log(res);
-      this.router.navigate(['dashboard']);
-    }, error =>{
-      console.log(error);      
-    })
 
+
+    this.authservice.createUser(this.json).subscribe(
+      (res) => {
+        console.log(res);
+        this.router.navigate(['dashboard']);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+
+    this.router.navigate(['dashboard']);
   }
 
-  
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

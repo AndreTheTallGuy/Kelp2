@@ -5,6 +5,12 @@
   </button>
 
   <span class="example-spacer"></span>
+  <button *ngIf="(firebaseService.user | async)" class="nav-button" mat-flat-button  style="background-color: #0673ef;" color="primary">
+    <i class="fas fa-anchor"></i>
+    <span class="redirect" routerLink="/dashboard">Dashboard</span>
+  </button>
+
+
   <button class="nav-button" mat-flat-button  style="background-color: #0673ef;" color="primary">
     <i class="fas fa-fish"></i>
     <span class="redirect" routerLink="/aquariums">Aquariums</span>
@@ -35,6 +41,7 @@
   <button (click)="logout()" *ngIf="firebaseService.user | async"  class="nav-button"
   mat-flat-button
   style="background-color: #0673ef;" color="primary">
-    Logout
+  <i class="fas fa-sign-out-alt"></i>
+  <span class="redirect" routerLink="">Logout</span>
   </button>
 </mat-toolbar>
