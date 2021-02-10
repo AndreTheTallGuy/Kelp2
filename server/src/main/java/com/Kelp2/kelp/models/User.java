@@ -22,7 +22,7 @@ public class User {
     private int ID;
 
     @Column(name="display_name")
-    private String displayName;
+    private String userName;
 
     @Column(name="profile_pic")
     private String profilePic;

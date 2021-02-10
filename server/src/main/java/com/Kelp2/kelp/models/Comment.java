@@ -36,7 +36,8 @@ public class Comment {
     private String comment;
 
     @Column(name="posted_date")
-    private java.sql.Date postedDate;
+    @Temporal(TemporalType.DATE)
+    private java.util.Date postedDate;
 
     @Column(name="votes")
     private int votes;

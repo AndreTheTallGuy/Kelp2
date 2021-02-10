@@ -25,17 +25,17 @@ public class UserController {
     public UserController (UserService userService){this.userService = userService;}
 
     @GetMapping(path="/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Optional<User>> getUserByID(@PathVariable(name="id") int id){
+    public ResponseEntity<User> getUserByID(@PathVariable(name="id") int id){
         logger.info("Received request for User by ID");
         System.out.println("Received Request for User by ID");
-        Optional<User> calledUser = userService.findUserByID(id);
+        User calledUser = userService.findUserByID(id);
         return new ResponseEntity<>(calledUser, HttpStatus.OK);
     }
 
-    @GetMapping(path="/name/{displayName}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<User> getUserByDisplayName(@PathVariable(name="displayName") String name){
-        logger.info("Received request for User by Display Name");
-        User calledUser = userService.findByDisplayName(name);
+    @GetMapping(path="/name/{userName}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<User> getUserByUserName(@PathVariable(name="userName") String name){
+        logger.info("Received request for User by Username");
+        User calledUser = userService.findByUserName(name);
         return new ResponseEntity<>(calledUser, HttpStatus.OK);
     }
 
