@@ -5,28 +5,32 @@ import { Aquarium } from '../models/Aquarium';
 import { Review } from '../models/Review';
 import { User } from '../models/User';
 import {AngularFireAuth} from '@angular/fire/auth';
+import { FirebaseService } from './firebase.service';
 
 
 @Injectable({
   providedIn: 'root',
 })
 
-export class AuthService {
-  private requestHeaders = new HttpHeaders();
+export class ApiService {
+  private requestHeaders:any;
   
 
   constructor(
     private http: HttpClient,
-    private afa: AngularFireAuth
+    private afa: AngularFireAuth,
+    private fbService: FirebaseService
   ) {}
 
   public setHeaders() {
-    // const authToken = await this.firebaseService.getSyncToken();
+    // const authToken = this.fbService.getSyncToken();
     this.requestHeaders = new HttpHeaders({
       'Content-Type': 'application/json',
       // 'Authorization': `Bearer ${authToken}`,
     });
     console.log('setHeaders');
+    // console.log(authToken);
+    
   }
   // User Api routes
   public getUserbyEmail(email: string, token: string): Observable<any> {

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Aquarium } from 'src/app/models/Aquarium';
-import { AuthService } from 'src/app/services/auth.service';
+import { ApiService } from 'src/app/services/api.service';
 import { AngularFireAuth } from "@angular/fire/auth";
 
 
@@ -16,7 +16,7 @@ export class AddAquariumComponent implements OnInit {
   addAquarium: FormGroup;
   isLoading: boolean = false;
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router, private angularFA: AngularFireAuth) {
+  constructor(private formBuilder: FormBuilder, private apiService: ApiService, private router: Router, private angularFA: AngularFireAuth) {
     this.addAquarium = this.formBuilder.group({
       photo: '',
       name: '',
@@ -39,7 +39,7 @@ export class AddAquariumComponent implements OnInit {
     console.log(form.value);
 
     
-    this.authService.addAquarium(form.value).subscribe(res=>{
+    this.apiService.addAquarium(form.value).subscribe(res=>{
       console.log(res);
       alert("Aquarium Added");
       this.isLoading = false;

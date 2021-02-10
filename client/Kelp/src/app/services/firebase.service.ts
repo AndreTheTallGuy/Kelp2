@@ -41,9 +41,9 @@ export class FirebaseService {
   }
 
 
-//  async getSyncToken(): Promise<string | null | undefined> {
+ async getSyncToken(): Promise<string | null | undefined> {
 
-//     return await this.firebaseAuth.idToken.pipe(first()).toPromise();;
-//   }
+    return await this.firebaseAuth.idToken.pipe(first()).toPromise();;
+  }
 
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/User';
-import { AuthService } from 'src/app/services/auth.service';
+import { ApiService } from 'src/app/services/api.service';
 import { FirebaseService } from '../../services/firebase.service';
 import { AngularFireAuth } from "@angular/fire/auth";
 
@@ -26,7 +26,7 @@ export class SignUpComponent implements OnInit {
 
   constructor(
     public firebaseService: FirebaseService,
-    private authservice: AuthService,
+    private apiservice: ApiService,
     private router: Router,
     private angularFA: AngularFireAuth
   ) {}
@@ -51,7 +51,7 @@ export class SignUpComponent implements OnInit {
     console.log(this.json);
 
 
-    this.authservice.createUser(this.json).subscribe(
+    this.apiservice.createUser(this.json).subscribe(
       (res) => {
         console.log(res);
         this.router.navigate(['dashboard']);

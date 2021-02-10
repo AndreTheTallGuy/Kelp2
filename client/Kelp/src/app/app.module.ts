@@ -21,13 +21,14 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 
 //auth service
-import { AuthService } from "./services/auth.service";
+import { ApiService } from "./services/api.service";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
 import { AquariumsComponent } from './components/aquariums/aquariums.component';
 import { AddAquariumComponent } from './components/add-aquarium/add-aquarium.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
 
 
 
@@ -41,6 +42,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     AquariumsComponent,
     AddAquariumComponent,
     DashboardComponent,
+    SearchBarComponent,
     
   ],
   imports: [
@@ -56,7 +58,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [AuthService],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

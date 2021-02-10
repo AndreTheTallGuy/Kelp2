@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/services/auth.service';
+import { ApiService } from 'src/app/services/api.service';
 import { FirebaseService } from '../../services/firebase.service';
 
 
@@ -17,7 +17,7 @@ export class SignInComponent implements OnInit {
   constructor(
     public firebaseService: FirebaseService,
     private router: Router,
-    private authService: AuthService
+    private apiService: ApiService
   ) {}
 
   login() {
@@ -25,7 +25,7 @@ export class SignInComponent implements OnInit {
     this.firebaseService.login(this.email, this.password);
     // this.email = this.password = '';
 
-    this.authService.getUserbyEmail(this.email, this.token).subscribe(
+    this.apiService.getUserbyEmail(this.email, this.token).subscribe(
       (res) => {
         console.log(res);
         this.router.navigate(['dashboard']);
