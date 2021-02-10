@@ -33,6 +33,7 @@ public class UserControllerTests {
     private User user;
     private User updateUser;
     private String userJson;
+    private String updateUserJson;
 
     @Autowired
     private WebApplicationContext wac;
@@ -76,6 +77,7 @@ public class UserControllerTests {
         this.updateUser.setEmail("Carl.Semken@PathosResearch.org");
 
         this.userJson = om.writeValueAsString(this.user);
+        this.updateUserJson = om.writeValueAsString(this.updateUser);
     }
 
     @Test
@@ -128,14 +130,14 @@ public class UserControllerTests {
     public void updateUserReturnInfo() throws Exception{
         ObjectMapper om = new ObjectMapper();
 
-        when(us.updateUserInfoByID(this.userJson)).thenReturn(this.updateUser);
+        when(us.updateUserInfoByID(this.updateUserJson)).thenReturn(this.updateUser);
         MvcResult result = mvc.perform(put("/user/update")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(this.userJson))
+                .content(this.updateUserJson))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andReturn();
 
-        Assert.assertEquals(result.getResponse().getContentAsString(),om.writeValueAsString(this.updateUser));
+        Assert.assertEquals(result.getResponse().getContentAsString(),this.updateUserJson);
     }
 }
