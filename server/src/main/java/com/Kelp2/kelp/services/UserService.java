@@ -22,12 +22,12 @@ public class UserService {
     @Autowired
     public UserService(UserRepo userRepo){this.userRepo = userRepo;}
 
-    public Optional<User> findUserByID(int id){
-        return userRepo.findById(id);
+    public User findUserByID(int id){
+        return userRepo.getOne(id);
     }
 
-    public User findByDisplayName(String user){
-        return userRepo.findUserByDisplayName(user);
+    public User findByUserName(String user){
+        return userRepo.findUserByUserName(user);
     }
 
     public User findByEmail(String user){
@@ -41,7 +41,7 @@ public class UserService {
             user=om.readValue(json,User.class);
 
             User oldInfo = userRepo.getOne(user.getID());
-            oldInfo.setDisplayName(user.getDisplayName());
+            oldInfo.setUserName(user.getUserName());
             oldInfo.setProfilePic(user.getProfilePic());
             oldInfo.setFishPersonality(user.getFishPersonality());
             oldInfo.setLocation(user.getLocation());
