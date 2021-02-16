@@ -1,0 +1,22 @@
+.add-aquarium {
+  width: 125px;
+}
+
+.flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  /* width: 80vw; */
+  margin: 0 40px;
+}
+
+.width {
+  width: 100px;
+}
+
+.search-bar {
+  width: 400px;
+  height: 35px;
+  font-size: 20px;
+}

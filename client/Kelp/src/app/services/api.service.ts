@@ -59,8 +59,16 @@ export class ApiService {
     return this.http.get(`http://localhost:8080/aqua/${pageNumber}`);
   }
 
-  public getAquariumById(id: number): Observable<any> {
-    return this.http.get(`http://localhost:8080/aqua/id/${id}`);
+  public getAquariumById(aquaId: number): Observable<any> {
+    return this.http.get(`http://localhost:8080/aqua/id/${aquaId}`);
+  }
+
+  public getAquariumByName(name: string): Observable<any>{
+    return this.http.get(`http://localhost:8080/aqua/name/${name}`)
+  }
+  
+  public getAquariumByCity(city: string): Observable<any>{
+    return this.http.get(`http://localhost:8080/aqua/city/${city}`)
   }
 
   public addAquarium(form: any): Observable<any> {
@@ -73,8 +81,11 @@ export class ApiService {
     return this.http.get(`http://localhost:8080/review/${aquaId}`);
   }
 
-  public postReview(form: Review): Observable<any> {
-    return this.http.post(`http://localhost:8080/review/create`, form);
+  public postReview(form: string): Observable<any> {
+    this.setHeaders();
+    return this.http.post(`http://localhost:8080/review/create`, form, {
+      headers: this.requestHeaders,
+    });
   }
 
   //Comment API Routs

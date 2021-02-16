@@ -1,0 +1,20 @@
+<div class="container mt-5" fxFlexAlign= "center" >
+    <div class="contents">
+        <img class="photo" src={{aquarium?.photo}} alt="Aquarium photo">
+        <h1 class="title mt-3">{{aquarium?.name}}</h1>
+        <div class="rating">Rating will be here</div>
+        <div class="phone">{{aquarium?.phone}}</div>
+        <div class="url">{{aquarium?.url}}</div>
+        <div class="address">{{aquarium?.street}} {{aquarium?.city}} {{aquarium?.postalCode}}</div>
+        <div class="description">{{aquarium?.description}}</div>
+    </div>
+    <button class="btn-primary add-review" (click)="addReview()" >Add Review</button>
+    <div class="review-panel" *ngIf="reviews" >
+        <div *ngFor="let review of reviews">
+            <app-review-panel [review]="review" ></app-review-panel>
+        </div>
+    </div>
+    <div *ngIf="!reviews"> 
+        <p>Be the first to write a review!</p>
+    </div>
+</div>

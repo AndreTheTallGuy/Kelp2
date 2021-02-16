@@ -1,0 +1,18 @@
+<mat-card class="aqua-card mt-5 shadow panel" (click)="viewAqua()" role="button"  fxLayout="column" fxLayoutGap="10px">
+    <div fxFlex="190px" fxLayout="row">
+        <img class="image" src="{{aquarium?.photo}}" alt="Aquarium Photo">
+    </div>
+    <div fxLayout="column">
+        <mat-card-header>
+            <mat-card-title class="card-custom-title">
+                {{aquarium?.name}}
+            </mat-card-title>
+            <mat-card-subtitle>{{aquarium?.url}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <div>City: {{aquarium?.city}}</div>
+            <div>Rating: {{aquarium?.rating}}</div>
+        </mat-card-content>
+    </div>
+
+</mat-card>
