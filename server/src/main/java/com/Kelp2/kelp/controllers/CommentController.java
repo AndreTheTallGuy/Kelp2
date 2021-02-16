@@ -2,7 +2,6 @@ package com.Kelp2.kelp.controllers;
 
 
 import com.Kelp2.kelp.models.Comment;
-import com.Kelp2.kelp.models.Review;
 import com.Kelp2.kelp.services.CommentService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

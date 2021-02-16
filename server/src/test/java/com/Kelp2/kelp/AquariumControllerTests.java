@@ -76,15 +76,13 @@ public class AquariumControllerTests {
 
     @Test
     public void givenAquaIDReturnResults() throws Exception{
-        ObjectMapper om = new ObjectMapper();
-
         when(as.findByID(aqua.getAquariumID())).thenReturn(aqua);
         MvcResult result = this.mvc.perform(get("/aqua/id/1"))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andReturn();
 
-        Assert.assertEquals(result.getResponse().getContentAsString(),om.writeValueAsString(aqua));
+        Assert.assertEquals(result.getResponse().getContentAsString(),aquaJson);
     }
 
     @Test
@@ -106,8 +104,6 @@ public class AquariumControllerTests {
 
     @Test
     public void createAquaReturnInfo() throws Exception{
-        ObjectMapper om = new ObjectMapper();
-
         when(as.saveAqua(aquaJson)).thenReturn(aqua);
         MvcResult result = this.mvc.perform(post("/aqua/create")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -115,7 +111,7 @@ public class AquariumControllerTests {
                 .andExpect(status().isOk())
                 .andReturn();
 
-        Assert.assertEquals(result.getResponse().getContentAsString(),om.writeValueAsString(aqua));
+        Assert.assertEquals(result.getResponse().getContentAsString(),aquaJson);
     }
 
 }
