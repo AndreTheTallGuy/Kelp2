@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(path="/aqua")
 public class AquariumController {
@@ -23,7 +25,7 @@ public class AquariumController {
     @GetMapping(path="/{page}")//research pagination further.
     public ResponseEntity<Page<Aquarium>> getAllAquariums(@PathVariable(name="page") int page){
         logger.info("Received request for all Aquariums");
-        Page<Aquarium> aquaList = aquariumService.findAll(page,2);
+        Page<Aquarium> aquaList = aquariumService.findAll(page,30);
         return new ResponseEntity<> (aquaList, HttpStatus.OK);
     }
 
@@ -31,6 +33,21 @@ public class AquariumController {
     public ResponseEntity<Aquarium> getAquariumByID(@PathVariable(name="aquaId") int aquaId){
         logger.info("Received request for Aquarium by ID");
         Aquarium calledAqua = aquariumService.findByID(aquaId);
+        return new ResponseEntity<> (calledAqua, HttpStatus.OK);
+    }
+
+    @GetMapping(path="/name/{name}")
+    public ResponseEntity<List<Aquarium>> getAquariumByName(@PathVariable(name="name") String name){
+        logger.info("Received request for Aquarium by Name");
+        List<Aquarium> calledAqua = aquariumService.findByName(name);
+        System.out.println(calledAqua);
+        return new ResponseEntity<> (calledAqua, HttpStatus.OK);
+    }
+
+    @GetMapping(path="/city/{city}")
+    public ResponseEntity<List<Aquarium>> getAquariumByCity(@PathVariable(name="city") String city){
+        logger.info("Received request for Aquarium by City");
+        List<Aquarium> calledAqua = aquariumService.findByCity(city);
         return new ResponseEntity<> (calledAqua, HttpStatus.OK);
     }
 

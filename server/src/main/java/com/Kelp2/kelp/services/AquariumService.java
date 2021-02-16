@@ -9,8 +9,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+import java.util.OptionalDouble;
 
 
 @Service
@@ -29,6 +33,15 @@ public class AquariumService {
     public Aquarium findByID(int aquaID){
         return aquariumRepo.getOne(aquaID);
     }
+
+    public List<Aquarium> findByName(String name){
+        return aquariumRepo.findByNameIgnoreCaseContaining(name);
+    }
+
+    public List<Aquarium> findByCity(String city){
+        return aquariumRepo.findByCityIgnoreCaseContaining(city);
+    }
+
 
     public Aquarium saveAqua(String json){
         ObjectMapper om = new ObjectMapper();

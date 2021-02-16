@@ -5,19 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="963f290f-0865-4f5e-9800-8ba9aa608754" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/server/src/test/java/com/Kelp2/kelp/CommentControllerTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/test/java/com/Kelp2/kelp/ReviewControllerTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/test/java/com/Kelp2/kelp/UserControllerTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/server/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/kelp.iml" beforeDir="false" afterPath="$PROJECT_DIR$/server/kelp.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/Kelp2/kelp/DAO/UserRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/Kelp2/kelp/DAO/UserRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/Kelp2/kelp/controllers/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/Kelp2/kelp/controllers/CommentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/Kelp2/kelp/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/Kelp2/kelp/controllers/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/Kelp2/kelp/models/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/Kelp2/kelp/models/Comment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/Kelp2/kelp/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/Kelp2/kelp/models/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/Kelp2/kelp/services/CommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/Kelp2/kelp/services/CommentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/Kelp2/kelp/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/Kelp2/kelp/services/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/test/java/com/Kelp2/kelp/AquariumControllerTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/test/java/com/Kelp2/kelp/AquariumControllerTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/MavenWrapperDownloader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/Kelp2/kelp/KelpApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/Kelp2/kelp/KelpApplicationTests.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,9 +30,6 @@
         <option name="mavenHome" value="C:\Users\Andre\.m2\wrapper\dists\apache-maven-3.6.3-bin\1iopthnavndlasol9gbrbg6bf2\apache-maven-3.6.3" />
       </MavenGeneralSettings>
     </option>
-  </component>
-  <component name="ProjectCodeStyleSettingsMigration">
-    <option name="version" value="1" />
   </component>
   <component name="ProjectId" id="1nZRuNRJXUpDEorlezkIpL3tCKh" />
   <component name="ProjectViewState">

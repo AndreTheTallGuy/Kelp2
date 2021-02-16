@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +11,7 @@ export class HomeComponent implements OnInit {
   email!: string;
   password!: string;
 
-  constructor(public authService: AuthService) { }
+  constructor(public apiService: ApiService) { }
 
   ngOnInit(): void {
   }
