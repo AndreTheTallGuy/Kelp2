@@ -1,1 +1,26 @@
-<p>review-panel works!</p>
+<div class="box shadow">
+        <div class="user">{{review?.userID}}</div>
+    <div class="rating">{{review?.rating}}</div>
+    <div>{{review?.reviewText}}</div>
+    <div fxLayout="row" class="dates">
+        <div class="visited">Visited on: {{review?.visitedDate | date: 'mediumDate'}}</div>
+    </div>
+    <div fxLayout="row" class="comment-arrows">
+        <div class="votes">
+            <span class="arrow-up" (click)="arrowUp()"><i class="fas fa-arrow-up"></i></span> 
+            {{review?.votes}} 
+            <span class="arrow-down" (click)="arrowDown()"><i class="fas fa-arrow-down"></i></span>
+        </div>
+        <button class="btn-secondary btn-comment" (click)="addComment()">Comment</button>
+        <div class="posted">Posted on: {{review?.postedDate | date: 'mediumDate'}}</div>
+    </div>
+</div>
+<div class="add-comment" *ngIf="commentBoolean">
+    <app-add-comment (outputComment)="outputComment($event)" (commentHide)="addComment()" [reviewId]="reviewId"  ></app-add-comment>
+    
+</div>
+<div *ngIf="comments" >
+    <div *ngFor = "let comment of comments">
+        <app-comment-panel [reviewId]="reviewId" [comment]="comment"></app-comment-panel>
+    </div>
+</div>

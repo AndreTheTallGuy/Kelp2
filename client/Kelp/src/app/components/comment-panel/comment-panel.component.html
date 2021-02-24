@@ -1,0 +1,23 @@
+<div class="block shadow" [ngStyle]="{'margin-left.px': margin}">
+    <div class="user">{{comment?.userID}}</div>
+    <div class="comment">{{comment?.comment}}</div>
+    <div fxLayout="row">
+        <div class="votes">
+            <span class="arrow-up" (click)="arrowUp()"><i class="fas fa-arrow-up"></i></span> 
+            {{comment?.votes}} 
+            <span class="arrow-down" (click)="arrowDown()"><i class="fas fa-arrow-down"></i></span>
+        </div>
+        <button class="btn-comment btn-secondary" (click)="addReply()">Reply</button>
+        <div class="posted">{{comment?.postedDate | date: 'mediumDate'}}</div>
+    </div>
+</div>
+<div class="add-reply" *ngIf="replyBoolean">
+    <app-add-comment (outputComment)="outputComment($event)" (commentHide)="addReply()" [reviewId]="reviewId" [margin]="margin" [commentId]="commentId" ></app-add-comment>
+</div>
+
+<div *ngIf="comments">
+    <div *ngFor = "let comment of comments" class="ngfor">
+        <app-comment-panel [comment]="comment" [reviewId]="reviewId" ></app-comment-panel>
+        
+    </div>
+</div>

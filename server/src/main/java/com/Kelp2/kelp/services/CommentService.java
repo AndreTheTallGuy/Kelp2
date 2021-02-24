@@ -25,6 +25,9 @@ public class CommentService{
 
     public List<Comment> findAllByReviewID(int reviewID){return commentRepo.findByReviewID(reviewID);}
 
+    public List<Comment> findAllByReplyID(int replyID){return commentRepo.findByReplyID(replyID);}
+
+
     public Comment saveComment(String json){
         ObjectMapper om = new ObjectMapper();
         Comment comment = null;

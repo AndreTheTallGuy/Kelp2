@@ -92,8 +92,13 @@ export class ApiService {
   public getCommentsByReviewId(reviewId: number): Observable<any> {
     return this.http.get(`http://localhost:8080/comment/${reviewId}`);
   }
+  
+  public getCommentsByReplyId(replyId: number): Observable<any> {
+    return this.http.get(`http://localhost:8080/comment/reply/${replyId}`);
+  }
 
-  public postComment(form: Comment): Observable<any> {
-    return this.http.post(`http://localhost:8080/comment/create`, form);
+  public postComment(form: string): Observable<any> {
+    this.setHeaders();
+    return this.http.post(`http://localhost:8080/comment/create`, form,{ headers: this.requestHeaders} );
   }
 }

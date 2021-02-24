@@ -54,7 +54,7 @@ export class AddReviewComponent implements OnInit {
     const json = JSON.stringify(newReview);
     this.api.postReview(json).subscribe(res =>{
       console.log(res);
-      
+      this.router.navigateByUrl(`aquarium/${this.aquarium?.aquariumID}`)
     })
 
   }

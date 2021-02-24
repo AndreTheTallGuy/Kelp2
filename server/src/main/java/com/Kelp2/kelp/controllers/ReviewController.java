@@ -11,6 +11,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(path="/review")
 public class ReviewController {
@@ -22,9 +24,9 @@ public class ReviewController {
     public ReviewController (ReviewService reviewService){this.reviewService = reviewService;}
 
     @GetMapping(path="/{aquaId}")
-    public ResponseEntity<Review> getReviewByAquaID(@PathVariable(name="aquaId") int aquaId){
+    public ResponseEntity<List<Review>> getReviewByAquaID(@PathVariable(name="aquaId") int aquaId){
         logger.info("Received request for Review by Aquarium ID");
-        Review calledReview = reviewService.findReviewByAquaID(aquaId);
+        List<Review> calledReview = reviewService.findReviewByAquaID(aquaId);
         return new ResponseEntity<>(calledReview, HttpStatus.OK);
     }
 
