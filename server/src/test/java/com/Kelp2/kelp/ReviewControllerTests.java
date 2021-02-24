@@ -72,7 +72,7 @@ public class ReviewControllerTests {
 
     @Test
     public void givenAquaIDReturnResults() throws Exception{
-        when(rs.findReviewByAquaID(1)).thenReturn(review);
+        when(rs.findReviewByAquaID(1)).thenReturn(reviewList);
         MvcResult result=mvc.perform(get("/review/1"))
                 .andDo(print())
                 .andExpect(status().isOk())

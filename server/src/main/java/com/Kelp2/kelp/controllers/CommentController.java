@@ -30,6 +30,13 @@ public class CommentController {
         return new ResponseEntity<>(allComments, HttpStatus.OK);
     }
 
+    @GetMapping(path="/reply/{replyId}")
+    public ResponseEntity<List<Comment>> getAllCommentsByReplyID(@PathVariable(name="replyId") int replyID){
+        logger.info("Received request for Comments by ReplyID " + replyID);
+        List<Comment> allComments = commentService.findAllByReplyID(replyID);
+        return new ResponseEntity<>(allComments, HttpStatus.OK);
+    }
+
     @PostMapping(path="/create", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Comment> submitComment(@RequestBody String json){
         logger.info("Submitting a Comment");
