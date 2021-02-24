@@ -1,0 +1,11 @@
+<form class="block" [ngStyle]="{'margin-left.px': margin + 40}">
+       <mat-form-field>
+        <mat-label>Comment</mat-label>
+        <input type="text" matInput [formControl]="commentFormControl" name="comment" class="comment" [(ngModel)]="comment" required>
+        <mat-error *ngIf="commentFormControl.hasError('required')">
+            Please enter a comment
+          </mat-error>
+    </mat-form-field>
+   
+    <button class="btn-primary submit" (click)="onSubmit()" >Submit</button>
+</form>

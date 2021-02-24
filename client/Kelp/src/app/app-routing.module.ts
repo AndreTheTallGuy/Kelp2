@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AddAquariumComponent } from './components/add-aquarium/add-aquarium.component';
+import { AddCommentComponent } from './components/add-comment/add-comment.component';
 import { AddReviewComponent } from './components/add-review/add-review.component';
 import { AquariumPageComponent } from './components/aquarium-page/aquarium-page.component';
 import { AquariumsComponent } from './components/aquariums/aquariums.component';
@@ -17,7 +18,8 @@ const routes: Routes = [
   { path: 'add-aquarium', component: AddAquariumComponent},
   { path: 'dashboard', component: DashboardComponent},
   { path: 'aquarium/:id',  component: AquariumPageComponent},
-  { path: 'add-review', component: AddReviewComponent }
+  { path: 'add-review', component: AddReviewComponent },
+  { path: 'add-comment', component: AddCommentComponent }
 ];
 
 @NgModule({

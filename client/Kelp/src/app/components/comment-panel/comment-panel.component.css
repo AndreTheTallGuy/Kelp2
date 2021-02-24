@@ -1,8 +1,12 @@
-.box {
+.block {
+  margin: 10px 0px 10px 0;
   background-color: rgb(255, 215, 86);
-  margin: 10px 0 10px 0;
   /* width: 100%; */
   padding: 10px;
+}
+
+.ngfor {
+  /* margin-top: -15px; */
 }
 .btn-comment {
   margin: 0 10px;
