@@ -1,17 +1,13 @@
 package com.Kelp2.kelp.services;
 
 import com.Kelp2.kelp.DAO.ReviewRepo;
-import com.Kelp2.kelp.models.Comment;
 import com.Kelp2.kelp.models.Review;
-import com.Kelp2.kelp.models.User;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class ReviewService {
