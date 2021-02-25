@@ -78,7 +78,7 @@ import { ReplyPanelComponent } from './components/reply-panel/reply-panel.compon
     MatIconModule,
     MatCardModule,
     BrowserAnimationsModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig, 'Kelp2'),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     FormsModule,
     ReactiveFormsModule,

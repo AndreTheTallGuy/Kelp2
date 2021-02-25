@@ -3,6 +3,10 @@ package com.Kelp2.kelp.controllers;
 
 import com.Kelp2.kelp.models.User;
 import com.Kelp2.kelp.services.UserService;
+import com.google.firebase.auth.AuthErrorCode;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthException;
+import com.google.firebase.auth.FirebaseToken;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Optional;
 
 @RestController
@@ -40,10 +45,21 @@ public class UserController {
     }
 
     @GetMapping(path="/email/{email}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<User> getUserByEmail(@PathVariable(name="email") String email){
-        logger.info("Received request for User by Email");
-        User calledUser = userService.findByEmail(email);
-        return new ResponseEntity<>(calledUser, HttpStatus.OK);
+    public ResponseEntity<User> getUserByEmail(@PathVariable(name="email") String email,@RequestHeader("Authorization") String token){
+       logger.info("we are here");
+        try {
+            // Verify the ID token while checking if the token is revoked by passing checkRevoked
+            // as true.
+            FirebaseAuth.getInstance().verifyIdToken(token);
+            // Token is valid and not revoked.
+
+            logger.info("Received request for User by Email");
+            User calledUser = userService.findByEmail(email);
+            return new ResponseEntity<>(calledUser, HttpStatus.OK);
+        } catch (FirebaseAuthException e) {
+            e.printStackTrace();
+        }
+        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
     @PutMapping(path="/update", consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -54,10 +70,19 @@ public class UserController {
     }
 
     @PostMapping(path="/create", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<User> createUser(@RequestBody String json){
+    public ResponseEntity<User> createUser(@RequestBody String json, @RequestHeader("Authorization") String token){
+        try {
+            // Verify the ID token while checking if the token is revoked by passing checkRevoked
+            // as true.
+            FirebaseAuth.getInstance().verifyIdToken(token);
+            // Token is valid and not revoked.
         logger.info("Creating User");
         User createdUser = userService.saveUser(json);
         return new ResponseEntity<>(createdUser, HttpStatus.OK);
+        } catch (FirebaseAuthException e) {
+            e.printStackTrace();
+        }
+        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
 }

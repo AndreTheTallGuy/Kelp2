@@ -1,6 +1,6 @@
 export interface User{
     id?: number;
-    displayName: string;
+    userName: string;
     profilePic: string;
     fishPersonality: string;
     location: string;

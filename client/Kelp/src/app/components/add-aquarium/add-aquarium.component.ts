@@ -38,7 +38,6 @@ export class AddAquariumComponent implements OnInit {
     this.isLoading = true;
     console.log(form.value);
 
-    
     this.apiService.addAquarium(form.value).subscribe(res=>{
       console.log(res);
       alert("Aquarium Added");

@@ -1,49 +1,34 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Aquarium } from '../models/Aquarium';
-import { Review } from '../models/Review';
 import { User } from '../models/User';
-import {AngularFireAuth} from '@angular/fire/auth';
-import { FirebaseService } from './firebase.service';
 
 
 @Injectable({
   providedIn: 'root',
 })
-
 export class ApiService {
-  private requestHeaders:any;
-  
+  private requestHeaders: any;
 
-  constructor(
-    private http: HttpClient,
-    private afa: AngularFireAuth,
-    private fbService: FirebaseService
-  ) {}
+  constructor(private http: HttpClient) {}
 
-  public setHeaders() {
-    // const authToken = this.fbService.getSyncToken();
+  public setHeaders(authToken?: string) {
     this.requestHeaders = new HttpHeaders({
       'Content-Type': 'application/json',
-      // 'Authorization': `Bearer ${authToken}`,
+      'Authorization': `${authToken}`,
     });
-    console.log('setHeaders');
-    // console.log(authToken);
-    
-  }
-  // User Api routes
-  public getUserbyEmail(email: string, token: string): Observable<any> {
-    this.afa.idToken.subscribe((res) => {
-      token = res!;
-      console.log(token);
-    })
-      console.log(token);
-    return this.http.get(`http://localhost:8080/user/email/${email}`);
   }
 
-  public createUser(form: User): Observable<any> {
-    this.setHeaders();
+  // User Api routes
+  public getUserbyEmail(email: string, token: any): Observable<any> {
+    this.setHeaders(token);
+    return this.http.get(`http://localhost:8080/user/email/${email}`, {
+      headers: this.requestHeaders,
+    });
+  }
+
+  public createUser(form: User, token: any): Observable<any> {
+    this.setHeaders(token);
     console.log('we got to create user');
     return this.http.post(`http://localhost:8080/user/create`, form, {
       headers: this.requestHeaders,
@@ -63,16 +48,16 @@ export class ApiService {
     return this.http.get(`http://localhost:8080/aqua/id/${aquaId}`);
   }
 
-  public getAquariumByName(name: string): Observable<any>{
-    return this.http.get(`http://localhost:8080/aqua/name/${name}`)
+  public getAquariumByName(name: string): Observable<any> {
+    return this.http.get(`http://localhost:8080/aqua/name/${name}`);
   }
-  
-  public getAquariumByCity(city: string): Observable<any>{
-    return this.http.get(`http://localhost:8080/aqua/city/${city}`)
+
+  public getAquariumByCity(city: string): Observable<any> {
+    return this.http.get(`http://localhost:8080/aqua/city/${city}`);
   }
 
   public addAquarium(form: any): Observable<any> {
-    console.log("created an Aquarium");
+    console.log('created an Aquarium');
     return this.http.post(`http://localhost:8080/aqua/create`, form);
   }
 

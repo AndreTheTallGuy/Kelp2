@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/User';
 import { ApiService } from 'src/app/services/api.service';
+import { LocalstorageService } from 'src/app/services/localstorage.service';
 import { FirebaseService } from '../../services/firebase.service';
-import { AngularFireAuth } from "@angular/fire/auth";
 
 @Component({
   selector: 'app-sign-up',
@@ -13,7 +13,7 @@ import { AngularFireAuth } from "@angular/fire/auth";
 export class SignUpComponent implements OnInit {
   email!: string;
   password!: string;
-  displayName!: string;
+  userName!: string;
   photo!: string;
   fishPersonality!: string;
   location!: string;
@@ -28,41 +28,39 @@ export class SignUpComponent implements OnInit {
     public firebaseService: FirebaseService,
     private apiservice: ApiService,
     private router: Router,
-    private angularFA: AngularFireAuth
+    private ls: LocalstorageService
   ) {}
 
   signup() {
-    this.firebaseService.signup(this.email, this.password);
-    // this.email = this.password = '';
+      this.firebaseService.signup(this.email, this.password);
+      // this.email = this.password = " ";
 
-    this.form = {
-      email: this.email,
-      displayName: this.displayName,
-      profilePic: this.photo,
-      fishPersonality: this.fishPersonality,
-      location: this.location,
-      twitter: this.twitter,
-      facebook: this.facebook,
-      instagram: this.instagram,
-      bio: this.bio,
-    };
-
-    this.json = JSON.stringify(this.form);
-    console.log(this.json);
-
-
-    this.apiservice.createUser(this.json).subscribe(
-      (res) => {
-        console.log(res);
-        this.router.navigate(['dashboard']);
-      },
-      (error) => {
-        console.log(error);
+        // Send token to your backend via HTTPS
+          this.form = {
+            email: this.email,
+            userName: this.userName,
+            profilePic: this.photo,
+            fishPersonality: this.fishPersonality,
+            location: this.location,
+            twitter: this.twitter,
+            facebook: this.facebook,
+            instagram: this.instagram,
+            bio: this.bio,
+          };
+      
+          this.json = JSON.stringify(this.form);
+          console.log(this.json);
+    
+        this.apiservice.createUser(this.json, this.ls.get("jwt")).subscribe(
+          (res) => {
+            console.log("we are here");
+            this.router.navigate(['dashboard']);
+          },
+          (error) => {
+            console.log("Uncessful user creation");
+            this.router.navigate(['']);
+          }
+        );
       }
-    );
-
-    this.router.navigate(['dashboard']);
-  }
-
   ngOnInit(): void {}
 }
