@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { ApiService } from 'src/app/services/api.service';
 import { FirebaseService } from '../../services/firebase.service';
 
 
@@ -12,29 +10,20 @@ import { FirebaseService } from '../../services/firebase.service';
 export class SignInComponent implements OnInit {
   email!: string;
   password!: string;
-  token!: string;
+
 
   constructor(
-    public firebaseService: FirebaseService,
-    private router: Router,
-    private apiService: ApiService
+    public firebaseService: FirebaseService
   ) {}
 
   login() {
     // add try catch block for both services
+    console.log("about to sign int");
     this.firebaseService.login(this.email, this.password);
     // this.email = this.password = '';
-
-    this.apiService.getUserbyEmail(this.email, this.token).subscribe(
-      (res) => {
-        console.log(res);
-        this.router.navigate(['dashboard']);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    console.log("after the firbase login");
   }
+
 
   ngOnInit(): void {}
 }
