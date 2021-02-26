@@ -17,5 +17,9 @@ export class SessionStorageService {
       sessionStorage.removeItem(key);
   }
 
+  clear(){
+    sessionStorage.clear();
+  }
+
   constructor() { }
 }
