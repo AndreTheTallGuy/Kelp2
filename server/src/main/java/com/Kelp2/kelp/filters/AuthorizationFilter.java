@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-@WebFilter(urlPatterns = "/**")
+@WebFilter(urlPatterns = "/** ")
 public class AuthorizationFilter implements Filter {
     private static final Logger logger = LoggerFactory.getLogger(AuthorizationFilter.class);
     @Override

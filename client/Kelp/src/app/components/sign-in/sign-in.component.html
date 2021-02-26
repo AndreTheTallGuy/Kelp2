@@ -15,13 +15,11 @@
       <div class="formGroup">
         <!-- user click this button to login -->
         <button
-          class="nav-button"
+          class="nav-button redirect"
           mat-flat-button
           color="primary"
           (click)="login()"
-          [disabled]="!email || !password"
-          class="redirect"
-          routerLink=""
+          [disabled]="!email || !password"  
         >
           <span>Login</span>
         </button>

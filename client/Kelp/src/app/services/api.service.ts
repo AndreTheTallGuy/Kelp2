@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '../models/User';
+import { SessionStorageService } from './sessionstorage.service';
 
 
 @Injectable({
@@ -10,7 +11,7 @@ import { User } from '../models/User';
 export class ApiService {
   private userOptions = { headers: new HttpHeaders().set('Content-Type', 'application/json') }
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private ss: SessionStorageService) {
     
   }
 
@@ -48,8 +49,8 @@ export class ApiService {
   }
 
   public addAquarium(form: any): Observable<any> {
-    console.log('created an Aquarium');
-    return this.http.post(`http://localhost:8080/aqua/create`, form);
+    console.log(`created an Aquarium`);
+    return this.http.post(`http://localhost:8080/aqua/create/${this.ss.get('jwt')}`,form);
   }
 
   //Review API Routes
@@ -71,8 +72,7 @@ export class ApiService {
     return this.http.get(`http://localhost:8080/comment/reply/${replyId}`);
   }
 
-  public postComment(form: string): Observable<any> {
-    this.setHeaders();
-    return this.http.post(`http://localhost:8080/comment/create`, form,{ headers: this.requestHeaders} );
+  public postComment(form: Comment): Observable<any> {
+    return this.http.post(`http://localhost:8080/comment/create`, form, this.userOptions);
   }
 }

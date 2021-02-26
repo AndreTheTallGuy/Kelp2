@@ -21,7 +21,8 @@ export class FirebaseService {
     this.user = this.firebaseAuth.authState;
   }
 
-  async signup(email: string, password: string, json: any) {
+  signup(email: string, password: string, json: any) {
+    this.ss.clear();
     this.firebaseAuth
       .createUserWithEmailAndPassword(email, password)
       .then(() => {
@@ -64,7 +65,7 @@ export class FirebaseService {
     console.log('were are in the firebase login');
     this.firebaseAuth
       .signInWithEmailAndPassword(email, password)
-      .then(() => {
+      .then(() => { 
         this.firebaseAuth.idToken.subscribe((idToken) => {
           if (idToken) {
             this.ss.set('jwt', idToken);
@@ -74,8 +75,12 @@ export class FirebaseService {
                 this.router.navigate(['dashboard']);
               },
               (error) => {
+
+                //figure out why it takes you to homepage first then the sign-in page
                 console.log(error);
+                this.ss.remove("jwt");
                 this.firebaseAuth.signOut();
+                this.router.navigate(['sign-in']);
                 alert("Coudn't sign you in, please try again");
               }
             );
@@ -86,7 +91,6 @@ export class FirebaseService {
 
   logout() {
     this.firebaseAuth.signOut();
-    this.ss.remove('userInfo');
-    this.ss.remove('jwt');
+    this.ss.clear();
   }
 }

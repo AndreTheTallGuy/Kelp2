@@ -51,7 +51,7 @@ public class AquariumController {
         return new ResponseEntity<> (calledAqua, HttpStatus.OK);
     }
 
-    @PostMapping(path="/create")
+    @PostMapping(path="/create/{token}")
     public ResponseEntity<Aquarium> saveAquarium(@RequestBody String json){
         System.out.println(json);
         logger.info("Adding an Aquarium to the Database");
