@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { FirebaseService } from './services/firebase.service';
 
 @Component({
@@ -9,10 +9,12 @@ import { FirebaseService } from './services/firebase.service';
 export class AppComponent implements OnInit {
   title = 'Kelp';
  
-  constructor(public firebaseService: FirebaseService) {}
+  constructor(public firebaseService: FirebaseService) {
+    
+  }
     
   ngOnInit(): void {
-    
+       
   }
 
 

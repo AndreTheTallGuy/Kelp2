@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.Optional;
 
 @RestController
@@ -44,22 +45,12 @@ public class UserController {
         return new ResponseEntity<>(calledUser, HttpStatus.OK);
     }
 
-    @GetMapping(path="/email/{email}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<User> getUserByEmail(@PathVariable(name="email") String email,@RequestHeader("Authorization") String token){
-       logger.info("we are here");
-        try {
-            // Verify the ID token while checking if the token is revoked by passing checkRevoked
-            // as true.
-            FirebaseAuth.getInstance().verifyIdToken(token);
-            // Token is valid and not revoked.
-
+    @GetMapping(path="/email/{email}/{token}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<User> getUserByEmail(@PathVariable(name="email") String email){
             logger.info("Received request for User by Email");
             User calledUser = userService.findByEmail(email);
             return new ResponseEntity<>(calledUser, HttpStatus.OK);
-        } catch (FirebaseAuthException e) {
-            e.printStackTrace();
-        }
-        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+
     }
 
     @PutMapping(path="/update", consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -69,20 +60,11 @@ public class UserController {
         return new ResponseEntity<>(updatedUser, HttpStatus.OK);
     }
 
-    @PostMapping(path="/create", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<User> createUser(@RequestBody String json, @RequestHeader("Authorization") String token){
-        try {
-            // Verify the ID token while checking if the token is revoked by passing checkRevoked
-            // as true.
-            FirebaseAuth.getInstance().verifyIdToken(token);
-            // Token is valid and not revoked.
+    @PostMapping(path="/create/{token}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<User> createUser(@RequestBody String json){
         logger.info("Creating User");
         User createdUser = userService.saveUser(json);
         return new ResponseEntity<>(createdUser, HttpStatus.OK);
-        } catch (FirebaseAuthException e) {
-            e.printStackTrace();
-        }
-        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
 }
