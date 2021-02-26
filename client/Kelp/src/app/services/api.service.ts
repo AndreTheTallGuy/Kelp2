@@ -8,31 +8,22 @@ import { User } from '../models/User';
   providedIn: 'root',
 })
 export class ApiService {
-  private requestHeaders: any;
+  private userOptions = { headers: new HttpHeaders().set('Content-Type', 'application/json') }
 
-  constructor(private http: HttpClient) {}
-
-  public setHeaders(authToken?: string) {
-    this.requestHeaders = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `${authToken}`,
-    });
+  constructor(private http: HttpClient) {
+    
   }
+
 
   // User Api routes
   public getUserbyEmail(email: string, token: any): Observable<any> {
-    this.setHeaders(token);
-    return this.http.get(`http://localhost:8080/user/email/${email}`, {
-      headers: this.requestHeaders,
-    });
+  
+    return this.http.get(`http://localhost:8080/user/email/${email}/${token}`, this.userOptions);
   }
 
   public createUser(form: User, token: any): Observable<any> {
-    this.setHeaders(token);
     console.log('we got to create user');
-    return this.http.post(`http://localhost:8080/user/create`, form, {
-      headers: this.requestHeaders,
-    });
+    return this.http.post(`http://localhost:8080/user/create/${token}`, form, this.userOptions);
   }
 
   public updateProfile(form: User): Observable<any> {
@@ -67,10 +58,8 @@ export class ApiService {
   }
 
   public postReview(form: string): Observable<any> {
-    this.setHeaders();
-    return this.http.post(`http://localhost:8080/review/create`, form, {
-      headers: this.requestHeaders,
-    });
+    // this.setHeaders();
+    return this.http.post(`http://localhost:8080/review/create/`, form, this.userOptions);
   }
 
   //Comment API Routs

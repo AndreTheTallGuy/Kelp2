@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/User';
 import { ApiService } from 'src/app/services/api.service';
-import { LocalstorageService } from 'src/app/services/localstorage.service';
+import { SessionStorageService } from 'src/app/services/sessionstorage.service';
 import { FirebaseService } from '../../services/firebase.service';
 
 @Component({
@@ -28,13 +28,12 @@ export class SignUpComponent implements OnInit {
     public firebaseService: FirebaseService,
     private apiservice: ApiService,
     private router: Router,
-    private ls: LocalstorageService
+    private ss: SessionStorageService
   ) {}
 
   signup() {
-      this.firebaseService.signup(this.email, this.password);
       // this.email = this.password = " ";
-
+        console.log('1');
         // Send token to your backend via HTTPS
           this.form = {
             email: this.email,
@@ -50,17 +49,10 @@ export class SignUpComponent implements OnInit {
       
           this.json = JSON.stringify(this.form);
           console.log(this.json);
-    
-        this.apiservice.createUser(this.json, this.ls.get("jwt")).subscribe(
-          (res) => {
-            console.log("we are here");
-            this.router.navigate(['dashboard']);
-          },
-          (error) => {
-            console.log("Uncessful user creation");
-            this.router.navigate(['']);
-          }
-        );
+
+          console.log('2');
+          
+          this.firebaseService.signup(this.email, this.password, this.json);
       }
   ngOnInit(): void {}
 }

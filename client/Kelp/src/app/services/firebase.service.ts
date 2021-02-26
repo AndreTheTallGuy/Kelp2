@@ -4,7 +4,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
-import { LocalstorageService } from './localstorage.service';
+import { SessionStorageService } from './sessionstorage.service';
 
 @Injectable({
   providedIn: 'root',
@@ -16,44 +16,77 @@ export class FirebaseService {
     private firebaseAuth: AngularFireAuth,
     private router: Router,
     private api: ApiService,
-    private ls: LocalstorageService
+    private ss: SessionStorageService
   ) {
     this.user = this.firebaseAuth.authState;
-    
   }
 
-  signup(email: string, password: string) {
-    this.firebaseAuth.createUserWithEmailAndPassword(email, password);
+  async signup(email: string, password: string, json: any) {
+    this.firebaseAuth
+      .createUserWithEmailAndPassword(email, password)
+      .then(() => {
+        this.firebaseAuth
+          .signInWithEmailAndPassword(email, password)
+          .then(() => {
+            console.log('signed into firebase');
+            this.firebaseAuth.idToken.subscribe((idToken) => {
+             if (idToken) {
+                this.ss.set('jwt', idToken);
+                this.api.createUser(json, idToken).subscribe(
+                  (res: any) => {
+                    console.log('3');
+                    console.log(email);
+                    console.log(this.ss.get('jwt'));
+                    console.log('4');
+
+                    this.api.getUserbyEmail(email, this.ss.get('jwt')).subscribe(
+                      (res: any) => {
+                        console.log('5');
+                        this.ss.set('userInfo', JSON.stringify(res));
+                        this.router.navigate(['dashboard']);
+                      },
+                      (error: any) => {
+                        console.log(error);
+                        this.router.navigate(['']);
+                      });
+                  },
+                  (error: any) => {
+                    console.log(error);
+                  }
+                );
+              }
+            });
+          });
+      });
   }
-
-
 
   login(email: string, password: string) {
     console.log('were are in the firebase login');
     this.firebaseAuth
-      .signInWithEmailAndPassword(email, password).then(res =>{
-      this.firebaseAuth.idToken.subscribe( (idToken) => {
-
-        if(idToken){
-        this.ls.set("jwt", idToken);
-        this.api.getUserbyEmail(email, idToken).subscribe(
-          (res) => {
-            console.log(res);
-            this.ls.set("userInfo", res)
-            this.router.navigate(['dashboard']);
-          },
-          (error) => {
-            console.log(error);
+      .signInWithEmailAndPassword(email, password)
+      .then(() => {
+        this.firebaseAuth.idToken.subscribe((idToken) => {
+          if (idToken) {
+            this.ss.set('jwt', idToken);
+            this.api.getUserbyEmail(email, idToken).subscribe(
+              (res) => {
+                this.ss.set('userInfo', JSON.stringify(res));
+                this.router.navigate(['dashboard']);
+              },
+              (error) => {
+                console.log(error);
+                this.firebaseAuth.signOut();
+                alert("Coudn't sign you in, please try again");
+              }
+            );
           }
-        );
-        }
-      })
-    })
+        });
+      });
   }
 
   logout() {
-    this.ls.remove("jwt");
-    this.ls.remove("userInfo");
     this.firebaseAuth.signOut();
+    this.ss.remove('userInfo');
+    this.ss.remove('jwt');
   }
 }
