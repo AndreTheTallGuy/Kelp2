@@ -1,19 +1,56 @@
+<div class="grey" *ngIf="reviewBoolean" (click)="addReview()"></div>
 <div class="container mt-5" fxFlexAlign= "center" >
+
+    <div class="review-modal" *ngIf="reviewBoolean">
+        <!-- <app-add-review></app-add-review> -->
+        <form>
+            <button class="x btn-danger" (click)="addReview()">X</button>
+            <h1 class="page-title mt-5">Add a Review</h1>
+        
+            <mat-form-field>
+                <mat-label >Give a rating</mat-label>
+                <input name="rating" matInput type="number" class="rating" [(ngModel)]="rating"><br>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <mat-label>When did you visit?</mat-label><br>
+                <input matInput name="date" type="date" class="visited-date" [(ngModel)]="dateVisited">
+            </mat-form-field>
+            <br>
+            <mat-form-field class="review-desc">
+                <mat-label>What did you love? What could have been better?</mat-label>
+                <textarea matInput type="text" name="description"  [(ngModel)]="description" cdkTextareaAutosize
+                #autosize="cdkTextareaAutosize"></textarea>
+            </mat-form-field>
+            <br>
+            <button class="btn-primary submit" (click)="onSubmit()">Submit</button>
+        </form>
+    </div>
+
     <div class="contents">
         <img class="photo" src={{aquarium?.photo}} alt="Aquarium photo">
         <h1 class="title mt-3">{{aquarium?.name}}</h1>
-        <div class="rating">Rating will be here</div>
+        <div class='fish-outer'>
+            <div
+              class='fish-inner'
+              [ngStyle]="{'width.%': ratingRounded}"
+            ></div>
+          </div>
         <div class="phone">{{aquarium?.phone}}</div>
-        <div class="url">{{aquarium?.url}}</div>
+        <a href="{{aquarium?.url}}" class="url">{{aquarium?.url}}</a>
         <div class="address">{{aquarium?.street}} {{aquarium?.city}} {{aquarium?.postalCode}}</div>
         <div class="description">{{aquarium?.description}}</div>
     </div>
     <button class="btn-primary add-review" (click)="addReview()" >Add Review</button>
+
+    
+
     <div class="review-panel" *ngIf="reviews" >
         <div *ngFor="let review of reviews">
             <app-review-panel [review]="review" ></app-review-panel>
         </div>
     </div>
+
     <div *ngIf="!reviews"> 
         <p>Be the first to write a review!</p>
     </div>

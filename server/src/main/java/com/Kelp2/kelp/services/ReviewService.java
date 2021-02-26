@@ -18,7 +18,7 @@ public class ReviewService {
     @Autowired
     public ReviewService(ReviewRepo reviewRepo){this.reviewRepo = reviewRepo;}
 
-    public Review findReviewByAquaID(int aquaID){
+    public List<Review> findReviewByAquaID(int aquaID){
         return reviewRepo.findByAquariumID(aquaID);
     }
 

@@ -1,5 +1,79 @@
+@import url("https://use.fontawesome.com/releases/v5.13.0/css/all.css");
 .photo {
-  height: 350px;
+  width: 600px;
   border-radius: 15px;
   text-align: center;
+  max-width: 80vw;
+}
+
+.review-panel {
+  margin-bottom: 10px;
+}
+
+.fish-outer {
+  display: inline-block;
+  position: relative;
+  font-family: "Font Awesome 5 Free";
+  padding-top: 5px;
+}
+
+.fish-outer:before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f578 \f578 \f578 \f578 \f578";
+  font-weight: 900;
+  font-size: 40px;
+}
+
+.fish-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  padding-top: 5px;
+}
+
+.fish-inner:before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f578 \f578 \f578 \f578 \f578";
+  color: #f8ce0b;
+  font-weight: 900;
+  font-size: 40px;
+}
+
+.container {
+  position: relative;
+}
+
+.grey {
+  position: absolute;
+  height: 110%;
+  width: 100vw;
+  background-color: rgba(128, 128, 128, 0.75);
+  pointer-events: none;
+  z-index: 10;
+}
+.review-modal {
+  position: absolute;
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  top: 10%;
+  background-color: rgb(192, 241, 253);
+  border-radius: 20px;
+  padding: 0 30px 30px 30px;
+  z-index: 20;
+}
+
+.x {
+  border-radius: 5px;
+  float: right;
+  margin-top: -10px;
+  margin-right: -10px;
+}
+
+.review-desc {
+  width: 325px;
 }

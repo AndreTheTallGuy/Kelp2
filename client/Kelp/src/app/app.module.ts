@@ -38,6 +38,12 @@ import { TransferService } from './services/transfer.service';
 import { ReviewPanelComponent } from './components/review-panel/review-panel.component';
 import { AddReviewComponent } from './components/add-review/add-review.component';
 import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
+import { AddCommentComponent } from './components/add-comment/add-comment.component';
+import { CommentPanelComponent } from './components/comment-panel/comment-panel.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { HelperService } from './services/helper.service';
+import { AddReplyComponent } from './components/add-reply/add-reply.component';
+import { ReplyPanelComponent } from './components/reply-panel/reply-panel.component';
  
 
 @NgModule({
@@ -55,6 +61,10 @@ import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/materi
     AquariumPageComponent,
     ReviewPanelComponent,
     AddReviewComponent,
+    AddCommentComponent,
+    CommentPanelComponent,
+    AddReplyComponent,
+    ReplyPanelComponent,
     
   ],
   exports: [
@@ -75,9 +85,9 @@ import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/materi
     HttpClientModule,
     FlexLayoutModule,
     MatInputModule,
-    
+    FontAwesomeModule
   ],
-  providers: [ApiService, TransferService, {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher}],
+  providers: [ApiService, TransferService, HelperService, {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

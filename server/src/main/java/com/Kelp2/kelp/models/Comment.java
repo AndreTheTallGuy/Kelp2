@@ -42,4 +42,7 @@ public class Comment {
     @Column(name="votes")
     private int votes;
 
+    @Column(name="margin")
+    private int margin;
+
 }
