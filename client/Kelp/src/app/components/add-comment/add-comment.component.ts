@@ -38,7 +38,7 @@ export class AddCommentComponent implements OnInit {
 
       if(this.comment){
         console.log(this.comment);
-        
+      
         this.newComment={
           reviewID: this.reviewId,
           userID: 1,
@@ -47,7 +47,7 @@ export class AddCommentComponent implements OnInit {
           postedDate: formatDate(new Date(), 'yyyy-MM-dd', 'en'),
           margin: this.margin + 40
         }
-        const json = JSON.stringify(this.newComment);
+        const json:any = JSON.stringify(this.newComment);
         console.log(json);
         
         this.api.postComment(json).subscribe(res => {
@@ -74,7 +74,7 @@ export class AddCommentComponent implements OnInit {
           postedDate: formatDate(new Date(), 'yyyy-MM-dd', 'en'),
           margin: 40
         }
-        const json = JSON.stringify(this.newComment);
+        const json:any = JSON.stringify(this.newComment);
         this.api.postComment(json).subscribe(res => {
           console.log(res);
           this.outputComment.emit(this.newComment);
