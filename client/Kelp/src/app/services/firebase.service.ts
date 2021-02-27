@@ -22,71 +22,72 @@ export class FirebaseService {
   }
 
   signup(email: string, password: string, json: any) {
-    this.ss.clear();
-    this.firebaseAuth
-      .createUserWithEmailAndPassword(email, password)
-      .then(() => {
-        this.firebaseAuth
-          .signInWithEmailAndPassword(email, password)
-          .then(() => {
-            console.log('signed into firebase');
-            this.firebaseAuth.idToken.subscribe((idToken) => {
-             if (idToken) {
-                this.ss.set('jwt', idToken);
-                this.api.createUser(json, idToken).subscribe(
-                  (res: any) => {
-                    console.log('3');
-                    console.log(email);
-                    console.log(this.ss.get('jwt'));
-                    console.log('4');
+    this.firebaseAuth.setPersistence('session').then(() => {
+      this.firebaseAuth
+        .createUserWithEmailAndPassword(email, password)
+        .then((res) => {
+          // this method is what keeps firebase updated with who is logging in
+          this.firebaseAuth.updateCurrentUser(res.user).then(() => {
+          console.log('signed into firebase');
+          res.user?.getIdToken(true).then((idToken) => {
+            if (idToken) {
+              this.ss.set('jwt', idToken);
+              this.api.createUser(json, idToken).subscribe(
+                () => {
+                  console.log('3');
 
-                    this.api.getUserbyEmail(email, this.ss.get('jwt')).subscribe(
-                      (res: any) => {
-                        console.log('5');
-                        this.ss.set('userInfo', JSON.stringify(res));
-                        this.router.navigate(['dashboard']);
-                      },
-                      (error: any) => {
-                        console.log(error);
-                        this.router.navigate(['']);
-                      });
-                  },
-                  (error: any) => {
-                    console.log(error);
-                  }
-                );
-              }
-            });
+                  this.api.getUserbyEmail(email, this.ss.get('jwt')).subscribe(
+                    (res: any) => {
+                      console.log('4');
+                      this.ss.set('userInfo', JSON.stringify(res));
+                      this.router.navigate(['dashboard']);
+                    },
+                    (error: any) => {
+                      console.log(error);
+                      this.router.navigate(['']);
+                    }
+                  );
+                },
+                (error: any) => {
+                  console.log(error);
+                }
+              );
+            }
           });
-      });
+        });
+    });
+  });
   }
 
   login(email: string, password: string) {
     console.log('were are in the firebase login');
-    this.firebaseAuth
-      .signInWithEmailAndPassword(email, password)
-      .then(() => { 
-        this.firebaseAuth.idToken.subscribe((idToken) => {
-          if (idToken) {
-            this.ss.set('jwt', idToken);
-            this.api.getUserbyEmail(email, idToken).subscribe(
-              (res) => {
-                this.ss.set('userInfo', JSON.stringify(res));
-                this.router.navigate(['dashboard']);
-              },
-              (error) => {
-
-                //figure out why it takes you to homepage first then the sign-in page
-                console.log(error);
-                this.ss.remove("jwt");
-                this.firebaseAuth.signOut();
-                this.router.navigate(['sign-in']);
-                alert("Coudn't sign you in, please try again");
-              }
-            );
-          }
+    this.firebaseAuth.setPersistence('session').then(() => {
+      this.firebaseAuth
+        .signInWithEmailAndPassword(email, password)
+        .then((res) => {
+          // this method is what keeps firebase updated with who is logging in
+          this.firebaseAuth.updateCurrentUser(res.user).then(() => {
+            res.user?.getIdToken(true).then((idToken) => {
+              this.ss.set('jwt', idToken);
+              console.log(email);
+              this.api.getUserbyEmail(email, idToken).subscribe(
+                (res) => {
+                  this.ss.set('userInfo', JSON.stringify(res));
+                  this.router.navigate(['dashboard']);
+                },
+                (error) => {
+                  //figure out why it takes you to homepage first then the sign-in page
+                  console.log(error);
+                  this.ss.remove('jwt');
+                  this.firebaseAuth.signOut();
+                  this.router.navigate(['dashboard']);
+                  alert("Coudn't sign you in, please try again");
+                }
+              );
+          });
         });
-      });
+    });
+  });
   }
 
   logout() {

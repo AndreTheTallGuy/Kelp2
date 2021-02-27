@@ -18,7 +18,7 @@ export class ApiService {
 
   // User Api routes
   public getUserbyEmail(email: string, token: any): Observable<any> {
-  
+    console.log(email);
     return this.http.get(`http://localhost:8080/user/email/${email}/${token}`, this.userOptions);
   }
 
