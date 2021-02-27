@@ -30,12 +30,15 @@
     <div class="contents">
         <img class="photo" src={{aquarium?.photo}} alt="Aquarium photo">
         <h1 class="title mt-3">{{aquarium?.name}}</h1>
-        <div class='fish-outer'>
-            <div
-              class='fish-inner'
-              [ngStyle]="{'width.%': ratingRounded}"
-            ></div>
-          </div>
+        <div *ngIf="ratingRounded != 0">
+            <div class='fish-outer'>
+                <div
+                  class='fish-inner'
+                  [ngStyle]="{'width.%': ratingRounded}"
+                ></div>
+              </div>
+
+        </div>
         <div class="phone">{{aquarium?.phone}}</div>
         <a href="{{aquarium?.url}}" class="url">{{aquarium?.url}}</a>
         <div class="address">{{aquarium?.street}} {{aquarium?.city}} {{aquarium?.postalCode}}</div>
@@ -51,7 +54,7 @@
         </div>
     </div>
 
-    <div *ngIf="!reviews"> 
+    <div *ngIf="reviews?.length == 0"> 
         <p>Be the first to write a review!</p>
     </div>
 </div>
