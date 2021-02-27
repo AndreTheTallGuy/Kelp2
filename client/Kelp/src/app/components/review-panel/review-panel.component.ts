@@ -24,10 +24,13 @@ export class ReviewPanelComponent implements OnInit {
   constructor(private transfer: TransferService, private router: Router, private api: ApiService, private ss: SessionStorageService) { }
 
   ngOnInit(): void {
-    if(this.ss.get("userInfo")){
-      this.user = JSON.parse(this.ss.get("userInfo") || "")
-    }
-
+    this.api.getUserById(this.review?.userID).subscribe(res =>{
+      console.log(res);
+      this.user = res;
+      
+    })
+    console.log(this.review?.userID);
+    
     this.reviewId = this.review?.reviewID;
     console.log(this.reviewId);
     
