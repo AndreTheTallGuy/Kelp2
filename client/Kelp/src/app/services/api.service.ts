@@ -22,6 +22,10 @@ export class ApiService {
     return this.http.get(`http://localhost:8080/user/email/${email}/${token}`, this.userOptions);
   }
 
+  public getUserById(id:any): Observable<any> {
+    return this.http.get(`http://localhost8080/user/${id}`)
+  }
+
   public createUser(form: User, token: any): Observable<any> {
     console.log('we got to create user');
     return this.http.post(`http://localhost:8080/user/create/${token}`, form, this.userOptions);

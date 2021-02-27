@@ -1,8 +1,11 @@
 import { formatDate } from '@angular/common';
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { User } from 'src/app/models/User';
 // import EventEmitter from 'events';
 import { ApiService } from 'src/app/services/api.service';
+import { SessionStorageService } from 'src/app/services/sessionstorage.service';
 import { TransferService } from 'src/app/services/transfer.service';
 import { Comment } from '../../models/Comment'
  
@@ -24,12 +27,16 @@ export class AddCommentComponent implements OnInit {
     Validators.required,
     Validators.email,
   ]);
+  user?: User;
 
-  constructor(private transfer: TransferService, private api: ApiService) { }
+  constructor(private transfer: TransferService, private api: ApiService, private ss: SessionStorageService, private router: Router) { }
 
   ngOnInit(): void {
-    // this.reviewId = this.transfer.reviewTemp?.reviewID;
-    // this.transfer.reviewTemp = undefined;
+    if(this.ss.get("userInfo")){
+      this.user = JSON.parse(this.ss.get("userInfo") || "")
+    } else {
+      this.router.navigate(['sign-in'])
+    }
 
   }
 
@@ -41,7 +48,7 @@ export class AddCommentComponent implements OnInit {
       
         this.newComment={
           reviewID: this.reviewId,
-          userID: 1,
+          userID: this.user?.id,
           replyID: this.commentId,
           comment: this.comment,
           postedDate: formatDate(new Date(), 'yyyy-MM-dd', 'en'),
@@ -68,7 +75,7 @@ export class AddCommentComponent implements OnInit {
         
         this.newComment={
           reviewID: this.reviewId,
-          userID: 1,
+          userID: this.user?.id,
           replyID: undefined,
           comment: this.comment,
           postedDate: formatDate(new Date(), 'yyyy-MM-dd', 'en'),
