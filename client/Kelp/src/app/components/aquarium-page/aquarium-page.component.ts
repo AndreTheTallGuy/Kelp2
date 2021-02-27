@@ -19,7 +19,7 @@ export class AquariumPageComponent implements OnInit {
   reviews?: Review[] = undefined;
   aquaId?: any;
   ratingRounded?:number;
-  ratings?: number[] = [];
+  ratings?: number[] = [0];
   reviewBoolean: boolean = false;
   review?: Review;
   rating!: number;
@@ -50,6 +50,8 @@ export class AquariumPageComponent implements OnInit {
       res.forEach((i:any) => this.ratings?.push(i.rating))
       if(this.ratings){
         this.ratingRounded = (this.ratings?.reduce((a,b)=> a+b)/(this.ratings?.length * 5)*100);
+      }else{
+        this.ratingRounded = 0;
       }
     })
   }
@@ -69,7 +71,7 @@ export class AquariumPageComponent implements OnInit {
   onSubmit(){
     const newReview: Review ={
       aquariumID: this.aquarium?.aquariumID,
-      userID: 1,
+      userID: 3,
       rating: this.rating,
       reviewText: this.description,
       visitedDate: this.dateVisited,
@@ -79,6 +81,7 @@ export class AquariumPageComponent implements OnInit {
     this.apiService.postReview(json).subscribe(res =>{
       console.log(res);
       this.reviewBoolean = false;
+      this.review = res;
       this.reviews?.push(newReview);
     })
 
