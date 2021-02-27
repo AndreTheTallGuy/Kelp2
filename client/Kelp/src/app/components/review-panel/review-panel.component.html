@@ -1,18 +1,25 @@
 <div class="box shadow">
-        <div class="user">{{review?.userID}}</div>
-    <div class="rating">{{review?.rating}}</div>
-    <div>{{review?.reviewText}}</div>
-    <div fxLayout="row" class="dates">
-        <div class="visited">Visited on: {{review?.visitedDate | date: 'mediumDate'}}</div>
-    </div>
-    <div fxLayout="row" class="comment-arrows">
-        <div class="votes">
-            <span class="arrow-up" (click)="arrowUp()"><i class="fas fa-arrow-up"></i></span> 
-            {{review?.votes}} 
-            <span class="arrow-down" (click)="arrowDown()"><i class="fas fa-arrow-down"></i></span>
+    <div fxLayout="row">
+        <div fxLayout="column">
+            <img class="photo" src={{user?.profilePic}} alt="User Avatar">
+            <div class="username">{{user?.userName}}</div>
         </div>
-        <button class="btn-secondary btn-comment" (click)="addComment()">Comment</button>
-        <div class="posted">Posted on: {{review?.postedDate | date: 'mediumDate'}}</div>
+        <div fxLayout="column">
+            <div class="rating">{{review?.rating}}</div>
+            <div>{{review?.reviewText}}</div>
+            <div fxLayout="row" class="dates">
+                <div class="visited">Visited on: {{review?.visitedDate | date: 'mediumDate'}}</div>
+            </div>
+            <div fxLayout="row" class="comment-arrows">
+                <div class="votes">
+                    <span class="arrow-up" (click)="arrowUp()"><i class="fas fa-arrow-up"></i></span> 
+                    {{review?.votes}} 
+                    <span class="arrow-down" (click)="arrowDown()"><i class="fas fa-arrow-down"></i></span>
+                </div>
+                <button class="btn-secondary btn-comment" (click)="addComment()">Comment</button>
+                <div class="posted">Posted on: {{review?.postedDate | date: 'mediumDate'}}</div>
+            </div>
+        </div>
     </div>
 </div>
 <div class="add-comment" *ngIf="commentBoolean">
