@@ -5,7 +5,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { take } from 'rxjs/operators';
 import { Aquarium } from 'src/app/models/Aquarium';
 import { Review } from 'src/app/models/Review';
+import { User } from 'src/app/models/User';
 import { ApiService } from 'src/app/services/api.service';
+import { SessionStorageService } from 'src/app/services/sessionstorage.service';
 import { TransferService } from 'src/app/services/transfer.service';
 
 @Component({
@@ -26,12 +28,17 @@ export class AquariumPageComponent implements OnInit {
   description!: string;
   dateVisited!: Date;
   datePosted!: Date;
+  user?: User;
 
-  constructor(private apiService: ApiService, private route: ActivatedRoute, private transfer: TransferService, private router: Router, private _ngZone: NgZone) { }
+  constructor(private apiService: ApiService, private route: ActivatedRoute, private transfer: TransferService, private router: Router, private _ngZone: NgZone, private ss: SessionStorageService) { }
 
   @ViewChild('autosize') autosize!: CdkTextareaAutosize;
 
   ngOnInit(): void {
+    if(this.ss.get("userInfo")){
+      this.user = JSON.parse(this.ss.get("userInfo")||"");
+    }
+
     if(this.transfer.aquaTemp){
       this.aquarium = this.transfer.aquaTemp;
       this.transfer.aquaTemp = undefined;
@@ -63,6 +70,9 @@ export class AquariumPageComponent implements OnInit {
   }
 
   addReview(){
+    if(!this.user){
+      this.router.navigate(["sign-in"]);
+    }
     this.reviewBoolean = !this.reviewBoolean;
     // this.transfer.aquaTemp = this.aquarium;
     // this.router.navigateByUrl("add-review")
@@ -71,7 +81,7 @@ export class AquariumPageComponent implements OnInit {
   onSubmit(){
     const newReview: Review ={
       aquariumID: this.aquarium?.aquariumID,
-      userID: 3,
+      userID: this.user?.id,
       rating: this.rating,
       reviewText: this.description,
       visitedDate: this.dateVisited,
