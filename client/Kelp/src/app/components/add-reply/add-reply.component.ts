@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-reply',
@@ -13,9 +15,17 @@ export class AddReplyComponent implements OnInit {
     Validators.email,
   ]);
 
-  constructor() { }
+  constructor(private angularFire: AngularFireAuth, private router: Router) { }
 
   ngOnInit(): void {
+    this.angularFire.user.subscribe(
+      (res) =>{
+        if(res){
+          //do nothing
+        }else {
+          this.router.navigate(['authenticate']);
+        }
+    });
   }
 
   onSubmit(){

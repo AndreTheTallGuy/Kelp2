@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { SessionStorageService } from 'src/app/services/sessionstorage.service';
 import { FirebaseService } from '../../services/firebase.service';
 
@@ -8,12 +9,10 @@ import { FirebaseService } from '../../services/firebase.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-
   email!: string;
   password!: string;
 
-  constructor(public firebaseService: FirebaseService, public ss: SessionStorageService) {
-  
+  constructor(private firebaseService: FirebaseService, public ss: SessionStorageService, public angularFire: AngularFireAuth) {
   }
   
   logout() {

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Aquarium } from 'src/app/models/Aquarium';
 import { ApiService } from 'src/app/services/api.service';
 import { AngularFireAuth } from "@angular/fire/auth";
+import { SessionStorageService } from 'src/app/services/sessionstorage.service';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class AddAquariumComponent implements OnInit {
   addAquarium: FormGroup;
   isLoading: boolean = false;
 
-  constructor(private formBuilder: FormBuilder, private apiService: ApiService, private router: Router, private angularFA: AngularFireAuth) {
+  constructor(private formBuilder: FormBuilder, private apiService: ApiService, private router: Router, private angularFire: AngularFireAuth, private ss: SessionStorageService) {
     this.addAquarium = this.formBuilder.group({
       photo: '',
       name: '',
@@ -31,6 +32,15 @@ export class AddAquariumComponent implements OnInit {
    }
 
   ngOnInit(): void {
+
+    this.angularFire.user.subscribe(
+      (res) =>{
+        if(res){
+          //do nothing
+        }else {
+          this.router.navigate(['authenticate']);
+        }
+    });
         
   }
 

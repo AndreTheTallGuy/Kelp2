@@ -43,8 +43,8 @@ public class Comment {
     private int margin;
 
     @Column(name="upvotes")
-    private int[] upvotes;
+    private String upvotes;
 
     @Column(name="downvotes")
-    private int[] downvotes;
+    private String downvotes;
 }

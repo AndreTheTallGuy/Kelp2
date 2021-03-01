@@ -1,6 +1,7 @@
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { formatDate } from '@angular/common';
 import { Component, NgZone, OnInit, ViewChild } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { take } from 'rxjs/operators';
 import { Aquarium } from 'src/app/models/Aquarium';
@@ -26,27 +27,34 @@ export class AddReviewComponent implements OnInit {
   user?: User;
   
 
-  constructor(private transfer: TransferService, private router: Router, private api: ApiService, private _ngZone: NgZone, private ss: SessionStorageService) { }
+  constructor(private transfer: TransferService, private router: Router, private api: ApiService, private _ngZone: NgZone, private ss: SessionStorageService, private angularFire: AngularFireAuth) { }
 
   @ViewChild('autosize') autosize!: CdkTextareaAutosize;
 
   ngOnInit(): void {
-    if(this.ss.get("userInfo")){
-      this.user = JSON.parse(this.ss.get("userInfo") || "");
-      console.log("working");
+    this.angularFire.user.subscribe(
+      (res) =>{
+        if(res){
+          if(this.ss.get("userInfo")){
+            this.user = JSON.parse(this.ss.get("userInfo") || "");
+            console.log("working");
+            
+          } else {
+            this.router.navigate(["sign-in"])
+          }
+          console.log(this.user);
+          
       
-    } else {
-      this.router.navigate(["sign-in"])
-    }
-    console.log(this.user);
-    
-
-    if(this.transfer.aquaTemp){
-      this.aquarium = this.transfer.aquaTemp;
-      this.transfer.aquaTemp = undefined;
-    }else{
-      this.router.navigateByUrl("aquariums");
-    }
+          if(this.transfer.aquaTemp){
+            this.aquarium = this.transfer.aquaTemp;
+            this.transfer.aquaTemp = undefined;
+          }else{
+            this.router.navigateByUrl("aquariums");
+          }
+        }else {
+          this.router.navigate(['authenticate']);
+        }
+    });
   }
 
   triggerResize() {

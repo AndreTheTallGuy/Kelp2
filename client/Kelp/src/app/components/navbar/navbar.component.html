@@ -10,7 +10,7 @@
 
   <span class="example-spacer"></span>
   <button
-    *ngIf="ss.get('userInfo')"
+    *ngIf="angularFire.user | async"
     class="nav-button"
     mat-flat-button
     style="background-color: #0673ef"
@@ -33,7 +33,7 @@
   </button>
 
   <button
-    *ngIf="!(ss.get('userInfo'))"
+    *ngIf="!(angularFire.user | async)"
     class="nav-button"
     mat-flat-button
     style="background-color: #0673ef"
@@ -45,7 +45,7 @@
   </button>
 
   <button
-    *ngIf="!(ss.get('userInfo'))"
+    *ngIf="!(angularFire.user | async)"
     class="nav-button"
     mat-flat-button
     style="background-color: #0673ef"
@@ -58,7 +58,7 @@
 
   <button
     (click)="logout()"
-    *ngIf="ss.get('userInfo')"
+    *ngIf="angularFire.user | async"
     class="nav-button"
     mat-flat-button
     style="background-color: #0673ef"

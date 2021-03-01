@@ -1,24 +1,25 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-
-import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { SessionStorageService } from './sessionstorage.service';
+import { User } from '../models/User';
+import { Location } from '@angular/common';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FirebaseService {
-  user: Observable<any>;
+  
+  user!: User;
 
   constructor(
     private firebaseAuth: AngularFireAuth,
     private router: Router,
     private api: ApiService,
-    private ss: SessionStorageService
+    private ss: SessionStorageService,
+    private location: Location
   ) {
-    this.user = this.firebaseAuth.authState;
   }
 
   signup(email: string, password: string, json: any) {
@@ -28,35 +29,37 @@ export class FirebaseService {
         .then((res) => {
           // this method is what keeps firebase updated with who is logging in
           this.firebaseAuth.updateCurrentUser(res.user).then(() => {
-          console.log('signed into firebase');
-          res.user?.getIdToken(true).then((idToken) => {
-            if (idToken) {
-              this.ss.set('jwt', idToken);
-              this.api.createUser(json).subscribe(
-                () => {
-                  console.log('3');
+            console.log('signed into firebase');
+            res.user?.getIdToken(true).then((idToken) => {
+              if (idToken) {
+                this.ss.set('jwt', idToken);
+                this.api.createUser(json).subscribe(
+                  () => {
+                    console.log('3');
 
-                  this.api.getUserbyEmail(email).subscribe(
-                    (res: any) => {
-                      console.log('4');
-                      this.ss.set('userInfo', JSON.stringify(res));
-                      this.router.navigate(['dashboard']);
-                    },
-                    (error: any) => {
-                      console.log(error);
-                      this.router.navigate(['']);
-                    }
-                  );
-                },
-                (error: any) => {
-                  console.log(error);
-                }
-              );
-            }
+                    this.api.getUserbyEmail(email).subscribe(
+                      (res: any) => {
+                        console.log('4');
+                        this.ss.set('userInfo', JSON.stringify(res));
+                        this.user = JSON.parse(JSON.stringify(res));
+                        console.log(this.user?.email);
+                        this.router.navigate(['dashboard']);
+                      },
+                      (error: any) => {
+                        console.log(error);
+                        this.router.navigate(['']);
+                      }
+                    );
+                  },
+                  (error: any) => {
+                    console.log(error);
+                  }
+                );
+              }
+            });
           });
         });
     });
-  });
   }
 
   login(email: string, password: string) {
@@ -73,6 +76,8 @@ export class FirebaseService {
               this.api.getUserbyEmail(email).subscribe(
                 (res) => {
                   this.ss.set('userInfo', JSON.stringify(res));
+                  this.user = JSON.parse(JSON.stringify(res));
+                        console.log(this.user?.email);
                   this.router.navigate(['dashboard']);
                 },
                 (error) => {
@@ -84,14 +89,30 @@ export class FirebaseService {
                   alert("Coudn't sign you in, please try again");
                 }
               );
+            });
           });
         });
     });
-  });
   }
 
   logout() {
     this.firebaseAuth.signOut();
     this.ss.clear();
+  }
+
+  onIdTokenRevocation(password: string) {
+    console.log(this.user.email);
+    // For an email/password user. Prompt the user for the password again.
+    this.firebaseAuth
+      .signInWithEmailAndPassword(this.user.email, password)
+      .then((res) => {
+        this.firebaseAuth.updateCurrentUser(res.user).then(() => {
+          res.user?.getIdToken(true).then((res) => {
+            this.ss.set('jwt', res);
+          }).then(() => {
+            this.location.back();
+          })
+        });
+      });
   }
 }

@@ -44,6 +44,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HelperService } from './services/helper.service';
 import { AddReplyComponent } from './components/add-reply/add-reply.component';
 import { ReplyPanelComponent } from './components/reply-panel/reply-panel.component';
+import { ReauthenticateComponent } from './components/reauthenticate/reauthenticate.component';
  
 
 @NgModule({
@@ -65,6 +66,7 @@ import { ReplyPanelComponent } from './components/reply-panel/reply-panel.compon
     CommentPanelComponent,
     AddReplyComponent,
     ReplyPanelComponent,
+    ReauthenticateComponent,
     
   ],
   exports: [

@@ -1,79 +1,121 @@
 <div class="displayTable">
   <div class="displayTableCell">
     <div class="authBlock container center">
-      <h3>Sign Up</h3>
+      <form class="border-light p-5">
+        <h3>Sign Up!</h3>
+        <div class="formGroup">
+          <!-- these input fields takes email and password from user -->
+          <input
+            type="email"
+            [(ngModel)]="email"
+            required
+            placeholder="Email"
+            class="form-control"
+            name ="email"
+          />
+          <small class="form-text text-muted"
+            >we'll never share your email with anyone else</small
+          >
+        </div>
+        <br />
+        <div class="formGroup">
+          <input
+            type="password"
+            [(ngModel)]="password"
+            required
+            minlength="6"
+            placeholder="Password"
+            class="form-control"
+            name="password"
+          />
+        </div>
+        <br />
+        <div class="formGroup">
+          <input
+            type="text"
+            [(ngModel)]="userName"
+            required
+            minlength="4"
+            placeholder="Display Name"
+            class="form-control"
+            name="userName"
+          />
+        </div>
+        <br />
+        <div class="formGroup">
+          <input
+            type="url"
+            [(ngModel)]="photo"
+            required
+            minlength="8"
+            placeholder="Photo URL"
+            class="form-control"
+            name="photo"
+          />
+        </div>
+        <br />
+        <div class="formGroup">
+          <input
+            type="text"
+            [(ngModel)]="fishPersonality"
+            required
+            placeholder="Fish Personality"
+            class="form-control"
+            name="fishPersonality"
+          />
+        </div>
+        <br />
+        <div class="formGroup">
+          <input
+            type="text"
+            [(ngModel)]="location"
+            required
+            placeholder="location"
+            class="form-control"
+            name="location"
+          />
+        </div>
+        <br />
+        <div class="formGroup">
+          <input name="twitter" type="text" [(ngModel)]="twitter" placeholder="Twitter" class="form-control" />
+        </div>
 
-      <div class="formGroup">
-        <!-- these input fields takes email and password from user -->
-        <input type="email" [(ngModel)]="email" required placeholder="Email" />
         <br />
-        <input
-          type="password"
-          [(ngModel)]="password"
-          required
-          minlength="6"
-          placeholder="Password"
-        />
-        <br />
-        <input
-          type="text"
-          [(ngModel)]="userName"
-          required
-          minlength="4"
-          placeholder="Display Name"
-        />
-        <br />
-        <input
-          type="url"
-          [(ngModel)]="photo"
-          required
-          minlength="8"
-          placeholder="Photo URL"
-        />
-        <br />
-        <input
-          type="text"
-          [(ngModel)]="fishPersonality"
-          required
-          placeholder="Fish Personality"
-        />
-        <br />
-        <input
-          type="text"
-          [(ngModel)]="location"
-          required
-          placeholder="location"
-        />
-        <br />
-        <input type="text" [(ngModel)]="twitter" placeholder="Twitter" />
-        <br />
-        <input type="text" [(ngModel)]="facebook" placeholder="Facebook" />
-        <br />
-        <input type="text" [(ngModel)]="instagram" placeholder="Instagram" />
-        <br />
-        <textarea type="text" [(ngModel)]="bio" placeholder="bio"></textarea>
-      </div>
+        <div class="formGroup">
+          <input name="facebook" type="text" [(ngModel)]="facebook" placeholder="Facebook" class="form-control" />
+        </div>
 
-      <button
-        class="nav-button redirect"
-        mat-flat-button
-        color="primary"
-        (click)="signup()"
-        [disabled]="!email || !password"
-      >
-        <span>Sign-up</span>
-      </button>
-
-      <div class="formGroup">
-        <span class="or"><span class="orInner">Or</span></span>
-      </div>
-
-      <div class="redirectToLogin">
-        <span
-          >Already have an account?
-          <button class="redirect" routerLink="/sign-in">Login</button>
-        </span>
-      </div>
+        <br />
+        <div class="formGroup">
+          <input name="instagram" type="text" [(ngModel)]="instagram" placeholder="Instagram" class="form-control" />
+        </div>
+        <br />
+        <div class="formGroup">
+          <textarea name="bio" type="text" [(ngModel)]="bio" placeholder="bio" class="form-control"></textarea>
+        </div>
+        <br />
+        <div class="formGroup">
+          <button
+            class="nav-button redirect"
+            mat-flat-button
+            color="primary"
+            (click)="signup()"
+            [disabled]="!email || !password"
+            name="signup"
+          >
+            <span>Sign-up</span>
+          </button>
+        </div>
+        <br />
+        <div class="redirectToLogin">
+          <span
+            >Already have an account?
+            <button class="nav-button" mat-flat-button color="primary">
+              <span class="redirect" routerLink="/sign-in">Login</span>
+            </button>
+          </span>
+        </div>
+      </form>
     </div>
   </div>
 </div>
