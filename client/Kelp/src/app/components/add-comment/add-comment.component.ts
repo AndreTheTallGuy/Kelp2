@@ -45,7 +45,7 @@ export class AddCommentComponent implements OnInit {
 
       if(this.comment){
         console.log(this.comment);
-        
+      
         this.newComment={
           reviewID: this.reviewId,
           userID: this.user?.id,
