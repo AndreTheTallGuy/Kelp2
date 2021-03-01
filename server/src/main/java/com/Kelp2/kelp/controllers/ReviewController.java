@@ -30,7 +30,7 @@ public class ReviewController {
         return new ResponseEntity<>(calledReview, HttpStatus.OK);
     }
 
-    @PostMapping(path="/create", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path="/create/{token}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Review> createReview(@RequestBody String json){
         logger.info("Submitting a Review");
         Review submittedReview = reviewService.saveReview(json);

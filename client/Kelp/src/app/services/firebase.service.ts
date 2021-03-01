@@ -32,11 +32,11 @@ export class FirebaseService {
           res.user?.getIdToken(true).then((idToken) => {
             if (idToken) {
               this.ss.set('jwt', idToken);
-              this.api.createUser(json, idToken).subscribe(
+              this.api.createUser(json).subscribe(
                 () => {
                   console.log('3');
 
-                  this.api.getUserbyEmail(email, this.ss.get('jwt')).subscribe(
+                  this.api.getUserbyEmail(email).subscribe(
                     (res: any) => {
                       console.log('4');
                       this.ss.set('userInfo', JSON.stringify(res));
@@ -70,7 +70,7 @@ export class FirebaseService {
             res.user?.getIdToken(true).then((idToken) => {
               this.ss.set('jwt', idToken);
               console.log(email);
-              this.api.getUserbyEmail(email, idToken).subscribe(
+              this.api.getUserbyEmail(email).subscribe(
                 (res) => {
                   this.ss.set('userInfo', JSON.stringify(res));
                   this.router.navigate(['dashboard']);
