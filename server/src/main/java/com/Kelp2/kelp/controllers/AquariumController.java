@@ -44,10 +44,10 @@ public class AquariumController {
         return new ResponseEntity<> (calledAqua, HttpStatus.OK);
     }
 
-    @GetMapping(path="/city/{city}")
-    public ResponseEntity<List<Aquarium>> getAquariumByCity(@PathVariable(name="city") String city){
-        logger.info("Received request for Aquarium by City");
-        List<Aquarium> calledAqua = aquariumService.findByCity(city);
+    @GetMapping(path="/address/{address}")
+    public ResponseEntity<List<Aquarium>> getAquariumByCity(@PathVariable(name="address") String address){
+        logger.info("Received request for Aquarium by Address");
+        List<Aquarium> calledAqua = aquariumService.findByAddress(address);
         return new ResponseEntity<> (calledAqua, HttpStatus.OK);
     }
 

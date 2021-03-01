@@ -20,10 +20,19 @@ export class ReviewPanelComponent implements OnInit {
   comment?: string;
   comments?: Comment[];
   user?: User;
+  upvotes?: number[];
+  downvotes?: number[];
 
   constructor(private transfer: TransferService, private router: Router, private api: ApiService, private ss: SessionStorageService) { }
 
   ngOnInit(): void {
+
+    this.upvotes = this.review?.upvotes;
+    this.downvotes = this.review?.downvotes;
+    console.log(this.upvotes);
+    console.log(this.downvotes);
+    
+
     this.api.getUserById(this.review?.userID).subscribe(res =>{
       console.log(res);
       this.user = res;

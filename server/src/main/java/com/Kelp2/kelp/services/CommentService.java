@@ -44,16 +44,5 @@ public class CommentService{
         }
     }
 
-    public boolean changeVotes(int commentID, int vote){
-        try{
-            Comment comment = commentRepo.getOne(commentID);
-            int oldVote = comment.getVotes();
-            oldVote += vote;
-            comment.setVotes(oldVote);
-            return true;
-        } catch (Exception e){
-            logger.warn(e.getMessage());
-            return false;
-        }
-    }
+
 }

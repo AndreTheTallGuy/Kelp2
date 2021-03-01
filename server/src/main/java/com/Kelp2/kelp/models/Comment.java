@@ -39,10 +39,12 @@ public class Comment {
     @Temporal(TemporalType.DATE)
     private java.util.Date postedDate;
 
-    @Column(name="votes")
-    private int votes;
-
     @Column(name="margin")
     private int margin;
 
+    @Column(name="upvotes")
+    private int[] upvotes;
+
+    @Column(name="downvotes")
+    private int[] downvotes;
 }

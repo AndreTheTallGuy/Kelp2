@@ -38,9 +38,7 @@ public class AquariumService {
         return aquariumRepo.findByNameIgnoreCaseContaining(name);
     }
 
-    public List<Aquarium> findByCity(String city){
-        return aquariumRepo.findByCityIgnoreCaseContaining(city);
-    }
+    public List<Aquarium> findByAddress(String address){ return aquariumRepo.findByAddressIgnoreCaseContaining(address); }
 
 
     public Aquarium saveAqua(String json){

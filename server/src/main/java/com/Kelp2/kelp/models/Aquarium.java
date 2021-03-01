@@ -37,19 +37,10 @@ public class Aquarium {
     @Column(name="url")
     private String url;
 
-    @Column(name="street")
-    private String street;
-
-    @Column(name="city")
-    private String city;
-
-    @Column(name="postal_code")
-    private String postalCode;
+    @Column(name="address")
+    private String address;
 
     @Column(name="description")
     private String description;
-
-    @Column(name="rating")
-    private float rating;
 
 }

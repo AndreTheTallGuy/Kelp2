@@ -63,7 +63,6 @@ public class ReviewControllerTests {
         this.review.setUserID(1);
         this.review.setRating(5);
         this.review.setReviewText("Scotland's National Aquarium");
-        this.review.setVotes(0);
 
         this.reviewJson=om.writeValueAsString(this.review);
         this.reviewList.add(this.review);
