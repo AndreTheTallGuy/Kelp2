@@ -4,9 +4,6 @@ export interface Aquarium{
     name: string;
     phone: string;
     url: string;
-    street: string;
-    city: string;
-    postalCode: string;
+    address: string;
     description: string;
-    rating: number;
 }

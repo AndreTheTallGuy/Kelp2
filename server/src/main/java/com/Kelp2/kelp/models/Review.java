@@ -39,6 +39,12 @@ public class Review {
     @Column(name="posted_date")
     private java.sql.Date postedDate;
 
-    @Column(name="votes")
-    private int votes;
+    @Column(name="upvotes")
+    private String upvotes;
+
+    @Column(name="downvotes")
+    private String downvotes;
+
+    @Column(name="signage")
+    private int signage;
 }

@@ -60,7 +60,6 @@ public class CommentControllerTests {
         this.comment.setUserID(1);
         this.comment.setReviewID(0);
         this.comment.setComment("This is a test. This is only a test.");
-        this.comment.setVotes(0);
 
         this.commentJson = om.writeValueAsString(comment);
         this.commentList.add(comment);

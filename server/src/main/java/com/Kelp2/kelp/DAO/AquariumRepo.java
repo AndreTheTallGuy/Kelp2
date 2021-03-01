@@ -13,6 +13,6 @@ public interface AquariumRepo extends JpaRepository<Aquarium, Integer> {
 //    @Query(value = "SELECT a FROM Aquarium a WHERE a.name LIKE string or a.city LIKE string")
     public List<Aquarium> findByNameIgnoreCaseContaining(String name);
 
-    public List<Aquarium> findByCityIgnoreCaseContaining(String city);
+    public List<Aquarium> findByAddressIgnoreCaseContaining(String address);
 
 }

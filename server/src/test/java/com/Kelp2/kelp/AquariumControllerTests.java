@@ -65,10 +65,7 @@ public class AquariumControllerTests {
         this.aqua.setName("Deep Sea World");
         this.aqua.setPhone("01383 411 880");
         this.aqua.setUrl("https://www.deepseaworld.com/");
-        this.aqua.setStreet("Battery Quarry");
-        this.aqua.setPostalCode("KY11 1JR");
         this.aqua.setDescription("Scotland's National Aquarium");
-        this.aqua.setRating(0.0f);
 
         this.aquaJson = om.writeValueAsString(aqua);
 

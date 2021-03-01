@@ -40,17 +40,6 @@ public class ReviewService {
         }
     }
 
-    public boolean changeVotes(int reviewID, int vote){
-        try{
-            Review review = reviewRepo.getOne(reviewID);
-            int oldVote = review.getVotes();
-            oldVote += vote;
-            review.setVotes(oldVote);
-            return true;
-        } catch (Exception e){
-            logger.warn(e.getMessage());
-            return false;
-        }
-    }
+
 
 }

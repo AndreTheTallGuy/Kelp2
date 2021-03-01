@@ -51,16 +51,19 @@ export class AquariumPageComponent implements OnInit {
         })
     }
 
-    this.apiService.getReviewByAquaId(this.aquaId).subscribe(res=>{
-      console.log(res);
-      this.reviews = res;
-      res.forEach((i:any) => this.ratings?.push(i.rating))
-      if(this.ratings){
-        this.ratingRounded = (this.ratings?.reduce((a,b)=> a+b)/(this.ratings?.length * 5)*100);
-      }else{
-        this.ratingRounded = 0;
-      }
-    })
+    if(this.aquaId){
+      this.apiService.getReviewByAquaId(this.aquaId).subscribe(res=>{
+        console.log(res);
+        this.reviews = res;
+        res.forEach((i:any) => this.ratings?.push(i.rating))
+        if(this.ratings){
+          this.ratingRounded = (this.ratings?.reduce((a,b)=> a+b)/(this.ratings?.length * 5)*100);
+        }else{
+          this.ratingRounded = 0;
+        }
+      })
+
+    }
   }
 
   triggerResize() {

@@ -5,6 +5,7 @@ export interface Comment{
     replyID?: number;
     comment?: string;
     postedDate?: string;
-    votes?: number;
+    upvotes?: number[];
+    downvotes?: number[];
     margin?: number;
 }
