@@ -1,5 +1,5 @@
 import { formatDate } from '@angular/common';
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/User';
@@ -11,13 +11,15 @@ import { TransferService } from 'src/app/services/transfer.service';
 import { Comment } from '../../models/Comment'
 import { Observable } from 'rxjs';
 import { FirebaseService } from 'src/app/services/firebase.service';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
  
 @Component({
   selector: 'app-add-comment',
   templateUrl: './add-comment.component.html',
   styleUrls: ['./add-comment.component.css']
 })
-export class AddCommentComponent implements OnInit {
+export class AddCommentComponent implements OnInit, OnDestroy {
 
   @Input() reviewId?: any;
   @Input() commentId?: any;
@@ -31,13 +33,14 @@ export class AddCommentComponent implements OnInit {
     Validators.email,
   ]);
   user?: User;
+  private unsubscribe = new Subject;
 
   constructor(private transfer: TransferService, private api: ApiService, private ss: SessionStorageService, private router: Router, private angularFire: AngularFireAuth) {
   
    }
 
   ngOnInit(): void {
-    this.angularFire.user.subscribe(
+    this.angularFire.user.pipe(takeUntil(this.unsubscribe)).subscribe(
       (res) =>{
         if(res){
           if(this.ss.get("userInfo")){
@@ -107,6 +110,11 @@ export class AddCommentComponent implements OnInit {
         
       }
     }
+    }
+
+    ngOnDestroy(){
+      this.unsubscribe.next();
+      this.unsubscribe.complete();
     }
 
 }

@@ -1,14 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-add-reply',
   templateUrl: './add-reply.component.html',
   styleUrls: ['./add-reply.component.css']
 })
-export class AddReplyComponent implements OnInit {
+export class AddReplyComponent implements OnInit, OnDestroy {
+  private unsubscribe = new Subject();
 
   replyFormControl = new FormControl('', [
     Validators.required,
@@ -30,5 +32,10 @@ export class AddReplyComponent implements OnInit {
 
   onSubmit(){
     
+  }
+
+  ngOnDestroy(){
+    this.unsubscribe.next();
+    this.unsubscribe.complete();
   }
 }

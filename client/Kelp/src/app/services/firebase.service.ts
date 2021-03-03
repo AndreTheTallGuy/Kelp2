@@ -10,7 +10,6 @@ import { Location } from '@angular/common';
   providedIn: 'root',
 })
 export class FirebaseService {
-  
   user!: User;
 
   constructor(
@@ -96,8 +95,12 @@ export class FirebaseService {
   }
 
   logout() {
-    this.firebaseAuth.signOut();
-    this.ss.clear();
+      this.router.navigate(['']);
+      this.ss.clear();
+      this.firebaseAuth.signOut();
+    
+    
+    
   }
 
   onIdTokenRevocation(password: string) {
@@ -111,8 +114,20 @@ export class FirebaseService {
             this.ss.set('jwt', res);
           }).then(() => {
             this.location.back();
-          })
+          });
         });
       });
   }
+
+  userUpdate(json: any){
+    console.log(json)
+    this.api.updateProfile(json).subscribe((res) =>{
+      console.log(res);
+      this.ss.set('userInfo', JSON.stringify(res));
+      this.router.navigate(['profile']);
+    });
+    }
+   
+
+
 }

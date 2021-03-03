@@ -41,9 +41,9 @@ public class UserServiceTests {
 
     @Test
     public void givenInfoUpdateUser_GiveError(){
-        when(this.us.updateUserInfoByID(this.userJson)).thenReturn(this.user);
+        when(this.us.updateUserInfoByEmail(this.userJson)).thenReturn(this.user);
 
-        User expected = this.us.updateUserInfoByID(this.userJson);
+        User expected = this.us.updateUserInfoByEmail(this.userJson);
         User actual = this.user;
 
         System.out.println(expected);

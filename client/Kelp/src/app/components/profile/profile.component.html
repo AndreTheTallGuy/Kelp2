@@ -1,0 +1,34 @@
+<div class="displayTable">
+    <div class="displayTableCell">
+      <div class="authBlock container center">
+          
+          <mat-card>
+            <mat-card-content>
+                <h1>Your Profile</h1>
+                <img id="proPic" mat-car-lg-image src="{{this.user?.profilePic}}">
+                <div id="info">
+                <p><br>Username: <span>{{this.user?.userName}}</span></p>
+                <p>Fish Personality: <span>{{this.user?.fishPersonality}}</span></p>
+                <p>Location: <span>{{this.user?.location}}</span></p>
+                <p>Twitter profile: <span>{{this.user?.twitter}}</span></p>
+                <p>Facebook profile: <span>{{this.user?.facebook}}</span></p>
+                <p>Instagram profile: <span>{{this.user?.instagram}}</span></p>
+                <p>Bio: <span>{{this.user?.bio}}</span></p>
+                <p>Email: <span>{{this.user?.email}}</span></p>
+                </div>
+            </mat-card-content>
+            <div id="nav">
+              <button
+                class="nav-button redirect"
+                mat-flat-button
+                color="primary"
+                name="update"
+                routerLink="/edit-profile"
+              >
+                Edit Your Profile?
+              </button>
+            </div>
+          </mat-card>
+      </div>
+    </div>
+  </div>

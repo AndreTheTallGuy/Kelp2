@@ -6,7 +6,9 @@ import { AddReviewComponent } from './components/add-review/add-review.component
 import { AquariumPageComponent } from './components/aquarium-page/aquarium-page.component';
 import { AquariumsComponent } from './components/aquariums/aquariums.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { HomeComponent } from './components/home/home.component';
+import { ProfileComponent } from './components/profile/profile.component';
 import { ReauthenticateComponent } from './components/reauthenticate/reauthenticate.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
@@ -21,7 +23,9 @@ const routes: Routes = [
   { path: 'aquarium/:id',  component: AquariumPageComponent},
   { path: 'add-review', component: AddReviewComponent },
   { path: 'add-comment', component: AddCommentComponent },
-  {path: 'authenticate', component: ReauthenticateComponent}
+  {path: 'authenticate', component: ReauthenticateComponent},
+  {path: 'profile', component: ProfileComponent},
+  {path: 'edit-profile', component: EditProfileComponent}
 ];
 
 @NgModule({

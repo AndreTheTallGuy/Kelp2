@@ -19,7 +19,7 @@ export class ApiService {
   // User Api routes
   public getUserbyEmail(email: string): Observable<any> {
     console.log(email);
-    return this.http.get(`http://localhost:8080/user/email/${email}/${this.ss.get('jwt')}`, this.userOptions);
+    return this.http.get(`http://localhost:8080/user/email/${email}`, this.userOptions);
   }
 
   public getUserById(id:any): Observable<any> {
@@ -32,6 +32,7 @@ export class ApiService {
   }
 
   public updateProfile(form: User): Observable<any> {
+    console.log("updating profile")
     return this.http.put(`http://localhost:8080/user/update/${this.ss.get('jwt')}`, form, this.userOptions);
   }
 

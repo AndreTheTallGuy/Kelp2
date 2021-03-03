@@ -13,3 +13,7 @@
 .nav-button {
   font-size: large;
 }
+
+.mat-toolbar {
+  height: 5%;
+}
