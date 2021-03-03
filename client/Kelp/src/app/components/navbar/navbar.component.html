@@ -1,71 +1,70 @@
 <mat-toolbar style="background-color: #0673ef">
   <button
-    class="nav-button"
+    class="nav-button redirect"
     mat-flat-button
     style="background-color: #0673ef"
     color="primary"
+    routerLink=""
   >
-    <span class="redirect" routerLink=""><i class="fas fa-leaf"></i>Kelp</span>
+    <i class="fas fa-leaf" style="margin-right: 3px; margin-bottom: 3px;"></i>Kelp
   </button>
 
   <span class="example-spacer"></span>
   <button
-    *ngIf="ss.get('userInfo')"
-    class="nav-button"
+    *ngIf="angularFire.user | async"
+    class="nav-button redirect"
     mat-flat-button
     style="background-color: #0673ef"
     color="primary"
+    routerLink="/dashboard"
   >
-    <span class="redirect" routerLink="/dashboard">
-      <i class="fas fa-anchor"></i>Dashboard</span
-    >
+    
+      <i class="fas fa-anchor" style="margin-right: 3px; margin-bottom: 3px;"></i>Dashboard
   </button>
 
   <button
-    class="nav-button"
+    class="nav-button redirect"
     mat-flat-button
     style="background-color: #0673ef"
     color="primary"
+    routerLink="/aquariums"
   >
-    <span class="redirect" routerLink="/aquariums">
-      <i class="fas fa-fish"></i>Aquariums</span
-    >
+ 
+      <i class="fas fa-fish" style="margin-right: 3px; margin-bottom: 3px;"></i>Aquariums
   </button>
 
   <button
-    *ngIf="!(ss.get('userInfo'))"
-    class="nav-button"
+    *ngIf="!(angularFire.user | async)"
+    class="nav-button redirect"
     mat-flat-button
     style="background-color: #0673ef"
     color="primary"
+    routerLink="/sign-up"
   >
-    <span class="redirect" routerLink="/sign-up"
-      ><i class="far fa-user-circle"></i>Register</span
-    >
+    
+      <i class="far fa-user-circle" style="margin-right: 3px; margin-bottom: 3px;"></i>Register
   </button>
 
   <button
-    *ngIf="!(ss.get('userInfo'))"
-    class="nav-button"
+    *ngIf="!(angularFire.user | async)"
+    class="nav-button redirect"
     mat-flat-button
     style="background-color: #0673ef"
     color="primary"
+    routerLink="/sign-in"
   >
-    <span class="redirect" routerLink="/sign-in"
-      ><i class="fas fa-sign-in-alt"></i>Login</span
-    >
+    <i class="fas fa-sign-in-alt" style="margin-right: 3px; margin-bottom: 3px;"></i>Login
   </button>
 
   <button
     (click)="logout()"
-    *ngIf="ss.get('userInfo')"
-    class="nav-button"
+    *ngIf="angularFire.user | async"
+    class="nav-button redirect"
     mat-flat-button
     style="background-color: #0673ef"
     color="primary"
+    routerLink="/"
   >
-    <span class="redirect" routerLink=""
-      ><i class="fas fa-sign-out-alt"></i>Logout</span
-    >
+      <i class="fas fa-sign-out-alt" style="margin-right: 3px; margin-bottom: 3px;"></i>Logout
   </button>
 </mat-toolbar>

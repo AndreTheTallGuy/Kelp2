@@ -19,9 +19,7 @@ export class SignInComponent implements OnInit {
   login() {
     // add try catch block for both services
     console.log("about to sign int");
-    
     this.firebaseService.login(this.email, this.password);
-   
     // this.email = this.password = '';
     console.log("after the firbase login");
   }

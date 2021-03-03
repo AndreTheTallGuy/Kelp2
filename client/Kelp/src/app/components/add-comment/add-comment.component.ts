@@ -1,20 +1,25 @@
 import { formatDate } from '@angular/common';
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/User';
+import { AngularFireAuth, AngularFireAuthModule} from '@angular/fire/auth';
 // import EventEmitter from 'events';
 import { ApiService } from 'src/app/services/api.service';
 import { SessionStorageService } from 'src/app/services/sessionstorage.service';
 import { TransferService } from 'src/app/services/transfer.service';
 import { Comment } from '../../models/Comment'
+import { Observable } from 'rxjs';
+import { FirebaseService } from 'src/app/services/firebase.service';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
  
 @Component({
   selector: 'app-add-comment',
   templateUrl: './add-comment.component.html',
   styleUrls: ['./add-comment.component.css']
 })
-export class AddCommentComponent implements OnInit {
+export class AddCommentComponent implements OnInit, OnDestroy {
 
   @Input() reviewId?: any;
   @Input() commentId?: any;
@@ -28,17 +33,29 @@ export class AddCommentComponent implements OnInit {
     Validators.email,
   ]);
   user?: User;
+  private unsubscribe = new Subject;
 
-  constructor(private transfer: TransferService, private api: ApiService, private ss: SessionStorageService, private router: Router) { }
+  constructor(private transfer: TransferService, private api: ApiService, private ss: SessionStorageService, private router: Router, private angularFire: AngularFireAuth) {
+  
+   }
 
   ngOnInit(): void {
-    if(this.ss.get("userInfo")){
-      this.user = JSON.parse(this.ss.get("userInfo") || "")
-    } else {
-      this.router.navigate(['sign-in'])
-    }
+    this.angularFire.user.pipe(takeUntil(this.unsubscribe)).subscribe(
+      (res) =>{
+        if(res){
+          if(this.ss.get("userInfo")){
+            this.user = JSON.parse(this.ss.get("userInfo") || "");
+          } else {
+            this.router.navigate(['sign-in']);
+          }
+        }else {
 
-  }
+          this.router.navigate(['authenticate']);
+
+        }
+    });
+    }
+ 
 
   onSubmit(){
     if(this.commentId){
@@ -93,6 +110,11 @@ export class AddCommentComponent implements OnInit {
         
       }
     }
+    }
+
+    ngOnDestroy(){
+      this.unsubscribe.next();
+      this.unsubscribe.complete();
     }
 
 }

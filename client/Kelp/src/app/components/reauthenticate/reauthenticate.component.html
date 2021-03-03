@@ -1,0 +1,42 @@
+<div class="displayTable">
+  <div class="displayTableCell">
+    <div class="authBlock">
+    <mat-card>
+      <h3>Sign In</h3>
+      <div class="formGroup">
+        <!-- these input fields takes email and password from user -->
+
+        <input
+          type="password"
+          [(ngModel)]="password"
+          placeholder="Enter password"
+        />
+      </div>
+
+      <div class="formGroup">
+        <!-- user click this button to login -->
+        <button
+          class="nav-button redirect"
+          mat-flat-button
+          color="primary"
+          (click)="authenticate()"
+        >
+          <span>Login</span>
+        </button>
+      </div>
+
+      <div class="redirectToLogin">
+        <span
+          >Sign in with another account?<button
+            class="nav-button"
+            mat-flat-button
+            color="primary"
+          >
+            <span class="redirect" routerLink="">Sign Out</span>
+          </button></span
+        >
+      </div>
+    </mat-card>
+    </div>
+  </div>
+</div>

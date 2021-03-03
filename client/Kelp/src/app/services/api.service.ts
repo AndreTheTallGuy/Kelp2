@@ -17,22 +17,23 @@ export class ApiService {
 
 
   // User Api routes
-  public getUserbyEmail(email: string, token: any): Observable<any> {
+  public getUserbyEmail(email: string): Observable<any> {
     console.log(email);
-    return this.http.get(`http://localhost:8080/user/email/${email}/${token}`, this.userOptions);
+    return this.http.get(`http://localhost:8080/user/email/${email}`, this.userOptions);
   }
 
   public getUserById(id:any): Observable<any> {
     return this.http.get(`http://localhost8080/user/${id}`)
   }
 
-  public createUser(form: User, token: any): Observable<any> {
+  public createUser(form: User): Observable<any> {
     console.log('we got to create user');
-    return this.http.post(`http://localhost:8080/user/create/${token}`, form, this.userOptions);
+    return this.http.post(`http://localhost:8080/user/create/${this.ss.get('jwt')}`, form, this.userOptions);
   }
 
   public updateProfile(form: User): Observable<any> {
-    return this.http.put(`http://localhost:8080/user/update`, form);
+    console.log("updating profile")
+    return this.http.put(`http://localhost:8080/user/update/${this.ss.get('jwt')}`, form, this.userOptions);
   }
 
   // Aquarium API routes
@@ -64,7 +65,7 @@ export class ApiService {
 
   public postReview(form: string): Observable<any> {
     // this.setHeaders();
-    return this.http.post(`http://localhost:8080/review/create/`, form, this.userOptions);
+    return this.http.post(`http://localhost:8080/review/create/${this.ss.get('jwt')}`, form, this.userOptions);
   }
 
   //Comment API Routs
@@ -77,6 +78,6 @@ export class ApiService {
   }
 
   public postComment(form: Comment): Observable<any> {
-    return this.http.post(`http://localhost:8080/comment/create`, form, this.userOptions);
+    return this.http.post(`http://localhost:8080/comment/create/${this.ss.get('jwt')}`, form, this.userOptions);
   }
 }
