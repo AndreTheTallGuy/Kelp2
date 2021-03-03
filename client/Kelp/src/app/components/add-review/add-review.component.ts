@@ -9,7 +9,7 @@ import { Aquarium } from 'src/app/models/Aquarium';
 import { Review } from 'src/app/models/Review';
 import { User } from 'src/app/models/User';
 import { ApiService } from 'src/app/services/api.service';
-import { SessionStorageService } from 'src/app/services/sessionstorage.service';
+import { LocalStorageService} from 'src/app/services/localstorage.service';
 import { TransferService } from 'src/app/services/transfer.service';
 
 @Component({
@@ -30,21 +30,19 @@ export class AddReviewComponent implements OnInit, OnDestroy {
   private unsubscribe = new Subject();
   
 
-  constructor(private transfer: TransferService, private router: Router, private api: ApiService, private _ngZone: NgZone, private ss: SessionStorageService, private angularFire: AngularFireAuth) { }
+  constructor(private transfer: TransferService, private router: Router, private api: ApiService, private _ngZone: NgZone, private ss: LocalStorageService, private angularFire: AngularFireAuth) { }
 
   @ViewChild('autosize') autosize!: CdkTextareaAutosize;
 
   ngOnInit(): void {
     this.angularFire.user.pipe(takeUntil(this.unsubscribe)).subscribe(
       (res) =>{
-        if(res){
-          if(this.ss.get("userInfo")){
-            this.user = JSON.parse(this.ss.get("userInfo") || "");
-            console.log("working");
+        if(res && this.ss.get('userInfo')){
+
+          this.user = JSON.parse(this.ss.get("userInfo") || "");
+          console.log("working");
             
-          } else {
-            this.router.navigate(["sign-in"])
-          }
+          
           console.log(this.user);
           
       
@@ -55,7 +53,7 @@ export class AddReviewComponent implements OnInit, OnDestroy {
             this.router.navigateByUrl("aquariums");
           }
         }else {
-          this.router.navigate(['authenticate']);
+          this.router.navigate(['sign-in']);
         }
     }).unsubscribe;
   }

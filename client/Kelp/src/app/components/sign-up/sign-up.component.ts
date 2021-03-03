@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/User';
 import { ApiService } from 'src/app/services/api.service';
-import { SessionStorageService } from 'src/app/services/sessionstorage.service';
+import { LocalStorageService } from 'src/app/services/localstorage.service';
 import { FirebaseService } from '../../services/firebase.service';
 
 @Component({
@@ -28,7 +28,7 @@ export class SignUpComponent implements OnInit {
     public firebaseService: FirebaseService,
     private apiservice: ApiService,
     private router: Router,
-    private ss: SessionStorageService
+    private ss: LocalStorageService
   ) {}
 
   signup() {

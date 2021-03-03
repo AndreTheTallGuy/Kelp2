@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Comment } from 'src/app/models/Comment';
 import { User } from 'src/app/models/User';
 import { ApiService } from 'src/app/services/api.service';
-import { SessionStorageService } from 'src/app/services/sessionstorage.service';
+import { LocalStorageService } from 'src/app/services/localstorage.service';
 
 @Component({
   selector: 'app-comment-panel',
@@ -21,7 +21,7 @@ export class CommentPanelComponent implements OnInit {
   margin?:number;
   user?: User;
 
-  constructor(private api: ApiService, private ss: SessionStorageService) { }
+  constructor(private api: ApiService, private ss: LocalStorageService) { }
 
   ngOnInit(): void {
     if(this.ss.get("userInfo")){

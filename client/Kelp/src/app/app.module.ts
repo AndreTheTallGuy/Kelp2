@@ -47,6 +47,8 @@ import { ReplyPanelComponent } from './components/reply-panel/reply-panel.compon
 import { ReauthenticateComponent } from './components/reauthenticate/reauthenticate.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { FirebaseService } from './services/firebase.service';
+import { LocalStorageService } from './services/localstorage.service';
  
 
 @NgModule({
@@ -93,7 +95,7 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
     MatInputModule,
     FontAwesomeModule
   ],
-  providers: [ApiService, TransferService, HelperService, {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher}],
+  providers: [ApiService, TransferService, HelperService, {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher}, FirebaseService, LocalStorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
-import { SessionStorageService } from './sessionstorage.service';
+import { LocalStorageService } from './localstorage.service';
 import { User } from '../models/User';
 import { Location } from '@angular/common';
 
@@ -11,18 +11,19 @@ import { Location } from '@angular/common';
 })
 export class FirebaseService {
   user!: User;
+  profile!: firebase.User;
 
   constructor(
     private firebaseAuth: AngularFireAuth,
     private router: Router,
     private api: ApiService,
-    private ss: SessionStorageService,
+    private ss: LocalStorageService,
     private location: Location
   ) {
   }
 
   signup(email: string, password: string, json: any) {
-    this.firebaseAuth.setPersistence('session').then(() => {
+    this.firebaseAuth.setPersistence('local').then(() => {
       this.firebaseAuth
         .createUserWithEmailAndPassword(email, password)
         .then((res) => {
@@ -63,7 +64,7 @@ export class FirebaseService {
 
   login(email: string, password: string) {
     console.log('were are in the firebase login');
-    this.firebaseAuth.setPersistence('session').then(() => {
+    this.firebaseAuth.setPersistence('local').then(() => {
       this.firebaseAuth
         .signInWithEmailAndPassword(email, password)
         .then((res) => {
@@ -98,12 +99,9 @@ export class FirebaseService {
       this.router.navigate(['']);
       this.ss.clear();
       this.firebaseAuth.signOut();
-    
-    
-    
   }
 
-  onIdTokenRevocation(password: string) {
+  onIdTokenRevocation(email: string, password: string) {
     console.log(this.user.email);
     // For an email/password user. Prompt the user for the password again.
     this.firebaseAuth

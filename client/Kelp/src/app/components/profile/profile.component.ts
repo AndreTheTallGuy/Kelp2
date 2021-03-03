@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { User } from 'src/app/models/User';
-import { SessionStorageService } from 'src/app/services/sessionstorage.service';
+import { LocalStorageService } from 'src/app/services/localstorage.service';
 
 @Component({
   selector: 'app-profile',
@@ -16,7 +16,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   private unsubscribe = new Subject();
 
   constructor(
-    private ss: SessionStorageService,
+    private ss: LocalStorageService,
     private router: Router,
     private angularFire: AngularFireAuth
   ) {}

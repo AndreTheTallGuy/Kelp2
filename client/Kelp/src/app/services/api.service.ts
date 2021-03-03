@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '../models/User';
-import { SessionStorageService } from './sessionstorage.service';
+import { LocalStorageService } from './localstorage.service';
 
 
 @Injectable({
@@ -11,7 +11,7 @@ import { SessionStorageService } from './sessionstorage.service';
 export class ApiService {
   private userOptions = { headers: new HttpHeaders().set('Content-Type', 'application/json') }
 
-  constructor(private http: HttpClient, private ss: SessionStorageService) {
+  constructor(private http: HttpClient, private ss: LocalStorageService) {
     
   }
 

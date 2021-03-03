@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-add-reply',
@@ -20,14 +21,13 @@ export class AddReplyComponent implements OnInit, OnDestroy {
   constructor(private angularFire: AngularFireAuth, private router: Router) { }
 
   ngOnInit(): void {
-    this.angularFire.user.subscribe(
-      (res) =>{
-        if(res){
-          //do nothing
-        }else {
-          this.router.navigate(['authenticate']);
+    this.angularFire.user.pipe(takeUntil(this.unsubscribe)).subscribe( res => {
+      if(res){
+          
+        }else{
+          this.router.navigate(['sign-in']);
         }
-    });
+  });
   }
 
   onSubmit(){
