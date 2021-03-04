@@ -8,6 +8,7 @@ import { FirebaseService } from 'src/app/services/firebase.service';
   styleUrls: ['./reauthenticate.component.css']
 })
 export class ReauthenticateComponent implements OnInit {
+  email!: string;
   password!: string;
 
   constructor(private fs: FirebaseService) { }
@@ -16,6 +17,6 @@ export class ReauthenticateComponent implements OnInit {
   }
 
   authenticate(){
-    this.fs.onIdTokenRevocation(this.password);
+    this.fs.onIdTokenRevocation(this.email,this.password);
   }
 }

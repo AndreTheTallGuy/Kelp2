@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import { take, takeUntil } from 'rxjs/operators';
 import { User } from 'src/app/models/User';
 import { FirebaseService } from 'src/app/services/firebase.service';
-import { SessionStorageService } from 'src/app/services/sessionstorage.service';
+import { LocalStorageService } from 'src/app/services/localstorage.service';
 
 @Component({
   selector: 'app-edit-profile',
@@ -28,7 +28,7 @@ export class EditProfileComponent implements OnInit, OnDestroy {
   json: any;
 
   private unsubscribe = new Subject();
-  constructor(private ss: SessionStorageService, private angularFire: AngularFireAuth, private router: Router, private firebaseService: FirebaseService) { }
+  constructor(private ss: LocalStorageService, private angularFire: AngularFireAuth, private router: Router, private firebaseService: FirebaseService) { }
 
   ngOnInit(): void {
     this.angularFire.user.pipe(takeUntil(this.unsubscribe)).subscribe((res) => {

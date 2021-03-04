@@ -25,18 +25,21 @@ public class AuthorizationFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) servletRequest;
         List<String> response = Arrays.asList(req.getServletPath().replace("/", ":").split(":"));
         if (req.getMethod().equals("POST") || req.getMethod().equals("PUT")) {
+
             try {
-                logger.info("checking token");
-                //verify the ID Token while checking if the token is revoked by passing checkRevoked
-                //  // as true.
+                // Verify the ID token while checking if the token is revoked by passing checkRevoked
+                // as true.
                 boolean checkRevoked = true;
-                FirebaseAuth.getInstance().verifyIdToken(response.get(response.size() - 1), checkRevoked);
-                logger.info("token is good");
-
-
+                FirebaseToken decodedToken = FirebaseAuth.getInstance()
+                        .verifyIdToken((response.get(response.size() - 1)), checkRevoked);
+                // Token is valid and not revoked.
+                String uid = decodedToken.getUid();
             } catch (FirebaseAuthException e) {
+                if (e.getAuthErrorCode() == AuthErrorCode.REVOKED_ID_TOKEN) {
+                    // Token has been revoked. Inform the user to re-authenticate or signOut() the user.
+                } else {
 
-                logger.info(e.toString());
+                }
             }
         }
     }
