@@ -7,3 +7,11 @@
 .btn-comment {
   margin: 0 10px;
 }
+
+.photo {
+  width: 100px;
+  border-radius: 50px;
+}
+.arrow-up {
+  color: #00aeff;
+}

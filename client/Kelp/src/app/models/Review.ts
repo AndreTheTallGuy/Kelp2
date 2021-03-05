@@ -6,7 +6,7 @@ export interface Review{
     reviewText?: string;
     visitedDate?: Date;
     postedDate?: string;
-    upvotes?: number[];
-    downvotes?: number[];
+    upvotes?: string;
+    downvotes?: string;
     signage?: number;
 }

@@ -11,3 +11,15 @@
 .btn-comment {
   margin: 0 10px;
 }
+.photo {
+  width: 100px;
+  border-radius: 50px;
+}
+
+.relative {
+  position: relative;
+}
+.bottom {
+  position: absolute;
+  bottom: 5px;
+}

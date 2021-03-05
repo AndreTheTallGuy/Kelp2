@@ -51,6 +51,10 @@ export class AquariumPageComponent implements OnInit {
         })
     }
 
+    this.getReviewsAndRatings();
+  }
+
+  getReviewsAndRatings(){
     if(this.aquaId){
       this.apiService.getReviewByAquaId(this.aquaId).subscribe(res=>{
         console.log(res);
@@ -95,7 +99,7 @@ export class AquariumPageComponent implements OnInit {
       console.log(res);
       this.reviewBoolean = false;
       this.review = res;
-      this.reviews?.push(newReview);
+      this.getReviewsAndRatings();
     })
 
   }
