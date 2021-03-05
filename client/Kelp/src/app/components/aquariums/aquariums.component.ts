@@ -30,20 +30,16 @@ export class AquariumsComponent implements OnInit {
     this.pageNumber = 0;
 
     fromEvent(this.aquaSearchInput.nativeElement, 'keyup').pipe(
-
       // get value
       map((event: any) => {
         return event.target.value;
       })
       // if character length greater then 2
       , filter(res => res.length > 2)
-
       // Time in milliseconds between key events
       , debounceTime(500)
-
       // If previous query is diffent from current   
       , distinctUntilChanged()
-
       // subscription for response
     ).subscribe((name: string) => {
 

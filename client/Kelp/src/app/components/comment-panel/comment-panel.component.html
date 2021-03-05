@@ -1,14 +1,23 @@
 <div class="block shadow" [ngStyle]="{'margin-left.px': margin}">
-    <div class="user">{{comment?.userID}}</div>
-    <div class="comment">{{comment?.comment}}</div>
     <div fxLayout="row">
-        <div class="votes">
-            <span class="arrow-up" (click)="arrowUp()"><i class="fas fa-arrow-up"></i></span> 
-            votes
-            <span class="arrow-down" (click)="arrowDown()"><i class="fas fa-arrow-down"></i></span>
+        <div fxLayout="column" class="pr-4">
+            <img class="photo" src={{user?.profilePic}} alt="User Avatar">
+            <div class="username">{{user?.userName}}</div>
         </div>
-        <button class="btn-comment btn-secondary" (click)="addReply()">Reply</button>
-        <div class="posted">{{comment?.postedDate | date: 'mediumDate'}}</div>
+        <div fxLayout="column" class="relative">
+            <div class="user">{{comment?.userID}}</div>
+            <div class="comment">{{comment?.comment}}</div>
+            <div fxLayout="row" class="m">
+                <div class="votes">
+                    <span class="arrow-up" (click)="arrowUp()"><i class="fas fa-arrow-up"></i></span> 
+                    votes
+                    <span class="arrow-down" (click)="arrowDown()"><i class="fas fa-arrow-down"></i></span>
+                </div>
+                    <button class="btn-comment btn-secondary" (click)="addReply()">Reply</button>
+                <div class="posted">{{comment?.postedDate | date: 'mediumDate'}}</div>
+            </div>
+
+        </div>
     </div>
 </div>
 <div class="add-reply" *ngIf="replyBoolean">

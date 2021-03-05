@@ -1,8 +1,8 @@
 <div class="box shadow">
     <div fxLayout="row">
-        <div fxLayout="column">
-            <img class="photo" src={{user?.profilePic}} alt="User Avatar">
-            <div class="username">{{user?.userName}}</div>
+        <div fxLayout="column" class="pr-4">
+            <img class="photo" src={{poster?.profilePic}} alt="User Avatar">
+            <div class="username">{{poster?.userName}}</div>
         </div>
         <div fxLayout="column">
             <div class="rating">{{review?.rating}}</div>
@@ -12,8 +12,8 @@
             </div>
             <div fxLayout="row" class="comment-arrows">
                 <div class="votes">
-                    <span class="arrow-up" (click)="arrowUp()"><i class="fas fa-arrow-up"></i></span> 
-                    votes 
+                    <span class="arrow-up" (click)="arrowUp()"><i class="fas fa-arrow-up" [ngStyle]="{'color': isGoldUp? '#00aeff' : '#000000'}" ></i></span> 
+                    {{votes}} 
                     <span class="arrow-down" (click)="arrowDown()"><i class="fas fa-arrow-down"></i></span>
                 </div>
                 <button class="btn-secondary btn-comment" (click)="addComment()">Comment</button>

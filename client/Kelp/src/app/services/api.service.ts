@@ -1,6 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { throwError } from 'rxjs';
 import { Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { User } from '../models/User';
 import { SessionStorageService } from './sessionstorage.service';
 
@@ -23,7 +25,7 @@ export class ApiService {
   }
 
   public getUserById(id:any): Observable<any> {
-    return this.http.get(`http://localhost8080/user/${id}`)
+    return this.http.get(`http://localhost:8080/user/${id}`)
   }
 
   public createUser(form: User, token: any): Observable<any> {
@@ -63,8 +65,15 @@ export class ApiService {
   }
 
   public postReview(form: string): Observable<any> {
-    // this.setHeaders();
     return this.http.post(`http://localhost:8080/review/create/`, form, this.userOptions);
+  }
+
+  public updateReviewUpvotes(reviewId: number, data: string): Observable<any> {
+    return this.http.put(`http://localhost:8080/review/upvotes/${reviewId}`, data, this.userOptions)
+  }
+ 
+  public updateReviewDownvotes(reviewId: number, data: string): Observable<any> {
+    return this.http.put(`http://localhost:8080/review/downvotes/${reviewId}`, data, this.userOptions)
   }
 
   //Comment API Routs

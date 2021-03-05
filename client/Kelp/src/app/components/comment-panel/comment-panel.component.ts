@@ -36,7 +36,6 @@ export class CommentPanelComponent implements OnInit {
     if(this.commentId){
       this.api.getCommentsByReplyId(this.commentId).subscribe(res=> {
         this.comments = res;
-        // console.log(this.replies);
       })
     }
     
@@ -48,8 +47,12 @@ export class CommentPanelComponent implements OnInit {
   }
 
   outputComment(comment: any){
-    this.comments?.push(comment);
-    
+    // this.comments?.push(comment);
+    if(this.commentId){
+      this.api.getCommentsByReplyId(this.commentId).subscribe(res=> {
+        this.comments = res;
+      })
+    }
   }
 
   onSubmit(){

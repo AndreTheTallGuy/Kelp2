@@ -33,7 +33,6 @@ public class UserController {
     @GetMapping(path="/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<User> getUserByID(@PathVariable(name="id") int id){
         logger.info("Received request for User by ID");
-        System.out.println("Received Request for User by ID");
         User calledUser = userService.findUserByID(id);
         return new ResponseEntity<>(calledUser, HttpStatus.OK);
     }
