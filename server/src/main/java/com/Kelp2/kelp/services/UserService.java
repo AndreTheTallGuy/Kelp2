@@ -34,21 +34,68 @@ public class UserService {
         return userRepo.findUserByEmail(user);
     }
 
-    public User updateUserInfoByID(String json){
+    public User updateUserInfoByEmail(String json){
         try{
+
             ObjectMapper om = new ObjectMapper();
             User user = null;
             user=om.readValue(json,User.class);
+            logger.info(user.toString());
 
-            User oldInfo = userRepo.getOne(user.getID());
-            oldInfo.setUserName(user.getUserName());
-            oldInfo.setProfilePic(user.getProfilePic());
-            oldInfo.setFishPersonality(user.getFishPersonality());
-            oldInfo.setLocation(user.getLocation());
+            User oldInfo = userRepo.findUserByEmail(user.getEmail());
+
+            if(user.getUserName().isEmpty()){
+                logger.info("nothing");
+            }else {
+                oldInfo.setUserName(user.getUserName());
+            }
+
+            if(user.getProfilePic().isEmpty()){
+                logger.info("nothing");
+            }else {
+                oldInfo.setProfilePic(user.getProfilePic());
+            }
+            if(user.getFishPersonality().isEmpty()){
+                logger.info("nothing");
+            }else{
+                oldInfo.setFishPersonality(user.getFishPersonality());
+            }
+
+            if(user.getLocation().isEmpty()){
+                logger.info("nothing");
+            }else{
+                oldInfo.setLocation(user.getLocation());
+            }
+
+            if(user.getTwitter().isEmpty()){
+                logger.info("nothing");
+            }else{
+
             oldInfo.setTwitter(user.getTwitter());
-            oldInfo.setFacebook(user.getFacebook());
-            oldInfo.setInstagram(user.getInstagram());
-            oldInfo.setBio(user.getBio());
+            }
+
+            if(user.getFacebook().isEmpty()){
+                logger.info("nothing");
+            }else{
+
+                oldInfo.setFacebook(user.getFacebook());
+            }
+
+            if(user.getInstagram().isEmpty()){
+                logger.info("nothing");
+            }else{
+
+                oldInfo.setInstagram(user.getInstagram());
+            }
+
+            if(user.getBio().isEmpty()){
+                logger.info("nothing");
+            }else{
+
+                oldInfo.setBio(user.getBio());
+            }
+
+
             oldInfo.setEmail(user.getEmail());
 
             userRepo.save(oldInfo);

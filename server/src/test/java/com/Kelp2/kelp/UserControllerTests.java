@@ -130,7 +130,7 @@ public class UserControllerTests {
     public void updateUserReturnInfo() throws Exception{
         ObjectMapper om = new ObjectMapper();
 
-        when(us.updateUserInfoByID(this.updateUserJson)).thenReturn(this.updateUser);
+        when(us.updateUserInfoByEmail(this.updateUserJson)).thenReturn(this.updateUser);
         MvcResult result = mvc.perform(put("/user/update")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(this.updateUserJson))

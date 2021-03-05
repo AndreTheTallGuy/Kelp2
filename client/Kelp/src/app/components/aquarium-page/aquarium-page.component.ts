@@ -7,7 +7,7 @@ import { Aquarium } from 'src/app/models/Aquarium';
 import { Review } from 'src/app/models/Review';
 import { User } from 'src/app/models/User';
 import { ApiService } from 'src/app/services/api.service';
-import { SessionStorageService } from 'src/app/services/sessionstorage.service';
+import { LocalStorageService } from 'src/app/services/localstorage.service';
 import { TransferService } from 'src/app/services/transfer.service';
 
 @Component({
@@ -30,7 +30,7 @@ export class AquariumPageComponent implements OnInit {
   datePosted!: Date;
   user?: User;
 
-  constructor(private apiService: ApiService, private route: ActivatedRoute, private transfer: TransferService, private router: Router, private _ngZone: NgZone, private ss: SessionStorageService) { }
+  constructor(private apiService: ApiService, private route: ActivatedRoute, private transfer: TransferService, private router: Router, private _ngZone: NgZone, private ss: LocalStorageService) { }
 
   @ViewChild('autosize') autosize!: CdkTextareaAutosize;
 

@@ -1,13 +1,15 @@
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { formatDate } from '@angular/common';
-import { Component, NgZone, OnInit, ViewChild } from '@angular/core';
+import { Component, NgZone, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
-import { take } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { take, takeUntil } from 'rxjs/operators';
 import { Aquarium } from 'src/app/models/Aquarium';
 import { Review } from 'src/app/models/Review';
 import { User } from 'src/app/models/User';
 import { ApiService } from 'src/app/services/api.service';
-import { SessionStorageService } from 'src/app/services/sessionstorage.service';
+import { LocalStorageService} from 'src/app/services/localstorage.service';
 import { TransferService } from 'src/app/services/transfer.service';
 
 @Component({
@@ -15,7 +17,8 @@ import { TransferService } from 'src/app/services/transfer.service';
   templateUrl: './add-review.component.html',
   styleUrls: ['./add-review.component.css']
 })
-export class AddReviewComponent implements OnInit {
+export class AddReviewComponent implements OnInit, OnDestroy {
+
 
   aquarium?: Aquarium;
   review?: Review;
@@ -24,29 +27,35 @@ export class AddReviewComponent implements OnInit {
   dateVisited!: Date;
   datePosted!: Date;
   user?: User;
+  private unsubscribe = new Subject();
   
 
-  constructor(private transfer: TransferService, private router: Router, private api: ApiService, private _ngZone: NgZone, private ss: SessionStorageService) { }
+  constructor(private transfer: TransferService, private router: Router, private api: ApiService, private _ngZone: NgZone, private ss: LocalStorageService, private angularFire: AngularFireAuth) { }
 
   @ViewChild('autosize') autosize!: CdkTextareaAutosize;
 
   ngOnInit(): void {
-    if(this.ss.get("userInfo")){
-      this.user = JSON.parse(this.ss.get("userInfo") || "");
-      console.log("working");
-      
-    } else {
-      this.router.navigate(["sign-in"])
-    }
-    console.log(this.user);
-    
+    this.angularFire.user.pipe(takeUntil(this.unsubscribe)).subscribe(
+      (res) =>{
+        if(res && this.ss.get('userInfo')){
 
-    if(this.transfer.aquaTemp){
-      this.aquarium = this.transfer.aquaTemp;
-      this.transfer.aquaTemp = undefined;
-    }else{
-      this.router.navigateByUrl("aquariums");
-    }
+          this.user = JSON.parse(this.ss.get("userInfo") || "");
+          console.log("working");
+            
+          
+          console.log(this.user);
+          
+      
+          if(this.transfer.aquaTemp){
+            this.aquarium = this.transfer.aquaTemp;
+            this.transfer.aquaTemp = undefined;
+          }else{
+            this.router.navigateByUrl("aquariums");
+          }
+        }else {
+          this.router.navigate(['sign-in']);
+        }
+    }).unsubscribe;
   }
 
   triggerResize() {
@@ -70,6 +79,11 @@ export class AddReviewComponent implements OnInit {
       this.router.navigateByUrl(`aquarium/${this.aquarium?.aquariumID}`)
     })
 
+  }
+
+  ngOnDestroy(){
+    this.unsubscribe.next();
+    this.unsubscribe.complete();
   }
 
 }

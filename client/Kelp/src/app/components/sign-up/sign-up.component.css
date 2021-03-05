@@ -1,0 +1,28 @@
+mat-card {
+    margin-top: 50%;
+    background-color: aliceblue;
+    
+}
+
+mat-card-content {
+    width: fit-content;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: flex-start;
+}
+
+.displayTable {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    width: 100%;
+    height: 95%;
+    background-image: url(../../../assets/Images/zachary-spears-DcweRpj62Ds-unsplash.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+form{
+    height: 600px;
+    overflow-y: auto;
+}

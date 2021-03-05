@@ -37,7 +37,7 @@ public class CommentController {
         return new ResponseEntity<>(allComments, HttpStatus.OK);
     }
 
-    @PostMapping(path="/create", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path="/create/{token}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Comment> submitComment(@RequestBody String json){
         logger.info("Submitting a Comment");
         Comment submittedComment = commentService.saveComment(json);

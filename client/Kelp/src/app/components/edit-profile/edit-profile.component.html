@@ -1,39 +1,9 @@
 <div class="displayTable">
   <div class="displayTableCell">
     <div class="authBlock container center">
-    <mat-card>
-      <mat-card-content>
+        <mat-card>
       <form class="container center">
-        <h3>Sign Up!</h3>
-        <div class="formGroup">
-          <!-- these input fields takes email and password from user -->
-          <label>Email</label>
-          <input
-            type="email"
-            [(ngModel)]="email"
-            required
-            placeholder="Email"
-            class="form-control form-control-lg"
-            name ="email"
-          />
-          <small class="form-text text-muted"
-            >we'll never share your email with anyone else</small
-          >
-        </div>
-        <br />
-        <div class="formGroup">
-          <label>Password</label>
-          <input
-            type="password"
-            [(ngModel)]="password"
-            required
-            minlength="6"
-            placeholder="Password"
-            class="form-control form-control-lg"
-            name="password"
-          />
-        </div>
-        <br />
+        <h3>Update Your Info!</h3>
         <div class="formGroup">
           <label>Username</label>
           <input
@@ -44,6 +14,7 @@
             placeholder="Display Name"
             class="form-control form-control-lg"
             name="userName"
+            value="{{ this.user?.userName }}"
           />
         </div>
         <br />
@@ -57,6 +28,7 @@
             placeholder="Photo URL"
             class="form-control form-control-lg"
             name="photo"
+            value="{{this.user?.profilePic}}"
           />
         </div>
         <br />
@@ -69,6 +41,7 @@
             placeholder="Fish Personality"
             class="form-control form-control-lg"
             name="fishPersonality"
+            value="{{ this.user?.fishPersonality }}"
           />
         </div>
         <br />
@@ -81,29 +54,58 @@
             placeholder="location"
             class="form-control form-control-lg"
             name="location"
+            value="{{ this.user?.location }}"
           />
         </div>
         <br />
         <div class="formGroup">
           <label>Twiter </label>
-          <input name="twitter" type="text" [(ngModel)]="twitter" placeholder="Twitter" class="form-control form-control-lg" />
+          <input
+            name="twitter"
+            type="text"
+            [(ngModel)]="twitter"
+            placeholder="Twitter"
+            class="form-control form-control-lg"
+            value="{{ this.user?.twitter }}"
+          />
         </div>
 
         <br />
         <div class="formGroup">
           <label>Facebook</label>
-          <input name="facebook" type="text" [(ngModel)]="facebook" placeholder="Facebook" class="form-control form-control-lg" />
+          <input
+            name="facebook"
+            type="text"
+            [(ngModel)]="facebook"
+            placeholder="Facebook"
+            class="form-control form-control-lg"
+            value="{{ this.user?.facebook }}"
+          />
         </div>
 
         <br />
         <div class="formGroup">
           <label>Instagram</label>
-          <input name="instagram" type="text" [(ngModel)]="instagram" placeholder="Instagram" class="form-control form-control-lg" />
+          <input
+            name="instagram"
+            type="text"
+            [(ngModel)]="instagram"
+            placeholder="Instagram"
+            class="form-control form-control-lg"
+            value="{{ this.user?.instagram }}"
+          />
         </div>
         <br />
         <div class="formGroup">
           <label>Bio</label>
-          <textarea name="bio" type="text" [(ngModel)]="bio" placeholder="bio" class="form-control form-control-lg"></textarea>
+          <textarea
+            name="bio"
+            type="text"
+            [(ngModel)]="bio"
+            placeholder="bio"
+            class="form-control form-control-lg"
+            value="{{ this.user?.bio }}"
+          ></textarea>
         </div>
         <br />
         <div class="formGroup">
@@ -111,23 +113,20 @@
             class="nav-button redirect"
             mat-flat-button
             color="primary"
-            (click)="signup()"
-            [disabled]="!email || !password"
-            name="signup"
+            (click)="update()"
+            name="update"
           >
-            <span>Sign-up</span>
+            Update
           </button>
         </div>
         <br />
         <div class="redirectToLogin">
-          <span style="margin-right: 5px;"
-            >Already have an account?</span>
-            <button class="nav-button" mat-flat-button color="primary">
-              <span class="redirect" routerLink="/sign-in">Login</span>
-            </button>
+          <span style="margin-right: 5px">Changed your mind?</span>
+          <button class="nav-button redirect" mat-flat-button color="primary" routerLink="/profile">
+            Back
+          </button>
         </div>
       </form>
-    </mat-card-content>
     </mat-card>
     </div>
   </div>

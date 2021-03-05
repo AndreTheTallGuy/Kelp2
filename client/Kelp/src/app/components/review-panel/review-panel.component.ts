@@ -4,7 +4,7 @@ import { Comment } from 'src/app/models/Comment';
 import { Review } from 'src/app/models/Review';
 import { User } from 'src/app/models/User';
 import { ApiService } from 'src/app/services/api.service';
-import { SessionStorageService } from 'src/app/services/sessionstorage.service';
+import { LocalStorageService} from 'src/app/services/localstorage.service';
 import { TransferService } from 'src/app/services/transfer.service';
 
 @Component({
@@ -26,7 +26,7 @@ export class ReviewPanelComponent implements OnInit {
   votes!: number;
   isGoldUp: boolean = false;
 
-  constructor(private transfer: TransferService, private router: Router, private api: ApiService, private ss: SessionStorageService) { }
+  constructor(private transfer: TransferService, private router: Router, private api: ApiService, private ss: LocalStorageService) { }
 
   ngOnInit(): void {
     if(this.ss.get("userInfo")){

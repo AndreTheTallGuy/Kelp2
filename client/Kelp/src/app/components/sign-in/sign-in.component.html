@@ -1,20 +1,28 @@
 <div class="displayTable">
   <div class="displayTableCell">
-    <div class="authBlock">
-      <h3>Sign In</h3>
+    <div class="authBlock container center">
+      <mat-card>
+        <mat-card-content>
+      <form class="container center">
       <div class="formGroup">
         <!-- these input fields takes email and password from user -->
-        <input type="text" [(ngModel)]="email" placeholder="Enter email" />
-        <input
+        <label>Email Addresss</label>
+        <input type="text" [(ngModel)]="email" placeholder="Enter email" class="form-control form-control-lg" name="email" />
+      </div>
+      <div class="formGroup">
+        <label>Password</label>
+        <input 
           type="password"
           [(ngModel)]="password"
           placeholder="Enter password"
+          class="form-control form-control-lg"
+          name="password"
         />
+        <br>
       </div>
-
-      <div class="formGroup">
         <!-- user click this button to login -->
-        <button
+        <div class="formGroup">
+          <button
           class="nav-button redirect"
           mat-flat-button
           color="primary"
@@ -23,19 +31,22 @@
         >
           <span>Login</span>
         </button>
-      </div>
-
+        </div>
+      <br>
       <div class="redirectToLogin">
-        <span
-          >Don't have an account?<button
+        <span style="margin-right: 5px;"
+          >Don't have an account?</span>
+          <button
             class="nav-button"
             mat-flat-button
             color="primary"
           >
-            <span class="redirect" routerLink="/sign-up">Sign-up</span>
-          </button></span
-        >
+          <span class="redirect" routerLink="/sign-up">Sign-up</span>
+          </button>
       </div>
+    </form>
+  </mat-card-content>
+  </mat-card>
     </div>
   </div>
 </div>

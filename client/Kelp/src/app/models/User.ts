@@ -9,5 +9,4 @@ export interface User{
     instagram: string;
     bio: string;
     email: string;
-
 }
