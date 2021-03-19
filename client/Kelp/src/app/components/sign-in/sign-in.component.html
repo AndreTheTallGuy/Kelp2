@@ -7,7 +7,7 @@
       <div class="formGroup">
         <!-- these input fields takes email and password from user -->
         <label>Email Addresss</label>
-        <input type="text" [(ngModel)]="email" placeholder="Enter email" class="form-control form-control-lg" name="email" />
+        <input type="text" [(ngModel)]="email" placeholder="Enter email" class="form-control form-control-lg" name="email"/>
       </div>
       <div class="formGroup">
         <label>Password</label>
@@ -23,11 +23,12 @@
         <!-- user click this button to login -->
         <div class="formGroup">
           <button
+          id="sign-in"
           class="nav-button redirect"
           mat-flat-button
           color="primary"
-          (click)="login()"
           [disabled]="!email || !password"
+          (click)="login()"
         >
           <span>Login</span>
         </button>

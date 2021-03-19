@@ -3,7 +3,7 @@
     <div class="authBlock container center">
     <mat-card>
       <mat-card-content>
-      <form class="container center">
+      <form class="container center" (keydown.enter)="enter($event)">
         <h3>Sign Up!</h3>
         <div class="formGroup">
           <!-- these input fields takes email and password from user -->
@@ -108,6 +108,7 @@
         <br />
         <div class="formGroup">
           <button
+            id="sign-up"
             class="nav-button redirect"
             mat-flat-button
             color="primary"

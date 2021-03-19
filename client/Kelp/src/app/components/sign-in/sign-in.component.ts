@@ -16,6 +16,7 @@ export class SignInComponent implements OnInit {
     public firebaseService: FirebaseService
   ) {}
 
+
   login() {
     // add try catch block for both services
     console.log("about to sign int");

@@ -65,7 +65,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "Kelp:build"
+            "browserTarget": "Kelp:build",
+            "ssl": true
           },
           "configurations": {
             "production": {

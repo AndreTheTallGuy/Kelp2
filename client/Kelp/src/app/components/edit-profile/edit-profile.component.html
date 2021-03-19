@@ -2,7 +2,7 @@
   <div class="displayTableCell">
     <div class="authBlock container center">
         <mat-card>
-      <form class="container center">
+      <form class="container center" (keydown.enter) = "enter($event)">
         <h3>Update Your Info!</h3>
         <div class="formGroup">
           <label>Username</label>
@@ -110,6 +110,7 @@
         <br />
         <div class="formGroup">
           <button
+            id="update"
             class="nav-button redirect"
             mat-flat-button
             color="primary"
