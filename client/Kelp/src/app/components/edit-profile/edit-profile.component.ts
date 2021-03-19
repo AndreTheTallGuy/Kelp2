@@ -44,6 +44,13 @@ export class EditProfileComponent implements OnInit, OnDestroy {
     });
   }
 
+  enter(event: any){
+    if(event.keyCode == 13){
+      event.preventDefault();
+      document.getElementById("update")?.click();
+    }
+  }
+
   update(){
 
     this.form = {

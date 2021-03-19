@@ -2,7 +2,6 @@ package com.Kelp2.kelp.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -10,11 +9,21 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import java.util.Arrays;
-
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
+    private final CorsConfigurationProperties corsConfigurationProperties;
+
+    /**
+     * setter for corsConfigurationProperties
+     * @param corsConfigurationProperties - the new CorsConfigurationProperties to be set
+     */
+
+    public WebSecurityConfig(CorsConfigurationProperties corsConfigurationProperties) {
+        this.corsConfigurationProperties = corsConfigurationProperties;
+    }
+
 
     @Override
     protected void configure(HttpSecurity http) throws Exception{
@@ -26,18 +35,21 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .oauth2ResourceServer()
                 .jwt();
+
+
     }
 
 
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOriginPatterns(Arrays.asList("*"));
-        configuration.setAllowedMethods(Arrays.asList("*"));
-        configuration.setAllowedHeaders(Arrays.asList("*"));
-        configuration.setAllowCredentials(true);
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", configuration);
-        return source;
+        configuration.setAllowedOrigins(corsConfigurationProperties.getAllowedOrigins());
+        configuration.setAllowedMethods(corsConfigurationProperties.getAllowedMethods());
+        configuration.setAllowedHeaders(corsConfigurationProperties.getAllowedHeaders());
+        configuration.setExposedHeaders(corsConfigurationProperties.getExposedHeaders());
+        configuration.setAllowCredentials(corsConfigurationProperties.isAllowCredentials());
+        UrlBasedCorsConfigurationSource configurationSource = new UrlBasedCorsConfigurationSource();
+        configurationSource.registerCorsConfiguration("/**", configuration);
+        return configurationSource;
     }
 }

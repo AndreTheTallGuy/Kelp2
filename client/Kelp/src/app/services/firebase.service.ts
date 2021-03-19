@@ -19,8 +19,7 @@ export class FirebaseService {
     private api: ApiService,
     private ss: LocalStorageService,
     private location: Location
-  ) {
-  }
+  ) {}
 
   signup(email: string, password: string, json: any) {
     this.firebaseAuth.setPersistence('local').then(() => {
@@ -53,6 +52,9 @@ export class FirebaseService {
                   },
                   (error: any) => {
                     console.log(error);
+                    this.firebaseAuth.currentUser.then((res) => {
+                      res?.delete();
+                    });
                   }
                 );
               }
@@ -77,7 +79,8 @@ export class FirebaseService {
                 (res) => {
                   this.ss.set('userInfo', JSON.stringify(res));
                   this.user = JSON.parse(JSON.stringify(res));
-                        console.log(this.user?.email);
+                  console.log("hello")
+                  console.log(this.user?.email);
                   this.router.navigate(['dashboard']);
                 },
                 (error) => {
@@ -96,9 +99,9 @@ export class FirebaseService {
   }
 
   logout() {
-      this.router.navigate(['']);
-      this.ss.clear();
-      this.firebaseAuth.signOut();
+    this.router.navigate(['']);
+    this.ss.clear();
+    this.firebaseAuth.signOut();
   }
 
   onIdTokenRevocation(email: string, password: string) {
@@ -108,24 +111,24 @@ export class FirebaseService {
       .signInWithEmailAndPassword(this.user.email, password)
       .then((res) => {
         this.firebaseAuth.updateCurrentUser(res.user).then(() => {
-          res.user?.getIdToken(true).then((res) => {
-            this.ss.set('jwt', res);
-          }).then(() => {
-            this.location.back();
-          });
+          res.user
+            ?.getIdToken(true)
+            .then((res) => {
+              this.ss.set('jwt', res);
+            })
+            .then(() => {
+              this.location.back();
+            });
         });
       });
   }
 
-  userUpdate(json: any){
-    console.log(json)
-    this.api.updateProfile(json).subscribe((res) =>{
+  userUpdate(json: any) {
+    console.log(json);
+    this.api.updateProfile(json).subscribe((res) => {
       console.log(res);
       this.ss.set('userInfo', JSON.stringify(res));
       this.router.navigate(['profile']);
-    });
-    }
-   
-
-
+    }).unsubscribe;
+  }
 }

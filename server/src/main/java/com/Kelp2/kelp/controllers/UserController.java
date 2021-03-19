@@ -3,10 +3,6 @@ package com.Kelp2.kelp.controllers;
 
 import com.Kelp2.kelp.models.User;
 import com.Kelp2.kelp.services.UserService;
-import com.google.firebase.auth.AuthErrorCode;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthException;
-import com.google.firebase.auth.FirebaseToken;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.util.Optional;
 
 @RestController
 @RequestMapping(path="/user")
@@ -29,6 +20,7 @@ public class UserController {
 
     @Autowired
     public UserController (UserService userService){this.userService = userService;}
+
 
     @GetMapping(path="/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<User> getUserByID(@PathVariable(name="id") int id){

@@ -49,6 +49,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { FirebaseService } from './services/firebase.service';
 import { LocalStorageService } from './services/localstorage.service';
+import { TableComponent } from './table/table.component';
  
 
 @NgModule({
@@ -73,6 +74,7 @@ import { LocalStorageService } from './services/localstorage.service';
     ReauthenticateComponent,
     ProfileComponent,
     EditProfileComponent,
+    TableComponent,
     
   ],
   exports: [

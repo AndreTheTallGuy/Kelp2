@@ -13,18 +13,18 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>kelp</name>
 	<description>Kelp app take 2</description>
+	
 	<properties>
 		<java.version>1.8</java.version>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>${maven.compiler.target}</maven.compiler.source>
 	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
-
-		</dependency>
-		<dependency> <!-- includes spring-security-oauth2 -->
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-oauth2-jose</artifactId>
+			<version>2.4.2</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -57,6 +57,29 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/io.projectreactor/reactor-core -->
+		<dependency>
+			<groupId>io.projectreactor</groupId>
+			<artifactId>reactor-core</artifactId>
+			<version>3.4.3</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.firebase</groupId>
+			<artifactId>firebase-admin</artifactId>
+			<version>7.1.1</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-oauth2-jose</artifactId>
+		</dependency>
+		<!--		end of important   -->
+
+		<!--end of spring security -->
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
@@ -92,18 +115,12 @@
 			<version>3.6.0</version>
 			<scope>test</scope>
 		</dependency>
-<!--		important      -->
-		<dependency>
-			<groupId>com.google.firebase</groupId>
-			<artifactId>firebase-admin</artifactId>
-			<version>7.1.0</version>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
 		</dependency>
-<!--		end of important   -->
+
 	</dependencies>
 
 	<build>

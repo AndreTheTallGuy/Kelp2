@@ -31,6 +31,13 @@ export class SignUpComponent implements OnInit {
     private ss: LocalStorageService
   ) {}
 
+  enter(event: any){
+    if(event.keyCode == 13){
+      event.preventDefault();
+      document.getElementById("sign-up")?.click();
+    }
+  }
+
   signup() {
       // this.email = this.password = " ";
         console.log('1');
@@ -53,6 +60,7 @@ export class SignUpComponent implements OnInit {
           console.log('2');
           
           this.firebaseService.signup(this.email, this.password, this.json);
-      }
+          
+        }
   ngOnInit(): void {}
 }

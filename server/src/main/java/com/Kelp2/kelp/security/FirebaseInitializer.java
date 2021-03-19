@@ -42,7 +42,7 @@ public class FirebaseInitializer {
      */
     private void initializeFirebaseApp() throws IOException {
 
-        if (FirebaseApp.getApps() == null || FirebaseApp.getApps().isEmpty()) {
+
             FileInputStream serviceAccount =
                     new FileInputStream("src/main/resources/firebase-service-credentials.json");
 
@@ -51,18 +51,7 @@ public class FirebaseInitializer {
                     .setDatabaseUrl("https://kelp2-56f64-default-rtdb.firebaseio.com")
                     .build();
 
-            FirebaseApp.initializeApp(options);
-        }
+            FirebaseApp.initializeApp(String.valueOf(options));
 
     }
-
-    /**
-     * returns an InputStream reading the given resource
-     * @param resource The resource to be read
-     * @return the stream reading "resource"
-     */
-    protected InputStream returnResourceAsStream(String resource) {
-        return FirebaseInitializer.class.getResourceAsStream(resource);
-    }
-
 }
