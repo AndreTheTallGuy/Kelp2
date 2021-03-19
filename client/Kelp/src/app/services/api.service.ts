@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { User } from '../models/User';
 import { FirebaseService } from './firebase.service';
 import { LocalStorageService } from './localstorage.service';
@@ -28,6 +29,7 @@ export class ApiService {
 
   public getUserById(id:any): Observable<any> {
     return this.http.get(`https://localhost8080/user/${id}`)
+
   }
 
   public createUser(form: User): Observable<any> {
@@ -70,6 +72,15 @@ export class ApiService {
   public postReview(form: string): Observable<any> {
     // this.setHeaders();
     return this.http.post(`https://localhost:8080/review/create`, form, this.userOptions);
+
+  }
+
+  public updateReviewUpvotes(reviewId: number, data: string): Observable<any> {
+    return this.http.put(`http://localhost:8080/review/upvotes/${reviewId}`, data, this.userOptions)
+  }
+ 
+  public updateReviewDownvotes(reviewId: number, data: string): Observable<any> {
+    return this.http.put(`http://localhost:8080/review/downvotes/${reviewId}`, data, this.userOptions)
   }
 
   //Comment API Routs

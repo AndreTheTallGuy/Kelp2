@@ -25,7 +25,7 @@ public class CommentController {
 
     @GetMapping(path="/{reviewId}")
     public ResponseEntity<List<Comment>> getAllCommentsByReviewID(@PathVariable(name="reviewId") int reviewID){
-        logger.info("Received request for Comments to Review by ID");
+        logger.info("Received request for Comments by ReviewID");
         List<Comment> allComments = commentService.findAllByReviewID(reviewID);
         return new ResponseEntity<>(allComments, HttpStatus.OK);
     }

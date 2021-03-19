@@ -1,7 +1,7 @@
 <form class="block" [ngStyle]="{'margin-left.px': margin + 40}">
-       <mat-form-field>
+       <mat-form-field class="width">
         <mat-label>Comment</mat-label>
-        <input type="text" matInput [formControl]="commentFormControl" name="comment" class="comment" [(ngModel)]="comment" required>
+        <textarea type="text" matInput [formControl]="commentFormControl" name="comment" class="comment" [(ngModel)]="comment" required></textarea>
         <mat-error *ngIf="commentFormControl.hasError('required')">
             Please enter a comment
           </mat-error>

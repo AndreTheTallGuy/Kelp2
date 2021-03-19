@@ -40,6 +40,27 @@ public class ReviewService {
         }
     }
 
+    public Review updateUpvotes(int reviewId, String upvotes){
+        Review review = reviewRepo.getOne(reviewId);
+        review.setUpvotes(upvotes);
+        try{
+            reviewRepo.save(review);
+        } catch(Exception e){
+            logger.warn(e.getMessage());
+        }
+        return review;
+    }
+
+    public String updateDownvotes(int reviewId, String downvotes){
+        Review review = reviewRepo.getOne(reviewId);
+        review.setDownvotes(downvotes);
+        try{
+            reviewRepo.save(review);
+        } catch(Exception e){
+            logger.warn(e.getMessage());
+        }
+        return review.getDownvotes();
+    }
 
 
 }
